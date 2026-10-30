@@ -19,7 +19,7 @@ export type Side = "before" | "after";
 /** Both sides, named once so a page never spells one of them and forgets the other. */
 export const SIDES: readonly Side[] = ["before", "after"];
 
-/** The gateway route, as `.spec/architecture.md`'s route table spells it. */
+/** The gateway route used by the eval listing. */
 export const COMPARE_ROUTE = "/v1/eval/compare";
 
 /**

@@ -25,10 +25,8 @@ UNPUBLISHED = (
     ".spec/",
     "claude/",
     "spec/",
-    ".spec/operator-inputs/",
-    ".spec/afk-runs/",
-    ".spec/loop-state.md",
-    ".spec/launch/",
+    "spec-afk.ps1",
+    "spec-afk.sh",
     ".lavish/",
     ".deepeval/",
     "evidence/",
@@ -236,7 +234,7 @@ def test_agent_configuration_and_planning_folders_are_absent_from_history() -> N
         text=True,
         check=True,
     ).stdout
-    forbidden = (".claude/", ".spec/", "claude/", "spec/")
+    forbidden = (".claude/", ".spec/", "claude/", "spec/", "spec-afk.ps1", "spec-afk.sh")
     paths = [line.partition(" ")[2] for line in out.splitlines() if " " in line]
     assert [
         path

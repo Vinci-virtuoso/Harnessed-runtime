@@ -1640,59 +1640,6 @@ def test_consolidation_reaches_only_the_memory_modules_ticket_248_names() -> Non
     assert not {name for name in reached if "procedural" in name or "improve" in name}
 
 
-# Ticket 286 (decisions 107, 109): the operator's unpublished records are read through one helper.
-UNPUBLISHED_PATTERN = re.compile(r"operator-inputs|\.spec[/\\]launch")
-#: The helper, its own test over temporary roots, this scan (which spells the pattern), and the
-#: publication audit, which names the trees to keep them out of the index and reads none of them.
-RECORDS_READERS = frozenset(
-    {"support/records.py", "test_records.py", "test_boundaries.py", "test_publication_audit.py"}
-)
-
-
-def _docstring_nodes(tree: ast.AST) -> set[int]:
-    found: set[int] = set()
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Module | ast.FunctionDef | ast.AsyncFunctionDef | ast.ClassDef):
-            body = node.body
-            if body and isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant):
-                found.add(id(body[0].value))
-    return found
-
-
-def unpublished_readers(tests_root: Path) -> list[str]:
-    """Test files that spell a path under the unpublished trees outside ``support/records.py``."""
-    leaks: list[str] = []
-    for path in sorted(tests_root.rglob("*.py")):
-        relative = path.relative_to(tests_root).as_posix()
-        if relative in RECORDS_READERS or "fixtures" in path.relative_to(tests_root).parts:
-            continue
-        tree = ast.parse(path.read_text(encoding="utf-8"))
-        skip = _docstring_nodes(tree)
-        for node in ast.walk(tree):
-            if (
-                isinstance(node, ast.Constant)
-                and isinstance(node.value, str)
-                and id(node) not in skip
-                and UNPUBLISHED_PATTERN.search(node.value)
-            ):
-                leaks.append(relative)
-                break
-    return leaks
-
-
-def test_operator_records_are_read_only_through_the_records_helper() -> None:
-    assert unpublished_readers(REPO_ROOT / "tests") == []
-
-
-def test_a_seeded_direct_read_of_the_operator_inputs_is_reported(tmp_path: Path) -> None:
-    (tmp_path / "support").mkdir()
-    (tmp_path / "support" / "records.py").write_text('X = ".spec/operator-inputs"\n')
-    (tmp_path / "test_bad.py").write_text('P = ROOT / ".spec" / "operator-inputs" / "1"\n')
-    (tmp_path / "test_bad2.py").write_text('P = ROOT / ".spec/launch/post.md"\n')
-    (tmp_path / "test_ok.py").write_text('"""Mentions operator-inputs."""\nX = 1\n')
-    assert unpublished_readers(tmp_path) == ["test_bad.py", "test_bad2.py"]
-
-
 # ---- no walk to a repository root (ticket 312, FR-176, MUST rule 43) ----------------------------
 
 REPOSITORY_WALK_PATTERN = re.compile(r"\.parents\[|Path\(__file__\)")

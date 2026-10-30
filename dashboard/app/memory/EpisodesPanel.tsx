@@ -12,7 +12,7 @@
  *
  * `run_id` is printed under its own field name rather than translated. The ledger's column is what
  * an operator greps for, and for this table it holds the session id the episode was written under
- * (`.spec/architecture.md`, route table correction of 2026-09-10).
+ * (the gateway route table).
  */
 import { DataTable } from "../../components/DataTable";
 import { PanelFrame } from "../../components/PanelFrame";

@@ -241,3 +241,15 @@ def test_agent_configuration_and_planning_folders_are_absent_from_history() -> N
         for path in paths
         if any(path == p.rstrip("/") or path.startswith(p) for p in forbidden)
     ] == []
+
+
+def test_recorded_session_commands_exclude_private_build_tools() -> None:
+    for path in (REPO_ROOT / "tests" / "fixtures" / "acp").glob("*.json"):
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(payload, dict):
+            continue
+        for event in payload.get("transcript", []):
+            for command in event.get("availableCommands", []):
+                name = command.get("name", "")
+                assert name not in {"spec-dev", "spec-qa"}, (path.name, name)
+                assert not name.startswith("spec:"), (path.name, name)

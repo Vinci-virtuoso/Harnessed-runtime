@@ -8,16 +8,14 @@ Four claims are load-bearing here and each one is tested against the thing that 
   spy wrapped around ``assemble`` across a multi-turn run rather than asserted about the source.
 * **Truncation is deterministic**, so the same store and the same budget assemble byte-identical
   text twice.
-* **Counting is offline, stdlib and fixed by the architecture**, which is checked by executing
-  the formula out of ``architecture.md`` decision 6 and comparing it against the shipped one over
-  a corpus, plus an AST scan proving ``count_tokens`` still has exactly one caller path.
+* **Counting is offline, stdlib and deterministic**, checked against frozen input/output
+  examples and an AST scan proving ``count_tokens`` still has exactly one caller path.
 """
 
 from __future__ import annotations
 
 import ast
-import math
-import re
+import json
 import sqlite3
 from collections.abc import Iterator
 from pathlib import Path
@@ -37,7 +35,7 @@ from support.spies import CountingAssembler, CountingProvider, RecordingObserver
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SOURCE_ROOT = REPO_ROOT / "src" / "harnessed"
-ARCHITECTURE = REPO_ROOT / ".spec" / "architecture.md"
+TOKEN_COUNTS = REPO_ROOT / "tests" / "fixtures" / "token-counts.json"
 
 # The one query every assembly test asks, and the words the seeded store is built from, so a
 # search can actually match. Retrieval quality is not what FR-11 measures; the ceiling is.
@@ -99,29 +97,11 @@ def overfill(connection: sqlite3.Connection, run_id: str = "run_overfilled") -> 
 # ---- counting: deterministic, offline, stdlib, and the formula the architecture fixed ----------
 
 
-def architecture_counter() -> object:
-    """The ``count_tokens`` body lifted verbatim out of architecture decision 6.
-
-    Executing the document is the only way to assert the shipped function is *that* function
-    rather than something that merely looks like it, and it means a change to the formula has to
-    be a change to the architecture at a gate (All AI agents MUST rule 5's spirit).
-    """
-    text = ARCHITECTURE.read_text(encoding="utf-8")
-    section = text.split("### 6. Token counting", 1)[1]
-    block = re.search(r"```python\n(.*?)```", section, re.DOTALL)
-    assert block is not None, "architecture decision 6 no longer carries a python block"
-    # The block is a body, not a module: it names ``re`` and ``math`` without importing them,
-    # because the document is prose around a formula rather than a file.
-    namespace: dict[str, object] = {"re": re, "math": math}
-    exec(block.group(1), namespace)  # the document is the specification here
-    return namespace["count_tokens"]
-
-
-def test_count_tokens_is_the_formula_the_architecture_froze() -> None:
-    documented = architecture_counter()
-    assert callable(documented)
-    for text in COUNTING_CORPUS:
-        assert budget.count_tokens(text) == documented(text)
+def test_count_tokens_matches_the_frozen_examples() -> None:
+    cases = json.loads(TOKEN_COUNTS.read_text(encoding="utf-8"))
+    assert [case["text"] for case in cases] == list(COUNTING_CORPUS)
+    for case in cases:
+        assert budget.count_tokens(case["text"]) == case["tokens"]
 
 
 def test_count_tokens_is_stable_across_repeated_calls() -> None:

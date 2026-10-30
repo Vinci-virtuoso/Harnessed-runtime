@@ -23,7 +23,7 @@
  * reason is; Path C is the recorded 500 `StorageError`, where the gateway answers `/health` and
  * every data route fails - the pill must read "gateway reachable" and never "healthy".
  *
- * The page map is read out of `.spec/ux/experience.md` rather than restated here, so a page added
+ * The page map is checked against a frozen public route fixture, so a page added
  * to the map and not to the nav fails this test. The mono claim is read off the component's own
  * module CSS, as ticket 104 established: jsdom loads no stylesheet, so a computed font proves
  * nothing. The 400px behaviour is read the same way - the button is in the DOM at every width and
@@ -59,11 +59,11 @@ import { nullReasonFor } from "../../lib/null-reasons";
 import { parseWire, type Wire } from "../../lib/wire";
 
 import { figuresWithoutSource } from "../support/figures";
+import UI_CONTRACT from "../fixtures/ui-contract.json";
 
 const DASHBOARD = resolve(import.meta.dirname, "../..");
 const REPO = resolve(DASHBOARD, "..");
 const GATEWAY_FIXTURES = resolve(DASHBOARD, "tests/fixtures/gateway");
-const EXPERIENCE = resolve(REPO, ".spec/ux/experience.md");
 const EVIDENCE = resolve(REPO, "evidence/105/shell.txt");
 const SHELL_HTML = resolve(REPO, "evidence/105/overview.html");
 const UNREACHABLE_HTML = resolve(REPO, "evidence/105/unreachable.html");
@@ -154,26 +154,7 @@ const HEALTH_500 = '{"error":"InternalError","message":"the gateway failed while
  * the nav, because a nav link to it would have to build an id (MUST rule 25).
  */
 function staticPagesInTheMap(): string[] {
-  const spine = readFileSync(EXPERIENCE, "utf8");
-  const start = spine.indexOf("Next.js route map");
-  expect(start, "experience.md no longer holds a Next.js route map").toBeGreaterThan(0);
-  const rows: string[] = [];
-  let seen = false;
-  for (const line of spine.slice(start).split("\n")) {
-    if (!line.startsWith("|")) {
-      if (seen) break;
-      continue;
-    }
-    seen = true;
-    const cell = line.split("|").at(1)?.trim() ?? "";
-    const page = cell.startsWith("`") && cell.endsWith("`") ? cell.slice(1, -1) : "";
-    if (page.startsWith("/") && !page.includes("[")) rows.push(page);
-  }
-  // The v4 map also lists pages later tickets build (`/console`, `/models`). A page the tree
-  // does not hold yet is not the nav's to link - a link to it is a link to a 404 - so the nav is
-  // held to every listed page that exists, and each of those pages joins this set the moment its
-  // `page.tsx` lands (ticket 122; the nav order is ticket 147's).
-  return rows.filter((page) => existsSync(resolve(DASHBOARD, "app", page.slice(1), "page.tsx")));
+  return UI_CONTRACT.routes.filter((page) => existsSync(resolve(DASHBOARD, "app", page.slice(1), "page.tsx")));
 }
 
 // ---- The mono claim, read from the component's own stylesheet (ticket 104) ----------------------
@@ -380,25 +361,14 @@ describe("AppShell frames every page (FR-54)", () => {
 
 // ---- ticket 259 (FR-161): the nav icons, the active item and the brand mark ----------------------
 
-/** The glyph table under "Nav icon geometry", read off the spine so a redrawn glyph fails here. */
-function navGlyphs(spine = readFileSync(resolve(REPO, ".spec/ux/design.md"), "utf8")): Record<string, string> {
-  // A checkout with `core.autocrlf` (the Windows default) ends every row `\r\n`, so both endings split
-  // (ticket 263); the row's closing `|` would otherwise be followed by a `\r` the pattern refuses.
-  const section = spine.split("### Nav icon geometry")[1]?.split(/\r?\n### /)[0] ?? "";
-  const glyphs: Record<string, string> = {};
-  for (const row of section.split(/\r?\n/)) {
-    const cells = /^\|\s*(Overview|Console|Evals|Memory|Traces|Models)\s*\|\s*`(.+)`\s*\|$/.exec(row);
-    if (cells) glyphs[cells[1]] = cells[2];
-  }
-  return glyphs;
+/** Frozen glyphs provide an expectation independent of the rendered component. */
+function navGlyphs(): Record<string, string> {
+  return UI_CONTRACT.navGlyphs;
 }
 
 describe("the sidebar's icons and brand mark (ticket 259, FR-161)", () => {
-  it("reads the spine's glyph table whichever line ending the checkout gave it", () => {
-    const lf = navGlyphs();
-    expect(Object.keys(lf)).toHaveLength(6);
-    const crlf = readFileSync(resolve(REPO, ".spec/ux/design.md"), "utf8").replace(/\r?\n/g, "\r\n");
-    expect(navGlyphs(crlf)).toEqual(lf);
+  it("retains six named sidebar glyphs", () => {
+    expect(Object.keys(navGlyphs())).toEqual(["Overview", "Console", "Evals", "Memory", "Traces", "Models"]);
   });
 
   it("draws one inline svg per nav item, before the label, with the spine's glyph", async () => {

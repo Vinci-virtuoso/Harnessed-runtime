@@ -39,7 +39,7 @@ from support.spies import RaisingObserver, RecordingObserver, is_subsequence
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 PACKAGE_ROOT = REPO_ROOT / "src" / "harnessed"
-ARCHITECTURE = REPO_ROOT / ".spec" / "architecture.md"
+TAXONOMY = REPO_ROOT / "tests" / "fixtures" / "event-taxonomy.json"
 
 REPLAY_SCOPE = "smoke-005-replay"
 
@@ -86,16 +86,9 @@ def settings() -> Settings:
     )
 
 
-def architecture_taxonomy() -> frozenset[str]:
-    """The names frozen in ``architecture.md`` open question 12, read from the document itself.
-
-    Derived rather than pinned as a literal: a later ticket that adds a name must not have to
-    edit this test, but it may never drop one the plan froze.
-    """
-    text = ARCHITECTURE.read_text(encoding="utf-8")
-    section = text.split("### 12. Event taxonomy", 1)[1]
-    block = section.split("```", 2)[1]
-    return frozenset(block.split())
+def frozen_taxonomy() -> frozenset[str]:
+    """Public event names may be extended, but never removed or renamed."""
+    return frozenset(json.loads(TAXONOMY.read_text(encoding="utf-8")))
 
 
 @pytest.fixture
@@ -149,7 +142,7 @@ def test_the_taxonomy_is_a_frozen_set() -> None:
 
 def test_every_name_the_plan_froze_is_present() -> None:
     """Names may be added by a later ticket. None may ever be dropped or renamed."""
-    assert architecture_taxonomy() <= names_module.NAMES
+    assert frozen_taxonomy() <= names_module.NAMES
 
 
 def test_every_name_obeys_the_naming_scheme() -> None:

@@ -46,7 +46,7 @@ from harnessed.providers import jev
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CLI_ROOT = REPO_ROOT / "src" / "harnessed" / "cli"
 EVIDENCE_DIR = REPO_ROOT / "evidence" / "073"
-RATCHET_FILE = REPO_ROOT / ".spec" / "coverage-ratchet"
+RATCHET_FILE = REPO_ROOT / ".github" / "coverage-ratchet"
 
 #: Decision 25: the ratchet this ticket owns, and the number it ends the milestone at.
 RATCHET_AT_CLOSE = 85

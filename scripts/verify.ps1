@@ -14,7 +14,7 @@
     that did not declare its own offline-ness would be red on every clean clone.
 
 .PARAMETER CovFailUnder
-    Overrides the coverage ratchet. Defaults to the single integer in .spec/coverage-ratchet.
+    Overrides the coverage ratchet. Defaults to the single integer in .github/coverage-ratchet.
 
 .EXAMPLE
     pwsh -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1
@@ -32,7 +32,7 @@ $RepoRoot = Split-Path -Parent $PSScriptRoot
 Set-Location $RepoRoot
 
 if ($CovFailUnder -le 0) {
-    $RatchetFile = Join-Path $RepoRoot '.spec/coverage-ratchet'
+    $RatchetFile = Join-Path $RepoRoot '.github/coverage-ratchet'
     if (-not (Test-Path $RatchetFile)) {
         Write-Error "Missing coverage ratchet file: $RatchetFile"
         exit 1

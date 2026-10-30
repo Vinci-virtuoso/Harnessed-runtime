@@ -1,0 +1,34 @@
+[
+  {
+    "text": "",
+    "tokens": 0
+  },
+  {
+    "text": "   \n\t ",
+    "tokens": 0
+  },
+  {
+    "text": "one",
+    "tokens": 2
+  },
+  {
+    "text": "The harness runs offline, deterministically, every time.",
+    "tokens": 13
+  },
+  {
+    "text": "Punctuation!!! Really? Yes -- all of it; even this.",
+    "tokens": 21
+  },
+  {
+    "text": "def f(x): return {\"a\": [1, 2, 3], \"b\": None}",
+    "tokens": 34
+  },
+  {
+    "text": "こんにちは world",
+    "tokens": 3
+  },
+  {
+    "text": "hyphen-separated words and under_scored names",
+    "tokens": 10
+  }
+]

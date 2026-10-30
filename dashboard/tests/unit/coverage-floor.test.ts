@@ -85,7 +85,7 @@ function runFixture(scope: "narrow" | "all", tests: string[]): Run {
 }
 
 describe("the floor is one integer, read from the ratchet and written nowhere else", () => {
-  it("reads 80 from .spec/coverage-ratchet-dashboard and applies it to lines and branches", () => {
+  it("reads 80 from .github/coverage-ratchet-dashboard and applies it to lines and branches", () => {
     expect(RATCHET.endsWith("coverage-ratchet-dashboard")).toBe(true);
     expect(coverageFloor()).toBe(80);
     for (const scope of [undefined, "all"]) {

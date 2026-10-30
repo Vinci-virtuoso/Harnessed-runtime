@@ -1,33 +1,13 @@
-/**
- * The two themes declare the same tokens (FR-43, FR-61). The names come from the colour table in
- * `.spec/ux/design.md`, so a token added to the design and forgotten in either theme fails here,
- * and a seeded omission proves the check can fail at all (MUST rule 12).
- */
+/** Both themes must retain the frozen public color token vocabulary. */
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
+import UI_CONTRACT from "../fixtures/ui-contract.json";
 
 const DASHBOARD = resolve(import.meta.dirname, "../..");
 const TOKENS_CSS = readFileSync(resolve(DASHBOARD, "app/tokens.css"), "utf8");
-const DESIGN_MD = readFileSync(resolve(DASHBOARD, "../.spec/ux/design.md"), "utf8");
-
-/** Review-only tokens the design says never ship. */
-const REVIEW_ONLY = new Set(["color-gap"]);
-
 const LIGHT_QUERY = "(prefers-color-scheme: light)";
 const LIGHT_BY_SYSTEM = ':root:not([data-theme="dark"])';
-
-/** A row `| \`color-pass\` / \`-subtle\` | ...` yields color-pass and color-pass-subtle. */
-function designTokens(markdown: string): Set<string> {
-  const section = markdown.split("## Color tokens")[1].split("\n## ")[0];
-  const names = new Set<string>();
-  for (const row of section.matchAll(/^\| `(color-[a-z-]+)`(?: \/ `(-[a-z-]+)`)? \|/gm)) {
-    names.add(row[1]);
-    if (row[2]) names.add(`${row[1]}${row[2]}`);
-  }
-  for (const name of REVIEW_ONLY) names.delete(name);
-  return names;
-}
 
 function withoutComments(css: string): string {
   return css.replace(/\/\*[\s\S]*?\*\//g, "");
@@ -79,10 +59,10 @@ function drop(css: string, declarations: string, name: string): string {
 }
 
 describe("tokens.css", () => {
-  const expected = designTokens(DESIGN_MD);
+  const expected = new Set(UI_CONTRACT.colorTokens);
   const css = withoutComments(TOKENS_CSS);
 
-  it("reads the design's colour tokens", () => {
+  it("retains the public colour tokens", () => {
     expect(expected.size).toBeGreaterThanOrEqual(20);
     expect(expected).toContain("color-bg");
     expect(expected).toContain("color-fail-subtle");

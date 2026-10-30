@@ -8,7 +8,7 @@
  * and later `include` reports a file whether or not a test loaded it (the old `coverage.all` flag
  * folded into it, and `--coverage.all=false` is inert on the pinned 5.0.0).
  *
- * The floor is read from `.spec/coverage-ratchet-dashboard` here and nowhere else: one integer,
+ * The floor is read from `.github/coverage-ratchet-dashboard` here and nowhere else: one integer,
  * the same in both scopes, raised by a phase's last ticket and never lowered (MUST rule 5).
  */
 import { readFileSync } from "node:fs";
@@ -16,7 +16,7 @@ import { resolve } from "node:path";
 import { coverageConfigDefaults } from "vitest/config";
 
 /** The one place the floor is read from. Never written. */
-export const RATCHET = resolve(import.meta.dirname, "../.spec/coverage-ratchet-dashboard");
+export const RATCHET = resolve(import.meta.dirname, "../.github/coverage-ratchet-dashboard");
 
 /** Everything the full harness holds visible, imported or not. */
 export const WHOLE_SURFACE = ["lib/**", "components/**", "app/**"];

@@ -45,7 +45,7 @@ VERIFY_PS1 = REPO_ROOT / "scripts" / "verify.ps1"
 VERIFY_SH = REPO_ROOT / "scripts" / "verify.sh"
 VERIFY_DASHBOARD_PS1 = REPO_ROOT / "scripts" / "verify-dashboard.ps1"
 VERIFY_DASHBOARD_SH = REPO_ROOT / "scripts" / "verify-dashboard.sh"
-RATCHET = REPO_ROOT / ".spec" / "coverage-ratchet"
+RATCHET = REPO_ROOT / ".github" / "coverage-ratchet"
 
 #: The phase-0 floor. The ratchet rises per phase and may never fall below where it started.
 PHASE_0_RATCHET = 55
@@ -133,8 +133,8 @@ def test_both_scripts_default_to_the_ratchet_file() -> None:
     # Read rather than hardcode: the last ticket of each phase bumps this file, and an assertion
     # that has to be edited every phase is an assertion somebody eventually edits downward.
     assert RATCHET_VALUE >= PHASE_0_RATCHET, "the ratchet may rise, never fall (MUST rule 5)"
-    assert ".spec/coverage-ratchet" in VERIFY_PS1.read_text(encoding="utf-8")
-    assert ".spec/coverage-ratchet" in VERIFY_SH.read_text(encoding="utf-8")
+    assert ".github/coverage-ratchet" in VERIFY_PS1.read_text(encoding="utf-8")
+    assert ".github/coverage-ratchet" in VERIFY_SH.read_text(encoding="utf-8")
 
 
 def _testpaths() -> list[str]:

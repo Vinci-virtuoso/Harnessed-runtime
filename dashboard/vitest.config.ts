@@ -1,6 +1,6 @@
 /**
  * Unit tests (decision 30). The coverage scope and floor live in `vitest.coverage.ts`: one number,
- * read from `.spec/coverage-ratchet-dashboard` and never written here, and two scopes off it - the
+ * read from `.github/coverage-ratchet-dashboard` and never written here, and two scopes off it - the
  * files a narrow run imported, or the whole surface when the verify scripts export
  * `COVERAGE_SCOPE=all` (ticket 118). The socket guard is a setup file, so no test can load before
  * it.

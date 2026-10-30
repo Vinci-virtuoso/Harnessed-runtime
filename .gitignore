@@ -59,3 +59,9 @@ src/harnessed/dashboard_static/
 .spec/loop-state.md
 .spec/launch/
 .deepeval/
+
+# Private agent configuration and planning never belong in the public repository.
+.claude/
+.spec/
+claude/
+spec/

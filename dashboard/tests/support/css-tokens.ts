@@ -5,10 +5,11 @@
  */
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import UI_CONTRACT from "../fixtures/ui-contract.json";
 
 export const DASHBOARD = resolve(import.meta.dirname, "../..");
 export const TOKENS_PATH = resolve(DASHBOARD, "app/tokens.css");
-export const DESIGN_PATH = resolve(DASHBOARD, "../.spec/ux/design.md");
+
 
 export const THEMES = ["dark", "light"] as const;
 export type Theme = (typeof THEMES)[number];
@@ -135,28 +136,9 @@ export function solidBlocks(css: string): Map<string, string> {
   return out;
 }
 
-/** design.md's Glass table: `{ glass-x: { dark, light } }`, `glass-primary` split into its glow. */
+/** Frozen glass values, independent of the stylesheet being tested. */
 export function glassTable(): Record<string, Record<Theme, string>> {
-  const md = readFileSync(DESIGN_PATH, "utf8");
-  const section = md.split("### Glass (v6")[1].split("**Radius, as amended")[0];
-  const table: Record<string, Record<Theme, string>> = {};
-  for (const m of section.matchAll(/^\| `(glass-[a-z-]+)` \| (.*?) \| (.*?) \| .*? \|$/gm)) {
-    const bare = (cell: string) => cell.trim().replace(/^`|`$/g, "");
-    if (m[1] === "glass-primary") {
-      const split = (cell: string) => /^`(linear-gradient\(.*?\))`, glow `(.*?)`$/.exec(cell.trim())!;
-      const dark = split(m[2]);
-      const light = split(m[3]);
-      table["glass-primary"] = { dark: dark[1], light: light[1] };
-      table["glass-primary-glow"] = { dark: dark[2], light: light[2] };
-    } else {
-      // The spine writes "same" for a light value that is the dark one (`glass-frost`); a literal
-      // `same` is not a `backdrop-filter`, so the light theme would not blur at all.
-      const dark = bare(m[2]);
-      const light = bare(m[3]);
-      table[m[1]] = { dark, light: light === "same" ? dark : light };
-    }
-  }
-  return table;
+  return UI_CONTRACT.glass;
 }
 
 export type Rgba = { r: number; g: number; b: number; a: number };

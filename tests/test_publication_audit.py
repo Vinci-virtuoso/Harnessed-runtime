@@ -21,6 +21,10 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 # Operator ruling Q3: kept as files and in the private mirror, never in the index.
 UNPUBLISHED = (
+    ".claude/",
+    ".spec/",
+    "claude/",
+    "spec/",
     ".spec/operator-inputs/",
     ".spec/afk-runs/",
     ".spec/loop-state.md",
@@ -222,3 +226,20 @@ def test_every_ledger_shaped_fixture_is_a_fixed_point_of_scrub() -> None:
 
 def test_the_published_contacts_are_the_operators_ruling() -> None:
     assert {"5eun3isiyktv@gmail.com"} == PUBLISHED_CONTACTS
+
+
+def test_agent_configuration_and_planning_folders_are_absent_from_history() -> None:
+    out = subprocess.run(
+        ["git", "rev-list", "--objects", "--all"],
+        cwd=REPO_ROOT,
+        capture_output=True,
+        text=True,
+        check=True,
+    ).stdout
+    forbidden = (".claude/", ".spec/", "claude/", "spec/")
+    paths = [line.partition(" ")[2] for line in out.splitlines() if " " in line]
+    assert [
+        path
+        for path in paths
+        if any(path == p.rstrip("/") or path.startswith(p) for p in forbidden)
+    ] == []

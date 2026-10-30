@@ -36,11 +36,11 @@ while [ $# -gt 0 ]; do
 done
 
 if [ -z "$COV_FAIL_UNDER" ]; then
-    if [ ! -f .spec/coverage-ratchet ]; then
-        echo "verify.sh: missing coverage ratchet file: .spec/coverage-ratchet" >&2
+    if [ ! -f .github/coverage-ratchet ]; then
+        echo "verify.sh: missing coverage ratchet file: .github/coverage-ratchet" >&2
         exit 1
     fi
-    COV_FAIL_UNDER=$(tr -d ' \t\r\n' < .spec/coverage-ratchet)
+    COV_FAIL_UNDER=$(tr -d ' \t\r\n' < .github/coverage-ratchet)
 fi
 
 # The quiet-tree lines (FR-159, decision 71). Not stages: they print HEAD and a sha256 of the

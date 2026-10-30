@@ -1,0 +1,4 @@
+scope: _consolidate-q1-one-off-outcome
+variants:
+  - name: base
+    when: always

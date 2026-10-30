@@ -1,0 +1,14 @@
+From: Dana Whitfield <dana@customer.example.com>
+To: help@acme.example.com
+Subject: Cannot log in since this morning - whole team locked out
+Content-Type: text/plain; charset=utf-8
+
+Hi,
+
+Since about 8am none of us can log in to the dashboard. We get "session expired" straight after
+entering the password, on every browser. We have a client demo at 2pm today and need this working
+before then.
+
+Can someone look at this urgently?
+
+Dana

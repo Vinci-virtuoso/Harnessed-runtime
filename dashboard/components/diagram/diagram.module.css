@@ -1,0 +1,237 @@
+/* The architecture diagram (design.md, "The architecture diagram"; FR-84). */
+.frame {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  overflow-x: auto;
+}
+
+/* Two SVGs at one viewBox, stacked in one grid cell: the picture under, the linked boxes over. */
+.diagram {
+  display: grid;
+  min-width: 880px;
+}
+
+.picture,
+.boxes {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: auto;
+}
+
+/* Regions: a bordered group on the sunken surface, captioned in the label type. */
+.region rect {
+  fill: var(--surface-sunken);
+  stroke: var(--surface-hairline);
+  stroke-width: 1;
+}
+
+.region text {
+  font: var(--type-label);
+  fill: var(--color-fg-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Edges: 1px border-strong paths, the accent when lit. */
+.edge {
+  fill: none;
+  stroke: var(--surface-hairline-strong);
+  stroke-width: 1;
+}
+
+.dashed {
+  stroke-dasharray: 4 4;
+}
+
+.live {
+  stroke: var(--color-accent);
+}
+
+.arrow {
+  fill: context-stroke;
+}
+
+/* Boxes: the raised surface, a 1px border and radius-md (6, written as rx in the geometry). */
+.box rect,
+.box polygon {
+  fill: var(--surface-raised);
+  stroke: var(--surface-hairline);
+  stroke-width: 1;
+}
+
+.box text {
+  font: var(--type-small);
+  fill: var(--color-fg);
+  text-anchor: middle;
+}
+
+/* Focus wears the window's own 2px ring (`tokens.css`), the one every other control wears. */
+a.box {
+  cursor: pointer;
+}
+
+a.box:hover rect,
+a.box:hover polygon {
+  stroke: var(--surface-hairline-strong);
+}
+
+.hot rect,
+.hot polygon {
+  stroke: var(--color-accent);
+  fill: var(--color-accent-subtle);
+}
+
+/* The failed-open gate: the gate tile's amber, and the word beside it (never colour alone). */
+.warn polygon {
+  stroke: var(--color-warn);
+  fill: var(--color-warn-subtle);
+}
+
+.warnWord {
+  font: var(--type-source);
+  fill: var(--color-warn);
+}
+
+/* The delegation region's overflow line, past its six literal slots. */
+.more {
+  font: var(--type-source);
+  fill: var(--color-fg-muted);
+}
+
+/* The status line is text, and names the stage whatever the motion preference. */
+.status {
+  margin: 0;
+  font: var(--type-source);
+  color: var(--color-fg-muted);
+}
+
+/*
+ * A frame's highlight (FR-85): the stroke flares to the accent (or the gate's amber) and settles
+ * back to the element's own, over `motion-highlight`. Opacity and stroke only, and the class is
+ * gone once the frame's beat ends. Two names, one per class, so a frame on the box the previous
+ * frame lit restarts the animation rather than inheriting its finished one.
+ */
+.flashA,
+.flashB {
+  --flash-stroke: var(--color-accent);
+}
+
+.warn.flashA,
+.warn.flashB {
+  --flash-stroke: var(--color-warn);
+}
+
+.edge.flashA,
+.flashA rect,
+.flashA polygon {
+  animation: highlight-a var(--motion-highlight) ease-out;
+}
+
+.edge.flashB,
+.flashB rect,
+.flashB polygon {
+  animation: highlight-b var(--motion-highlight) ease-out;
+}
+
+@keyframes highlight-a {
+  from {
+    stroke: var(--flash-stroke);
+    opacity: 0.6;
+  }
+  30% {
+    stroke: var(--flash-stroke);
+    opacity: 1;
+  }
+}
+
+@keyframes highlight-b {
+  from {
+    stroke: var(--flash-stroke);
+    opacity: 0.6;
+  }
+  30% {
+    stroke: var(--flash-stroke);
+    opacity: 1;
+  }
+}
+
+/* The frame's hold: unseen, the same duration, and its end is what lights the next frame. */
+.beat {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  animation: beat var(--motion-highlight) linear;
+}
+
+@keyframes beat {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Reduced motion: nothing animates, nothing is lit by a frame, and the status line still speaks. */
+@media (prefers-reduced-motion: reduce) {
+  .edge.flashA,
+  .edge.flashB,
+  .flashA rect,
+  .flashA polygon,
+  .flashB rect,
+  .flashB polygon,
+  .beat {
+    animation: none;
+  }
+}
+
+/*
+ * The labels (FR-86): a region's band below the return edge, each row its key in the caption
+ * type and the tile's own figure with its chip. The row does not wrap: a narrow band shortens the
+ * chip's route to an ellipsis (its `title` and accessible name keep the whole route).
+ */
+.labels {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 8px;
+  row-gap: 4px;
+  align-items: center;
+  margin: 0;
+}
+
+/* A row groups its term and figure for the markup; the grid above lines up every row's columns. */
+.label {
+  display: contents;
+}
+
+.label dt {
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.label dd {
+  display: flex;
+  min-height: 24px;
+  align-items: center;
+  min-width: 0;
+  margin: 0;
+}
+
+.label dd > * {
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+/* The figure keeps every character on one line; the chip's route is what gives way. */
+.label dd [data-figure] {
+  flex: none;
+}
+
+.label dd button {
+  min-width: 0;
+}

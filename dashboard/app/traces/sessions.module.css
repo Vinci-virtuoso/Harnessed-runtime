@@ -1,0 +1,134 @@
+/*
+ * The Sessions area: the listing and one session's page. Both are the same column of panels, so
+ * they share one module rather than repeating a stack twice. Every colour, font and radius is a
+ * token from `app/tokens.css`; nothing here is a raw value.
+ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.title {
+  margin: 0;
+  font: var(--type-page-title);
+  color: var(--color-fg);
+}
+
+.subtitle {
+  /* The title and its line read as one block, so the gap between them is not the section gap. */
+  margin: -16px 0 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+/* The session id the URL carried, printed once above the two panels that both read it. */
+.identity {
+  margin: -16px 0 0;
+  font: var(--type-data);
+  color: var(--color-fg);
+  overflow-wrap: anywhere;
+}
+
+/* ---- Inside a panel ------------------------------------------------------------------------ */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.footer {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+/* The replay's own trace steps: no padding of its own, since each `TraceStep` already carries it. */
+.log {
+  margin: 0;
+  padding: 0;
+}
+
+/* The rows themselves: a plain list one level inside the `role="log"` container, so the `<li>`
+   steps still read as a list to an axe/WCAG check (a `role="log"` element is not list-owning). */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+/* ---- The limit control --------------------------------------------------------------------- */
+
+.limit {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.limitLegend {
+  padding: 0 4px;
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+.limitChoice {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+/* ---- The lookup beside the listing ----------------------------------------------------------- */
+
+.lookup {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+}
+
+/* ---- The transcript's own rows: the operator's input and the reply bracket each turn's steps ---- */
+
+.turn {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  padding: 8px 12px;
+}
+
+.label {
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+.absent {
+  font: var(--type-body);
+  font-style: italic;
+  color: var(--color-fg-muted);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}

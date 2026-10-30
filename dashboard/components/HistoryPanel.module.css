@@ -1,0 +1,144 @@
+/*
+ * The console's `HISTORY`: a toggle, and the sessions listing under it once opened, titled by the
+ * operator's own words (ticket 188). Every colour, font and radius is a token from
+ * `app/tokens.css`; nothing here is a raw value.
+ */
+
+.history {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-3);
+}
+
+/* The panel's heading is its toggle: collapsed by default, one press opens the listing. */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  column-gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  font: var(--type-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  transition: color var(--motion-micro) var(--ease-out);
+}
+
+.toggle:hover {
+  color: var(--color-fg);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.chevron {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+/* ---- Inside the panel ---------------------------------------------------------------------- */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: var(--space-3);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--surface-hairline);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: var(--type-data);
+  color: var(--color-fg);
+  text-decoration: none;
+}
+
+a.title:hover,
+a.title:focus-visible {
+  text-decoration: underline;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  column-gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+.footer {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.resume {
+  font: var(--type-small);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.resume:hover,
+.resume:focus-visible {
+  text-decoration: underline;
+}
+
+/* Not a control: a session that is not a run reads as plain muted text, never a disabled link. */
+.blocked {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+  white-space: nowrap;
+}
+
+/* ---- The limit control, as the Sessions page draws it ------------------------------------- */
+
+.limit {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.limitLegend {
+  padding: 0 4px;
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+.limitChoice {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  font: var(--type-data);
+  color: var(--color-fg);
+}

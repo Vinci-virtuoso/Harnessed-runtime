@@ -1,0 +1,50 @@
+/* Inline label, mono input, `Open` (design.md inventory). It wraps rather than overflowing at 400px. */
+.lookup {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Visible, never a placeholder: a placeholder disappears the moment the operator starts typing. */
+.label {
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Mono, because every id on every screen is mono and an id is what goes in here. */
+.input {
+  min-width: 28ch;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 1px;
+}
+
+.open {
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font: var(--type-body);
+  color: var(--color-fg);
+  cursor: pointer;
+}
+
+/* Disabled while the field is blank: dimmed and, more to the point, not focusable or clickable. */
+.open:disabled {
+  color: var(--color-fg-faint);
+  cursor: not-allowed;
+}

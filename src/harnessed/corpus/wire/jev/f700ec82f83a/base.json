@@ -1,0 +1,33 @@
+{
+  "task": "Draft a warm follow-up email to the investor I met on Tuesday about the seed round",
+  "id": "gen-dec-spike-routing-021-investor-email",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "email_writer",
+      "probabilities": {
+        "email_writer": 0.99
+      },
+      "confidence": 0.99
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.2
+    },
+    "memory_kind": {
+      "type": "choice",
+      "choice": "semantic",
+      "probabilities": {
+        "semantic": 0.34,
+        "procedural": 0.33,
+        "episodic": 0.33
+      },
+      "confidence": 0.34
+    }
+  },
+  "usage": {
+    "cost": 0.000026
+  }
+}

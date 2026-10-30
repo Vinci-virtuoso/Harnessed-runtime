@@ -1,0 +1,31 @@
+/* No box (FR-163): the `StatGroup` card holds the tile, so it has no border, ground or padding. */
+.tile {
+  display: flex;
+  /* The tile is a flex item, so its automatic minimum is its content: without this a long figure
+     widens the row and pushes the tile beside it off the card (FR-61). */
+  min-width: 0;
+  flex-direction: column;
+  row-gap: 2px;
+}
+
+/* Sentence case, as the canvas draws it. */
+.label {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+/* The figure keeps `Value`'s own mono and tabular figures; the tile only sets its size. */
+.figure {
+  display: inline-flex;
+  align-items: baseline;
+  column-gap: 8px;
+  flex-wrap: wrap;
+}
+
+.headline [data-figure] {
+  font: var(--type-figure);
+}
+
+.secondary [data-figure] {
+  font: 400 14px / 20px var(--font-mono);
+}

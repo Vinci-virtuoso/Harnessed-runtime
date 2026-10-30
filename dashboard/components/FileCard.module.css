@@ -1,0 +1,38 @@
+/* 1px `color-border-strong`, `radius-md`, 16px padding (design.md's output kinds table). */
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  padding: 16px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+}
+
+.name {
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+.kind {
+  font: var(--type-data);
+  color: var(--color-fg-muted);
+}
+
+.note {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.command {
+  margin-top: 4px;
+  font: var(--type-code);
+  color: var(--color-fg-secondary);
+  background: var(--surface-sunken);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  width: fit-content;
+}

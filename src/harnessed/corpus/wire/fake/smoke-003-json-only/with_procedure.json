@@ -1,0 +1,7 @@
+{
+  "response_id": "fake_smoke003_with_procedure",
+  "model": "fake-1",
+  "content": "{\"city\": \"Lagos\"}",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 63, "output_tokens": 9}
+}

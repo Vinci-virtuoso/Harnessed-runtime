@@ -1,0 +1,106 @@
+/* design.md "The console in v5": one exchange per served message - the operator's text, its route
+ * lines, the reply by kind, its caption, and a collapsed Steps disclosure. */
+
+.exchange {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--surface-hairline);
+}
+
+.exchange:target {
+  border-color: var(--color-accent);
+  background: var(--color-accent-subtle);
+}
+
+.exchange:last-child {
+  border-bottom: none;
+}
+
+.message {
+  margin: 0;
+  font: var(--type-body);
+  font-weight: 600;
+  color: var(--color-fg);
+  white-space: pre-wrap;
+}
+
+.textAbsent {
+  font-style: italic;
+  color: var(--color-fg-muted);
+}
+
+.routeLines {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-1);
+}
+
+.live {
+  margin: 0;
+  font: var(--type-small);
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-2);
+}
+
+.stepsToggle {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  column-gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: none;
+  font: var(--type-label);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  transition: color var(--motion-micro) var(--ease-out);
+}
+
+.stepsToggle:hover {
+  color: var(--color-fg);
+}
+
+.stepsToggle:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.liveTag {
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+}
+
+.stepsCount {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.hopOutputs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-2);
+}
+
+/* Who wrote the message: a small caption above it, never a bubble of its own. */
+.author {
+  margin: 0;
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}

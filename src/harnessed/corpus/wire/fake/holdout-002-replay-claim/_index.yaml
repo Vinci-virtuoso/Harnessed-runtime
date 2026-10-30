@@ -1,0 +1,7 @@
+# Ticket 024. Added for the `holdout-002-replay-claim` case in `holdout.yaml`. One `base` variant,
+# `when: always`, for the same reason as the rest of this suite: the served bytes may not depend
+# on the candidate under judgement.
+scope: holdout-002-replay-claim
+variants:
+  - name: base
+    when: always

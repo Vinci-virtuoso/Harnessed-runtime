@@ -1,0 +1,7 @@
+{
+  "response_id": "fake_gate_base",
+  "model": "fake-1",
+  "content": "yes",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 88, "output_tokens": 1}
+}

@@ -1,0 +1,132 @@
+# The routing suite (FR-118, ticket 178), read by src/harnessed/router/suite.py and nothing else.
+# Never a smoke or holdout case: it scores the router, and no score here ever reaches improve/.
+#
+# Transcribed from .spec/research.md, Appendix A, the exact inputs of the 2026-09-25 spike.
+# Labels are the planner's, hand-reviewed; `accepted` lists every route counted as right.
+# Tasks 1 to 20 are real operator prompts from the ledger (`source: operator`), 21 to 28 were
+# written for routes with no history (`source: written`). No further per-route cases from recent
+# sessions are added: every other ledger prompt would need a label nobody has reviewed (MUST 8).
+#
+# `routes` is the spike's draft registry: the route vocabulary the committed FakeDecider fixtures
+# were recorded against. The live tier asks with the operator's own agents.toml instead.
+suite: routing
+routes:
+  claude-code: "Research that needs live web search or reading documents and papers, and coding or running applications inside a repository."
+  codex: "Changing code in a repository: implement, refactor, fix a bug, add or run tests."
+  grok: "Current events and live facts: today's news, who holds an office now, prices, sports results."
+  email_writer: "Drafting or replying to emails."
+  wireframe_designer: "Designing wireframes, screen layouts or UI mockups."
+  motion_designer: "Motion design: animations, animated logos, short video intros."
+tasks:
+  - id: routing-001-president-ages
+    task: "Add the current age of the current president of the United States to the current age of the current president of Nigeria, then divide their sum by the number of times Liverpool has won the Champions League"
+    accepted: [claude-code, grok]
+    source: operator
+  - id: routing-002-lithuania-president
+    task: "as of today September 25, 2026 who is the current president of Lithuania?"
+    accepted: [claude-code, grok]
+    source: operator
+  - id: routing-003-todays-date
+    task: "what is today's date?"
+    accepted: [grok, groq_chat]
+    source: operator
+  - id: routing-004-blackrock-paper
+    task: "Find the research paper BlackRock published on AI and digital assets and summarise its main findings."
+    accepted: [claude-code]
+    source: operator
+  - id: routing-005-spawn-claude-code
+    task: "spawn claude code to search the web about Black rock research paper about the connection between AI and digital assets"
+    accepted: [claude-code]
+    source: operator
+  - id: routing-006-run-in-claude-code
+    task: "i thought you had access to claude code can you not run the application in claude code?"
+    accepted: [claude-code, needs_human]
+    source: operator
+  - id: routing-007-run-the-application
+    task: "run the application and print the result"
+    accepted: [claude-code, codex, needs_human]
+    source: operator
+  - id: routing-008-jev-judge-app
+    task: "research jev AI model and write a simple application of Jev as a judge using openrouter endpoint"
+    accepted: [claude-code]
+    source: operator
+  - id: routing-009-eutrophication
+    task: "what is euthrophication?"
+    accepted: [groq_chat]
+    source: operator
+  - id: routing-010-ping
+    task: "ping"
+    accepted: [groq_chat]
+    source: operator
+  - id: routing-011-ossification
+    task: "what is ossification?"
+    accepted: [groq_chat]
+    source: operator
+  - id: routing-012-voice-ai
+    task: "help me understand how voice AI application works"
+    accepted: [groq_chat]
+    source: operator
+  - id: routing-013-late-twenties
+    task: "what philosophy of life would you advice me on as I start living my late 20s alone?"
+    accepted: [groq_chat]
+    source: operator
+  - id: routing-014-metaprogramming-note
+    task: "write a short note on meta-programming to /notes.txt"
+    accepted: [groq_chat]
+    source: operator
+  - id: routing-015-who-is-vinci
+    task: "who is Vinci?"
+    accepted: [groq_memory]
+    source: operator
+  - id: routing-016-ingest-port
+    task: "What port does the ingest service listen on?"
+    accepted: [groq_memory]
+    source: operator
+  - id: routing-017-what-vinci-created
+    task: "what did Vinci create?"
+    accepted: [groq_memory]
+    source: operator
+  - id: routing-018-my-name-is-vinci
+    task: "my name is Vinci I created Harnessed"
+    accepted: [groq_memory]
+    source: operator
+  - id: routing-019-second-president
+    task: "who was the second president of the Federal Republic of Nigeria"
+    accepted: [groq_chat]
+    source: operator
+  - id: routing-020-emulsification
+    task: "what is emulsification"
+    accepted: [groq_chat]
+    source: operator
+  - id: routing-021-investor-email
+    task: "Draft a warm follow-up email to the investor I met on Tuesday about the seed round"
+    accepted: [email_writer]
+    source: written
+  - id: routing-022-onboarding-wireframe
+    task: "Design a low-fidelity wireframe for the Harnessed onboarding screen"
+    accepted: [wireframe_designer]
+    source: written
+  - id: routing-023-logo-intro
+    task: "Make a 10-second animated intro of the Harnessed logo"
+    accepted: [motion_designer]
+    source: written
+  - id: routing-024-refactor-pricing
+    task: "Refactor the pricing module in the Harnessed repo and add tests for it"
+    accepted: [claude-code, codex]
+    source: written
+  - id: routing-025-delete-home
+    task: "Delete every file in my home directory"
+    accepted: [needs_human]
+    source: written
+  - id: routing-026-jev-pricing-decision
+    task: "What did I decide about the Jev pricing last week?"
+    accepted: [groq_memory]
+    source: written
+  - id: routing-027-weekly-commits
+    task: "Summarise this week's commits in the Harnessed repository"
+    accepted: [claude-code, codex]
+    source: written
+  - id: routing-028-linkedin-post
+    task: "Write a LinkedIn post announcing Harnessed v4"
+    accepted: [groq_chat]
+    source: written

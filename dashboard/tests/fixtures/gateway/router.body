@@ -1,0 +1,1 @@
+{"cost":null,"detail":null,"floors":[{"floor":"0.5000","floor_percent":"50%","route":"groq_chat"},{"floor":"0.5000","floor_percent":"50%","route":"groq_memory"}],"latency_seconds":null,"model":null,"needs_memory_threshold":"0.5000","needs_memory_threshold_percent":"50%","probed":false,"probed_at":null,"routing":"on","routing_reason":null,"status":null}

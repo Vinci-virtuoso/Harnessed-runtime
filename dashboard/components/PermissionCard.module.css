@@ -1,0 +1,107 @@
+/* design.md "PermissionCard": warn while pending, back to the quiet surface once answered. */
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+}
+
+.card[data-state="pending"] {
+  border-color: var(--color-warn);
+  background: var(--color-warn-subtle);
+}
+
+.title {
+  margin: 0;
+  font: var(--type-panel-title);
+  color: var(--color-fg);
+}
+
+.when {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+.card[data-state="approved"] .when {
+  color: var(--color-pass);
+  --value-tone: var(--color-pass);
+}
+
+.card[data-state="expired"] .when {
+  color: var(--color-warn);
+  --value-tone: var(--color-warn);
+}
+
+.controls {
+  display: flex;
+  column-gap: var(--space-2);
+}
+
+.approve,
+.deny {
+  height: 32px;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-md);
+  font: var(--type-small);
+  cursor: pointer;
+}
+
+/* The page's one primary action while the card is pending. */
+.approve {
+  border: 1px solid var(--color-accent);
+  background: var(--surface-primary);
+  box-shadow: var(--surface-primary-glow);
+  color: var(--color-bg);
+}
+
+.deny {
+  border: 1px solid var(--surface-hairline-strong);
+  background: var(--surface-raised);
+  color: var(--color-fg);
+}
+
+.approve:focus-visible,
+.deny:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.approve:disabled,
+.deny:disabled {
+  border-color: var(--surface-hairline);
+  background: var(--surface-raised);
+  box-shadow: none;
+  color: var(--color-fg-faint);
+  cursor: not-allowed;
+}
+
+.closing {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.already {
+  margin: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-warn);
+  border-radius: var(--radius-md);
+  font: var(--type-small);
+  color: var(--color-fg);
+}
+
+.warning {
+  margin: 0;
+  font-weight: 600;
+}
+
+.detail > summary {
+  cursor: pointer;
+}

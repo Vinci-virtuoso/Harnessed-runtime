@@ -1,0 +1,33 @@
+{
+  "task": "Find the research paper BlackRock published on AI and digital assets and summarise its main findings.",
+  "id": "gen-dec-spike-routing-004-blackrock-paper",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "claude-code",
+      "probabilities": {
+        "claude-code": 0.95
+      },
+      "confidence": 0.95
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.2
+    },
+    "memory_kind": {
+      "type": "choice",
+      "choice": "semantic",
+      "probabilities": {
+        "semantic": 0.34,
+        "procedural": 0.33,
+        "episodic": 0.33
+      },
+      "confidence": 0.34
+    }
+  },
+  "usage": {
+    "cost": 0.000026
+  }
+}

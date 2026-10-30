@@ -1,0 +1,110 @@
+/*
+ * The compare page's own layout: the run-level score pair, the two sides as two rows, and the four
+ * lists the comparison serves. The page frame, title and the provider caveat come from
+ * `../evals.module.css`, which the Evals area already owns, so this file holds only what the
+ * comparison adds. Every colour, font and radius is a token from `app/tokens.css`.
+ *
+ * Nothing here colours a direction. A regression and a soft drop get the same surface as a new
+ * case, because "is this better" is the promoter's decision and never a fill this stylesheet
+ * applies (MUST rules 1 and 21, `D-1`).
+ */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+/* ---- The run-level score, before and after ---------------------------------------------------- */
+
+.headline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 8px;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.headlineLabel {
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+/* The word naming a row's side, beside that side's own figures. */
+.sideName {
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+/* ---- The four lists --------------------------------------------------------------------------- */
+
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.listTitle {
+  margin: 0;
+  font: var(--type-section-title);
+  color: var(--color-fg);
+}
+
+.ids {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.id {
+  display: flex;
+  align-items: center;
+}
+
+.note {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+/* ---- The two ids, where the URL carries neither or only one ----------------------------------- */
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+}
+
+.pickerSide {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.pickerLegend {
+  padding: 0 4px;
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}

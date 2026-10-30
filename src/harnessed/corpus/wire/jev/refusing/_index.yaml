@@ -1,0 +1,12 @@
+# Ticket 155. A scope reached through an explicitly declared scope rather than the
+# task-line hash, so the override half of `FakeDecider.scope_of` has its own fixture
+# independent of what the state text says. Two variants over the state text: an ordinary ask,
+# and one where the state's "Recently refusing:" section (decision 58) names a route in
+# trouble, exercising `state_contains_all`. `base` last and mandatory, as every scope requires.
+scope: refusing
+variants:
+  - name: falling_back
+    when:
+      state_contains_all: ["recently refusing"]
+  - name: base
+    when: always

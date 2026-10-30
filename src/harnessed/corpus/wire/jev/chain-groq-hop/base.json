@@ -1,0 +1,39 @@
+{
+  "task": "sketch a wireframe, then describe it in one line",
+  "id": "gen-dec-chain-groq-base-1",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "wireframe",
+      "probabilities": {
+        "groq_chat": 0.025,
+        "groq_memory": 0.025,
+        "wireframe": 0.9,
+        "email": 0.025,
+        "needs_human": 0.025
+      },
+      "confidence": 0.9
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.1
+    },
+    "memory_kind": {
+      "type": "choice",
+      "choice": "semantic",
+      "probabilities": {
+        "semantic": 0.5,
+        "procedural": 0.3,
+        "episodic": 0.2
+      },
+      "confidence": 0.5
+    }
+  },
+  "usage": {
+    "input_tokens": 420,
+    "output_tokens": 20,
+    "cost": 0.0000150
+  }
+}

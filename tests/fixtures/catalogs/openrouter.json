@@ -1,0 +1,488 @@
+{
+  "data": [
+    {
+      "id": "anthropic/claude-sonnet-4.5",
+      "canonical_slug": "anthropic/claude-4.5-sonnet-20250929",
+      "hugging_face_id": "",
+      "name": "Anthropic: Claude Sonnet 4.5",
+      "created": 1759161676,
+      "description": "Claude Sonnet 4.5 is Anthropic’s most advanced Sonnet model to date, optimized for real-world agents and coding workflows. It delivers state-of-the-art performance on coding benchmarks such as SWE-bench Verified, with...",
+      "context_length": 1000000,
+      "architecture": {
+        "modality": "text+image+file->text",
+        "input_modalities": [
+          "text",
+          "image",
+          "file"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Claude",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.000003",
+        "completion": "0.000015",
+        "web_search": "0.01",
+        "input_cache_read": "0.0000003",
+        "input_cache_write": "0.00000375",
+        "input_cache_write_1h": "0.000006",
+        "overrides": [
+          {
+            "min_prompt_tokens": 200000,
+            "prompt": "0.000006",
+            "completion": "0.0000225",
+            "input_cache_read": "0.0000006",
+            "input_cache_write": "0.0000075",
+            "input_cache_write_1h": "0.000012"
+          }
+        ]
+      },
+      "top_provider": {
+        "context_length": 1000000,
+        "max_completion_tokens": 64000,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_completion_tokens",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": 1,
+        "top_p": 1,
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
+      },
+      "supported_voices": null,
+      "knowledge_cutoff": "2025-01-31",
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/anthropic/claude-4.5-sonnet-20250929/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [
+          {
+            "arena": "models",
+            "category": "3d",
+            "elo": 1186,
+            "win_rate": 51,
+            "rank": 54
+          },
+          {
+            "arena": "models",
+            "category": "asciiart",
+            "elo": 1220,
+            "win_rate": 56.1,
+            "rank": 20
+          },
+          {
+            "arena": "models",
+            "category": "codecategories",
+            "elo": 1192,
+            "win_rate": 51.5,
+            "rank": 54
+          },
+          {
+            "arena": "models",
+            "category": "dataviz",
+            "elo": 1180,
+            "win_rate": 47.4,
+            "rank": 62
+          },
+          {
+            "arena": "models",
+            "category": "gamedev",
+            "elo": 1187,
+            "win_rate": 51.1,
+            "rank": 57
+          },
+          {
+            "arena": "models",
+            "category": "svg",
+            "elo": 1134,
+            "win_rate": 52.2,
+            "rank": 52
+          },
+          {
+            "arena": "models",
+            "category": "uicomponent",
+            "elo": 1187,
+            "win_rate": 49.4,
+            "rank": 58
+          },
+          {
+            "arena": "models",
+            "category": "website",
+            "elo": 1198,
+            "win_rate": 51.8,
+            "rank": 58
+          },
+          {
+            "arena": "agents",
+            "category": "fullstack",
+            "elo": 1058,
+            "win_rate": 43.7,
+            "rank": 35
+          },
+          {
+            "arena": "agents",
+            "category": "mobileapps",
+            "elo": 1167,
+            "win_rate": 52.9,
+            "rank": 29
+          },
+          {
+            "arena": "agents",
+            "category": "webapps",
+            "elo": 1067,
+            "win_rate": 43.2,
+            "rank": 36
+          }
+        ],
+        "artificial_analysis": {
+          "intelligence_index": 20.7,
+          "coding_index": 52.1,
+          "agentic_index": 15.8
+        }
+      },
+      "reasoning": {
+        "mandatory": false
+      }
+    },
+    {
+      "id": "openai/gpt-oss-120b",
+      "canonical_slug": "openai/gpt-oss-120b",
+      "hugging_face_id": "openai/gpt-oss-120b",
+      "name": "OpenAI: gpt-oss-120b",
+      "created": 1754414231,
+      "description": "gpt-oss-120b is an open-weight, 117B-parameter Mixture-of-Experts (MoE) language model from OpenAI designed for high-reasoning, agentic, and general-purpose production use cases. It activates 5.1B parameters per forward pass and is optimized...",
+      "context_length": 131072,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000015",
+        "completion": "0.0000006",
+        "input_cache_read": "0.000000075"
+      },
+      "top_provider": {
+        "context_length": 131072,
+        "max_completion_tokens": 65536,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "reasoning_effort",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_a",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "frequency_penalty": null
+      },
+      "supported_voices": null,
+      "knowledge_cutoff": "2024-06-30",
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/openai/gpt-oss-120b/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [
+          {
+            "arena": "models",
+            "category": "3d",
+            "elo": 928,
+            "win_rate": 29.4,
+            "rank": 110
+          },
+          {
+            "arena": "models",
+            "category": "codecategories",
+            "elo": 972,
+            "win_rate": 33.4,
+            "rank": 119
+          },
+          {
+            "arena": "models",
+            "category": "dataviz",
+            "elo": 1000,
+            "win_rate": 43.6,
+            "rank": 108
+          },
+          {
+            "arena": "models",
+            "category": "gamedev",
+            "elo": 1012,
+            "win_rate": 40.5,
+            "rank": 108
+          },
+          {
+            "arena": "models",
+            "category": "uicomponent",
+            "elo": 943,
+            "win_rate": 35.7,
+            "rank": 112
+          },
+          {
+            "arena": "models",
+            "category": "website",
+            "elo": 976,
+            "win_rate": 32.5,
+            "rank": 120
+          }
+        ],
+        "artificial_analysis": {
+          "intelligence_index": 11.6,
+          "coding_index": 30.4,
+          "agentic_index": 3.7
+        }
+      },
+      "reasoning": {
+        "mandatory": true,
+        "supported_efforts": [
+          "high",
+          "medium",
+          "low"
+        ],
+        "default_effort": "medium"
+      }
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3-0324",
+      "canonical_slug": "deepseek/deepseek-chat-v3-0324",
+      "hugging_face_id": "deepseek-ai/DeepSeek-V3-0324",
+      "name": "DeepSeek: DeepSeek V3 0324",
+      "created": 1742824755,
+      "description": "DeepSeek V3, a 685B-parameter, mixture-of-experts model, is the latest iteration of the flagship chat model family from the DeepSeek team. It succeeds the [DeepSeek V3](/deepseek/deepseek-chat-v3) model and performs really well...",
+      "context_length": 163840,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "DeepSeek",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000025",
+        "completion": "0.000001"
+      },
+      "top_provider": {
+        "context_length": 163840,
+        "max_completion_tokens": 147456,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ],
+      "default_parameters": {},
+      "supported_voices": null,
+      "knowledge_cutoff": "2024-07-31",
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/deepseek/deepseek-chat-v3-0324/endpoints"
+      },
+      "benchmarks": {
+        "design_arena": [],
+        "artificial_analysis": {
+          "intelligence_index": 9.7,
+          "coding_index": 21.2,
+          "agentic_index": 0.8
+        }
+      }
+    },
+    {
+      "id": "openrouter/auto",
+      "canonical_slug": "openrouter/auto",
+      "hugging_face_id": null,
+      "name": "Auto Router",
+      "created": 1699401600,
+      "description": "The Auto Router automatically selects the best model for your prompt, powered by the wisdom of the market. It routes you based on what the OpenRouter community collectively spends on...",
+      "context_length": 2000000,
+      "architecture": {
+        "modality": "text+image+file+audio+video->text+image",
+        "input_modalities": [
+          "text",
+          "image",
+          "audio",
+          "file",
+          "video"
+        ],
+        "output_modalities": [
+          "text",
+          "image"
+        ],
+        "tokenizer": "Router",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "-1",
+        "completion": "-1"
+      },
+      "top_provider": {
+        "context_length": null,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "prediction",
+        "presence_penalty",
+        "reasoning",
+        "reasoning_effort",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_a",
+        "top_k",
+        "top_logprobs",
+        "top_p",
+        "web_search_options"
+      ],
+      "default_parameters": {},
+      "supported_voices": null,
+      "knowledge_cutoff": null,
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/openrouter/auto/endpoints"
+      }
+    },
+    {
+      "id": "stealth/space-bunny-alpha",
+      "canonical_slug": "stealth/space-bunny-alpha",
+      "hugging_face_id": null,
+      "name": "Space Bunny Alpha",
+      "created": 1790174884,
+      "description": "Space Bunny Alpha is an anonymous large model with blazing-fast inference, strong coding capabilities and native multimodal input support. It delivers adjustable reasoning effort, and a 1M-token context window. Space...",
+      "context_length": 1000000,
+      "architecture": {
+        "modality": "text+image+video->text",
+        "input_modalities": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "top_provider": {
+        "context_length": 1000000,
+        "max_completion_tokens": 524288,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "reasoning_effort",
+        "response_format",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "default_parameters": {},
+      "supported_voices": null,
+      "knowledge_cutoff": null,
+      "expiration_date": "2098-12-31",
+      "links": {
+        "details": "/api/v1/models/stealth/space-bunny-alpha/endpoints"
+      },
+      "reasoning": {
+        "mandatory": true,
+        "supported_efforts": [
+          "max",
+          "xhigh",
+          "high",
+          "medium",
+          "low"
+        ],
+        "default_effort": "max"
+      }
+    }
+  ],
+  "total_count": 456,
+  "links": {
+    "next": null
+  }
+}

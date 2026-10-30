@@ -1,0 +1,33 @@
+/*
+ * design.md "The console in v5": the conversation, then the `Composer` pinned beneath it. Every
+ * colour, font and radius is a token.
+ */
+
+/* design.md "The console in v5": the main column, then the 320px side rail. */
+.layout {
+  display: flex;
+  align-items: flex-start;
+  column-gap: var(--space-6);
+}
+
+.console {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  row-gap: var(--space-6);
+}
+
+.conversationArea {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-4);
+}
+
+.sideRail {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-4);
+  flex: 0 0 320px;
+  width: 320px;
+}

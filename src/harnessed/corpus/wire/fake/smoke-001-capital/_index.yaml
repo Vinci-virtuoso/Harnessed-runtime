@@ -1,0 +1,9 @@
+# Ticket 016. Added because `smoke.yaml` declares the case `smoke-001-capital` and the runner
+# sets metadata["scope"] to the case id, so the suite cannot be scored offline without a scope
+# directory of this exact name. One `base` variant is deliberate: this case measures a plain
+# factual answer, and nothing in the flywheel is meant to move it, so declaring a second variant
+# would invite a candidate to be credited for a case it did not change.
+scope: smoke-001-capital
+variants:
+  - name: base
+    when: always

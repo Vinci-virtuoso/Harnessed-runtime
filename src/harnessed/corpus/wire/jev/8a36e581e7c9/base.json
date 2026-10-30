@@ -1,0 +1,33 @@
+{
+  "task": "spawn claude code to search the web about Black rock research paper about the connection between AI and digital assets",
+  "id": "gen-dec-spike-routing-005-spawn-claude-code",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "claude-code",
+      "probabilities": {
+        "claude-code": 1.0
+      },
+      "confidence": 1.0
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.2
+    },
+    "memory_kind": {
+      "type": "choice",
+      "choice": "semantic",
+      "probabilities": {
+        "semantic": 0.34,
+        "procedural": 0.33,
+        "episodic": 0.33
+      },
+      "confidence": 0.34
+    }
+  },
+  "usage": {
+    "cost": 0.000026
+  }
+}

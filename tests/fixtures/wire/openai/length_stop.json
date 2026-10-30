@@ -1,0 +1,21 @@
+{
+  "id": "chatcmpl-000000000000000000000005",
+  "object": "chat.completion",
+  "created": 1767268804,
+  "model": "openai/gpt-4o-mini",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Step one is to enumerate the ledgers, step two is to"
+      },
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 61,
+    "completion_tokens": 16,
+    "total_tokens": 77
+  }
+}

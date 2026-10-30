@@ -1,0 +1,48 @@
+/* A two-column field list (design.md's `record` presenter row). */
+.record {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 12px;
+  row-gap: 4px;
+  margin: 0;
+}
+
+.term {
+  font: var(--type-data);
+  color: var(--color-fg-muted);
+}
+
+.value {
+  font: var(--type-data);
+  word-break: break-word;
+}
+
+.string {
+  font: var(--type-small);
+  white-space: pre-wrap;
+}
+
+/* The cited field (ProvenanceDrawer's drawer opened on it), highlighted as well as aria-current. */
+.cited {
+  background: var(--color-accent-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.list {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-left: 16px;
+}
+
+.disclosure {
+  grid-column: 1 / -1;
+}
+
+.toggle {
+  font: var(--type-small);
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}

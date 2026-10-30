@@ -1,0 +1,30 @@
+.absent {
+  display: grid;
+  row-gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+}
+
+.body {
+  margin: 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+/* The ledger's own words, in mono so nobody mistakes them for the dashboard's (D-7). */
+.message {
+  margin: 0;
+  font: var(--type-code);
+  color: var(--color-fg);
+}
+
+.error {
+  font: var(--type-data);
+  color: var(--color-fg);
+  white-space: nowrap;
+}

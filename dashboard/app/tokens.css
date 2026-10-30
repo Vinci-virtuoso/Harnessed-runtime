@@ -1,0 +1,366 @@
+/*
+ * Design tokens (ux/design.md). Dark leads on :root; light is the same set of names under
+ * prefers-color-scheme: light and [data-theme="light"], and [data-theme="dark"] restates dark so an
+ * explicit choice wins either way. tests/unit/tokens.test.ts holds the four sets equal. The `--glass-*` properties (design.md "Glass")
+ * ride in the same four blocks; components read the `--surface-*` layer below, never a glass or solid token.
+ */
+
+:root {
+  color-scheme: dark;
+  --color-bg: #0b0d10;
+  --color-surface: #111418;
+  --color-surface-raised: #161a1f;
+  --color-surface-sunken: #0d1013;
+  --color-border: #1f242b;
+  --color-border-strong: #2c323b;
+  --color-fg: #e6e9ed;
+  --color-fg-secondary: #a9b1bc;
+  --color-fg-muted: #7d8693;
+  --color-fg-faint: #4f5762;
+  --color-accent: #8e99fa;
+  --color-accent-subtle: rgba(142, 153, 250, 0.1);
+  --color-accent-line: rgba(142, 153, 250, 0.28);
+  --color-pass: #4dbf8a;
+  --color-pass-subtle: rgba(77, 191, 138, 0.1);
+  --color-fail: #e8746d;
+  --color-fail-subtle: rgba(232, 116, 109, 0.1);
+  --color-warn: #d9a94e;
+  --color-warn-subtle: rgba(217, 169, 78, 0.1);
+  --color-unknown-hatch: rgba(125, 134, 147, 0.16);
+  --glass-field: radial-gradient(900px 640px at 4% -6%, #262C6B 0%, rgba(38,44,107,0) 62%), radial-gradient(820px 620px at 100% 4%, #0F4440 0%, rgba(15,68,64,0) 60%), radial-gradient(900px 780px at 60% 60%, #2E1F57 0%, rgba(46,31,87,0) 62%), radial-gradient(1000px 820px at 14% 100%, #45231C 0%, rgba(69,35,28,0) 62%), #07090C;
+  --glass-sidebar: rgba(14,17,22,0.70);
+  --glass-surface: rgba(20,24,32,0.85);
+  --glass-raised: rgba(255,255,255,0.06);
+  --glass-sunken: rgba(0,0,0,0.22);
+  --glass-edge: rgba(255,255,255,0.11);
+  --glass-hairline: rgba(255,255,255,0.07);
+  --glass-hairline-strong: rgba(255,255,255,0.14);
+  --glass-frost: blur(24px) saturate(180%);
+  --glass-depth: inset 0 1px 0 rgba(255,255,255,0.07), 0 1px 2px rgba(0,0,0,0.30), 0 20px 44px -20px rgba(0,0,0,0.70);
+  --glass-primary: linear-gradient(180deg, #A6AEFF 0%, #8E99FA 100%);
+  --glass-primary-glow: 0 6px 18px -6px rgba(142,153,250,0.60);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --color-bg: #f7f8fa;
+    --color-surface: #ffffff;
+    --color-surface-raised: #ffffff;
+    --color-surface-sunken: #f2f4f7;
+    --color-border: #e3e6eb;
+    --color-border-strong: #cbd1d9;
+    --color-fg: #0f1217;
+    --color-fg-secondary: #3c4450;
+    --color-fg-muted: #67707d;
+    --color-fg-faint: #9aa2ad;
+    --color-accent: #4f5bd5;
+    --color-accent-subtle: #eef0fd;
+    --color-accent-line: rgba(79, 91, 213, 0.3);
+    --color-pass: #1b7d4e;
+    --color-pass-subtle: #e8f5ee;
+    --color-fail: #bf3a32;
+    --color-fail-subtle: #fbeceb;
+    --color-warn: #935e00;
+    --color-warn-subtle: #faf1df;
+    --color-unknown-hatch: rgba(103, 112, 125, 0.22);
+    --glass-field: radial-gradient(900px 620px at 6% -4%, #C7CCFF 0%, rgba(199,204,255,0) 62%), radial-gradient(820px 600px at 98% 6%, #BDEBE2 0%, rgba(189,235,226,0) 60%), radial-gradient(900px 760px at 62% 58%, #E6D6FF 0%, rgba(230,214,255,0) 60%), radial-gradient(1000px 820px at 18% 100%, #FFD8C8 0%, rgba(255,216,200,0) 62%), #EEF0F8;
+    --glass-sidebar: rgba(255,255,255,0.42);
+    --glass-surface: rgba(255,255,255,0.50);
+    --glass-raised: rgba(255,255,255,0.50);
+    --glass-sunken: rgba(255,255,255,0.38);
+    --glass-edge: rgba(255,255,255,0.75);
+    --glass-hairline: rgba(15,18,23,0.08);
+    --glass-hairline-strong: rgba(15,18,23,0.14);
+    --glass-frost: blur(24px) saturate(180%);
+    --glass-depth: inset 0 1px 0 rgba(255,255,255,0.90), 0 1px 2px rgba(15,18,23,0.05), 0 18px 40px -18px rgba(40,46,110,0.35);
+    --glass-primary: linear-gradient(180deg, #6470E6 0%, #4F5BD5 100%);
+    --glass-primary-glow: 0 6px 16px -6px rgba(79,91,213,0.55);
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-bg: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #f2f4f7;
+  --color-border: #e3e6eb;
+  --color-border-strong: #cbd1d9;
+  --color-fg: #0f1217;
+  --color-fg-secondary: #3c4450;
+  --color-fg-muted: #67707d;
+  --color-fg-faint: #9aa2ad;
+  --color-accent: #4f5bd5;
+  --color-accent-subtle: #eef0fd;
+  --color-accent-line: rgba(79, 91, 213, 0.3);
+  --color-pass: #1b7d4e;
+  --color-pass-subtle: #e8f5ee;
+  --color-fail: #bf3a32;
+  --color-fail-subtle: #fbeceb;
+  --color-warn: #935e00;
+  --color-warn-subtle: #faf1df;
+  --color-unknown-hatch: rgba(103, 112, 125, 0.22);
+  --glass-field: radial-gradient(900px 620px at 6% -4%, #C7CCFF 0%, rgba(199,204,255,0) 62%), radial-gradient(820px 600px at 98% 6%, #BDEBE2 0%, rgba(189,235,226,0) 60%), radial-gradient(900px 760px at 62% 58%, #E6D6FF 0%, rgba(230,214,255,0) 60%), radial-gradient(1000px 820px at 18% 100%, #FFD8C8 0%, rgba(255,216,200,0) 62%), #EEF0F8;
+  --glass-sidebar: rgba(255,255,255,0.42);
+  --glass-surface: rgba(255,255,255,0.50);
+  --glass-raised: rgba(255,255,255,0.50);
+  --glass-sunken: rgba(255,255,255,0.38);
+  --glass-edge: rgba(255,255,255,0.75);
+  --glass-hairline: rgba(15,18,23,0.08);
+  --glass-hairline-strong: rgba(15,18,23,0.14);
+  --glass-frost: blur(24px) saturate(180%);
+  --glass-depth: inset 0 1px 0 rgba(255,255,255,0.90), 0 1px 2px rgba(15,18,23,0.05), 0 18px 40px -18px rgba(40,46,110,0.35);
+  --glass-primary: linear-gradient(180deg, #6470E6 0%, #4F5BD5 100%);
+  --glass-primary-glow: 0 6px 16px -6px rgba(79,91,213,0.55);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0b0d10;
+  --color-surface: #111418;
+  --color-surface-raised: #161a1f;
+  --color-surface-sunken: #0d1013;
+  --color-border: #1f242b;
+  --color-border-strong: #2c323b;
+  --color-fg: #e6e9ed;
+  --color-fg-secondary: #a9b1bc;
+  --color-fg-muted: #7d8693;
+  --color-fg-faint: #4f5762;
+  --color-accent: #8e99fa;
+  --color-accent-subtle: rgba(142, 153, 250, 0.1);
+  --color-accent-line: rgba(142, 153, 250, 0.28);
+  --color-pass: #4dbf8a;
+  --color-pass-subtle: rgba(77, 191, 138, 0.1);
+  --color-fail: #e8746d;
+  --color-fail-subtle: rgba(232, 116, 109, 0.1);
+  --color-warn: #d9a94e;
+  --color-warn-subtle: rgba(217, 169, 78, 0.1);
+  --color-unknown-hatch: rgba(125, 134, 147, 0.16);
+  --glass-field: radial-gradient(900px 640px at 4% -6%, #262C6B 0%, rgba(38,44,107,0) 62%), radial-gradient(820px 620px at 100% 4%, #0F4440 0%, rgba(15,68,64,0) 60%), radial-gradient(900px 780px at 60% 60%, #2E1F57 0%, rgba(46,31,87,0) 62%), radial-gradient(1000px 820px at 14% 100%, #45231C 0%, rgba(69,35,28,0) 62%), #07090C;
+  --glass-sidebar: rgba(14,17,22,0.70);
+  --glass-surface: rgba(20,24,32,0.85);
+  --glass-raised: rgba(255,255,255,0.06);
+  --glass-sunken: rgba(0,0,0,0.22);
+  --glass-edge: rgba(255,255,255,0.11);
+  --glass-hairline: rgba(255,255,255,0.07);
+  --glass-hairline-strong: rgba(255,255,255,0.14);
+  --glass-frost: blur(24px) saturate(180%);
+  --glass-depth: inset 0 1px 0 rgba(255,255,255,0.07), 0 1px 2px rgba(0,0,0,0.30), 0 20px 44px -20px rgba(0,0,0,0.70);
+  --glass-primary: linear-gradient(180deg, #A6AEFF 0%, #8E99FA 100%);
+  --glass-primary-glow: 0 6px 18px -6px rgba(142,153,250,0.60);
+}
+
+/*
+ * The surface layer. Every component reads `--surface-*`; it defaults to the glass tokens and falls
+ * back to the solid v5 tokens under exactly four selectors (G-4), the same block repeated verbatim.
+ * The scrim is solid and unblurred in glass and in solid alike (G-6).
+ */
+:root {
+  --surface-field: var(--glass-field);
+  --surface-sidebar: var(--glass-sidebar);
+  --surface-panel: var(--glass-surface);
+  --surface-raised: var(--glass-raised);
+  --surface-sunken: var(--glass-sunken);
+  --surface-edge: var(--glass-edge);
+  --surface-hairline: var(--glass-hairline);
+  --surface-hairline-strong: var(--glass-hairline-strong);
+  --surface-frost: var(--glass-frost);
+  --surface-depth: var(--glass-depth);
+  --surface-primary: var(--glass-primary);
+  --surface-primary-glow: var(--glass-primary-glow);
+  --surface-scrim: rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --surface-scrim: rgba(15, 18, 23, 0.25);
+  }
+}
+
+:root[data-theme="light"] {
+  --surface-scrim: rgba(15, 18, 23, 0.25);
+}
+
+:root[data-theme="dark"] {
+  --surface-scrim: rgba(0, 0, 0, 0.45);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root {
+    --surface-field: var(--color-bg);
+    --surface-sidebar: var(--color-surface);
+    --surface-panel: var(--color-surface);
+    --surface-raised: var(--color-surface-raised);
+    --surface-sunken: var(--color-surface-sunken);
+    --surface-edge: var(--color-border);
+    --surface-hairline: var(--color-border);
+    --surface-hairline-strong: var(--color-border-strong);
+    --surface-frost: none;
+    --surface-depth: none;
+    --surface-primary: var(--color-accent);
+    --surface-primary-glow: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --surface-field: var(--color-bg);
+    --surface-sidebar: var(--color-surface);
+    --surface-panel: var(--color-surface);
+    --surface-raised: var(--color-surface-raised);
+    --surface-sunken: var(--color-surface-sunken);
+    --surface-edge: var(--color-border);
+    --surface-hairline: var(--color-border);
+    --surface-hairline-strong: var(--color-border-strong);
+    --surface-frost: none;
+    --surface-depth: none;
+    --surface-primary: var(--color-accent);
+    --surface-primary-glow: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --surface-field: var(--color-bg);
+    --surface-sidebar: var(--color-surface);
+    --surface-panel: var(--color-surface);
+    --surface-raised: var(--color-surface-raised);
+    --surface-sunken: var(--color-surface-sunken);
+    --surface-edge: var(--color-border);
+    --surface-hairline: var(--color-border);
+    --surface-hairline-strong: var(--color-border-strong);
+    --surface-frost: none;
+    --surface-depth: none;
+    --surface-primary: var(--color-accent);
+    --surface-primary-glow: none;
+  }
+}
+
+:root:has([data-surface="solid"]) {
+  --surface-field: var(--color-bg);
+  --surface-sidebar: var(--color-surface);
+  --surface-panel: var(--color-surface);
+  --surface-raised: var(--color-surface-raised);
+  --surface-sunken: var(--color-surface-sunken);
+  --surface-edge: var(--color-border);
+  --surface-hairline: var(--color-border);
+  --surface-hairline-strong: var(--color-border-strong);
+  --surface-frost: none;
+  --surface-depth: none;
+  --surface-primary: var(--color-accent);
+  --surface-primary-glow: none;
+}
+
+/* Theme-independent tokens: type, radius, spacing, motion. */
+:root {
+  --font-sans: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+  --font-mono:
+    var(--font-geist-mono), "Geist Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  --type-page-title: 600 24px / 32px var(--font-sans);
+  --type-section: 600 16px / 24px var(--font-sans);
+  --type-panel-title: 600 14px / 20px var(--font-sans);
+  --type-body: 400 14px / 20px var(--font-sans);
+  --type-small: 400 13px / 20px var(--font-sans);
+  --type-label: 500 11px / 16px var(--font-sans);
+  --type-figure: 500 24px / 28px var(--font-mono);
+  --type-data: 400 13px / 20px var(--font-mono);
+  --type-code: 400 12px / 20px var(--font-mono);
+  --type-source: 400 11px / 16px var(--font-mono);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* The diagram's highlight (FR-85): long enough to read a stage, short enough not to smear a burst. */
+  --motion-highlight: 600ms;
+  /* A `TraceStep` arriving and a steps disclosure expanding (v5, decision 68). */
+  --motion-step: 200ms;
+  /* A control's own state change - hover, press, the active nav item (v6, FR-162). */
+  --motion-micro: 150ms;
+  --ease-out: cubic-bezier(0.25, 1, 0.5, 1);
+  /* `UiPreview`, `ImageView`, `DiagramView` and `CodeView`'s fixed height in a reply or a trace
+     step; taller content scrolls inside its own frame, never the page (v5, decision 68). */
+  --preview-height: 480px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Command text keeps its hyphens (FR-174): `font:` resets ligatures, so the code font's own rule
+ * and the classes that set `--type-code` switch them off, or `--` draws as an en dash. */
+code,
+pre,
+kbd,
+samp,
+[class*="code" i],
+[class*="command" i] {
+  font-variant-ligatures: none;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font: var(--type-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* A stacking context, so the field at z-index -1 paints over the body's own `color-bg`, not under it. */
+body {
+  position: relative;
+  z-index: 0;
+}
+
+/*
+ * The ground (G-1): the colour field is a fixed full-viewport pseudo-element over the solid
+ * `color-bg`, never `background-attachment: fixed`, which repaints the field on every scroll.
+ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--surface-field);
+  pointer-events: none;
+}
+
+/*
+ * The focus ring of design.md's "Motion & accessibility rules": 2px `color-accent` at 2px offset,
+ * on every interactive element, never removed. It is declared here rather than component by
+ * component because "never removed" is a property of the whole window: a control added later
+ * wears it without opting in, and a module that wants a tighter offset overrides it by its own
+ * higher specificity rather than by having remembered to add one.
+ */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* A theme swap is never a cross-fade (FR-157): the toggle holds this attribute for its style pass. */
+:root[data-theme-swap] *,
+:root[data-theme-swap] *::before,
+:root[data-theme-swap] *::after {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

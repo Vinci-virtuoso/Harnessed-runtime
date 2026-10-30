@@ -1,0 +1,147 @@
+/* design.md's `TraceTimeline` row: 8px 16px padding, 1px dividers, icon + sentence + time + chevron. */
+.step {
+  padding: var(--space-2) var(--space-3);
+  border-top: 1px solid var(--surface-hairline);
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--color-fg-muted);
+}
+
+.icon[data-status="running"] {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.icon[data-status="warn"] {
+  color: var(--color-warn);
+  border-color: var(--color-warn);
+}
+
+.icon[data-status="failed"] {
+  color: var(--color-fail);
+  border-color: var(--color-fail);
+}
+
+.sentence {
+  flex: 1;
+  min-width: 0;
+  font: var(--type-small);
+  color: var(--color-fg);
+}
+
+.verbatim {
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+.failedWord {
+  margin-left: var(--space-2);
+  font: var(--type-small);
+  color: var(--color-fail);
+}
+
+.waitingWord {
+  margin-left: var(--space-2);
+  font: var(--type-small);
+  color: var(--color-warn);
+}
+
+.time {
+  flex: none;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.toggle {
+  flex: none;
+  height: 20px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  transition: color var(--motion-micro) var(--ease-out), border-color var(--motion-micro) var(--ease-out), transform var(--motion-micro) var(--ease-out);
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+  border-color: var(--surface-hairline-strong);
+  color: var(--color-fg);
+}
+
+.toggle:active {
+  transform: translateY(1px);
+}
+
+.fields {
+  margin: var(--space-2) 0 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-3);
+  row-gap: var(--space-1);
+}
+
+.fieldKey {
+  font: var(--type-source);
+  color: var(--color-fg-muted);
+}
+
+.fieldValue {
+  margin: 0;
+  font: var(--type-source);
+}
+
+.empty {
+  margin-top: var(--space-2);
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+/* The arrival fade: one second of `color-accent-subtle` behind the row, opacity only. */
+.step[data-arrived] {
+  position: relative;
+}
+
+.step[data-arrived]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-accent-subtle);
+  pointer-events: none;
+  animation: arrive 1s ease-out forwards;
+}
+
+@keyframes arrive {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step[data-arrived]::before {
+    animation: none;
+    opacity: 0;
+  }
+}

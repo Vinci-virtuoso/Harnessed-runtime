@@ -1,0 +1,7 @@
+{
+  "response_id": "fake_memory_001_after",
+  "model": "fake-1",
+  "content": "The operator prefers British spelling.",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 64, "output_tokens": 8}
+}

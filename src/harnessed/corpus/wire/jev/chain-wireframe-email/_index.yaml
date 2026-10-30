@@ -1,0 +1,14 @@
+# Ticket 176 (FR-117, decision 60). A declared scope: "wireframe, then email" as a chain of
+# three decisions. Hop 0 has no `Previous step:` and routes to the `wireframe` stub; hop 1
+# quotes the wireframe and routes to `email`; hop 2 quotes the email and answers `done`.
+# Ticket 182 seeds its recorder with this scope - keep it stable.
+scope: chain-wireframe-email
+variants:
+  - name: done
+    when:
+      state_contains_all: ["previous step:", "email: subject"]
+  - name: email
+    when:
+      state_contains_all: ["previous step:", "wireframe:"]
+  - name: base
+    when: always

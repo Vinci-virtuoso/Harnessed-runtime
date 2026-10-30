@@ -1,0 +1,24 @@
+{
+  "id": "gen-dec-1790348210-qq11ww22ee33",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "groq_chat",
+      "probabilities": {
+        "groq_chat": 0.9,
+        "claude-code": 0.1
+      },
+      "confidence": 0.9
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.2
+    }
+  },
+  "usage": {
+    "input_tokens": 495,
+    "output_tokens": 20
+  }
+}

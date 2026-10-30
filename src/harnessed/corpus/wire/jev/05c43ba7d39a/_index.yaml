@@ -1,0 +1,8 @@
+# Ticket 160 (FR-101). The hash-fallback scope for the task 'what was the key?': a v4 test sends this
+# prompt through a routed door (`harnessed run`/`--session`/the control app), so it needs a
+# committed answer routing it to groq_chat above its 0.50 floor, or the whole test goes red
+# under HARNESSED_ROUTER=on. One `base` variant: nothing here exercises variant selection.
+scope: 05c43ba7d39a
+variants:
+  - name: base
+    when: always

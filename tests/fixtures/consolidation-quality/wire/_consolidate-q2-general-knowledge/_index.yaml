@@ -1,0 +1,4 @@
+scope: _consolidate-q2-general-knowledge
+variants:
+  - name: base
+    when: always

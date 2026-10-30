@@ -1,0 +1,61 @@
+
+# Runtime state - the harness db, transcripts, ACP session logs
+.harnessed/
+
+# Evidence screenshots are ephemeral, regenerated each verify run (Spec Pipeline decision #10)
+evidence/
+
+# Review surfaces, not durable spec (Spec Pipeline decisions #11/#14)
+.lavish/
+
+# Secrets
+.env
+.env.local
+agents.toml
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+# Parallel-mode fragments (.coverage.<host>.<pid>.<rand>). `.coverage` alone does
+# not match them, so a killed pytest run left 70 untracked files behind that a
+# `git add -A` would have committed.
+.coverage.*
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Node / dashboard
+node_modules/
+dashboard/.next/
+dashboard/out/
+# The staged export the wheel force-includes: written by `npm --prefix dashboard run export`,
+# never committed; its absence is made loud by tests/test_dashboard_export.py (decision 44)
+src/harnessed/dashboard_static/
+
+
+
+# AFK run logs are per-run transcripts, not durable spec
+.spec/afk-runs/
+
+# Auto-verify hook bookkeeping, not durable spec
+.spec/.autoverify-stamp
+
+# The outgoing review-gate marker, kept for one pass so the next review can read the still-open
+# findings (decision #24). A working file, not a record - the record is the marker itself.
+.spec/review-gate-*.md.prev
+
+# Generated design-canvas page (source is the .dc.html artboards + canvas.json beside it)
+.spec/ux/canvas/harnessed-v3-dashboard.html
+
+# Not published (operator ruling Q3, decision 107): kept as files and in the private mirror.
+# tests/test_publication_audit.py fails a tracked path under any of these.
+.spec/operator-inputs/
+.spec/loop-state.md
+.spec/launch/
+.deepeval/

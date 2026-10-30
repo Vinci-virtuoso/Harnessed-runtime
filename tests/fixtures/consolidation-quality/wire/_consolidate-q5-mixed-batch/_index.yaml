@@ -1,0 +1,4 @@
+scope: _consolidate-q5-mixed-batch
+variants:
+  - name: base
+    when: always

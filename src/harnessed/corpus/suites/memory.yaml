@@ -1,0 +1,28 @@
+# Ticket 249, FR-152 (G-51, G-52). The consolidation suite: does one batch add memory, not rows?
+#
+# The answer to the prompt ("the operator prefers British spelling") is stated in no single
+# episode. It exists only across the five seeded below, each of which leans one way without
+# saying so outright. Run before consolidation the model has nothing to retrieve and answers
+# from habit; run after one batch the distilled fact is retrieved and the answer changes. The
+# score is expected to rise strictly. The episodes are seeded by `evals/suite.py::seed_episodes`
+# under the source `seed:memory-001-spelling`, and the suite refuses a home holding any episode
+# that is not a seed, so run it in a scratch HARNESSED_HOME.
+suite: memory
+kind: memory
+description: >-
+  Consolidation earns its place: a question whose answer exists only across several episodes
+  scores strictly higher after one batch than before.
+cases:
+  - id: memory-001-spelling
+    prompt: What spelling does the operator prefer? Answer in one sentence.
+    episodes:
+      - "Operator asked me to fix the colour of the header in the report; kept the word colour."
+      - "Operator corrected 'organize' to 'organise' in the changelog draft."
+      - "Operator said the neighbourhood survey should say neighbourhood, not neighborhood."
+      - "Operator changed 'program' to 'programme' in the meeting agenda and 'center' to 'centre'."
+      - "Operator rewrote 'favorite' as 'favourite' in the welcome email."
+    graders:
+      - name: contains_all
+        expect:
+          values:
+            - British

@@ -1,0 +1,6 @@
+# Ticket 198. sha256("summarize the incident")[:12]: the closing Groq synthesis pass of an agent chain.
+# The retrieved-context block (the agent's result) is stripped before hashing.
+scope: a46a2a1fc221
+variants:
+  - name: base
+    when: always

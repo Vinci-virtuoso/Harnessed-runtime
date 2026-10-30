@@ -1,0 +1,10 @@
+{
+  "response_id": "fake_q2-general-knowledge",
+  "model": "fake-1",
+  "content": "{\"facts\": [{\"text\": \"The operator wants every answer kept under 100 words, because they read on a phone.\", \"actor\": \"operator\", \"path\": null, \"kind\": \"preference\", \"relation\": \"new\", \"replaces\": null}]}",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 300,
+    "output_tokens": 40
+  }
+}

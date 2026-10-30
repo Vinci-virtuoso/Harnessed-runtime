@@ -1,0 +1,40 @@
+{
+  "task": "design a wireframe for X, then draft the launch email",
+  "id": "gen-dec-chain-we-done-1",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "done",
+      "probabilities": {
+        "groq_chat": 0.014,
+        "groq_memory": 0.014,
+        "wireframe": 0.014,
+        "email": 0.014,
+        "needs_human": 0.014,
+        "done": 0.93
+      },
+      "confidence": 0.93
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.1
+    },
+    "memory_kind": {
+      "type": "choice",
+      "choice": "semantic",
+      "probabilities": {
+        "semantic": 0.5,
+        "procedural": 0.3,
+        "episodic": 0.2
+      },
+      "confidence": 0.5
+    }
+  },
+  "usage": {
+    "input_tokens": 470,
+    "output_tokens": 20,
+    "cost": 0.0000150
+  }
+}

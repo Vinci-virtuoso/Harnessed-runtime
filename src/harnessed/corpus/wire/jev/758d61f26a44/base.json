@@ -1,0 +1,52 @@
+{
+  "task": "ping",
+  "id": "gen-dec-fake-758d61f26a44-base-1",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "groq_chat",
+      "probabilities": {
+        "groq_chat": 0.93,
+        "claude-code": 0.05,
+        "needs_human": 0.02
+      },
+      "confidence": 0.93
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.1
+    },
+    "memory_kind": {
+      "type": "choice",
+      "choice": "semantic",
+      "probabilities": {
+        "semantic": 0.6,
+        "procedural": 0.25,
+        "episodic": 0.15
+      },
+      "confidence": 0.6
+    },
+    "risk": {
+      "type": "score",
+      "score": 0,
+      "legend": {
+        "0": "low",
+        "1": "medium",
+        "2": "high"
+      },
+      "probabilities": {
+        "0": 0.81,
+        "1": 0.15,
+        "2": 0.04
+      },
+      "confidence": 0.81
+    }
+  },
+  "usage": {
+    "input_tokens": 420,
+    "output_tokens": 22,
+    "cost": 0.000015800
+  }
+}

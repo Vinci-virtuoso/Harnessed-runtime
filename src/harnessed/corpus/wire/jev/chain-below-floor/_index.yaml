@@ -1,0 +1,10 @@
+# Ticket 176 (FR-117, decision 60). A declared scope: hop 0 routes to the `wireframe` stub;
+# hop 1 answers `email` at 0.55, below the agent floor of 0.80, so the chain ends with the
+# wireframe as the reply.
+scope: chain-below-floor
+variants:
+  - name: unsure
+    when:
+      state_contains_all: ["previous step:", "wireframe:"]
+  - name: base
+    when: always

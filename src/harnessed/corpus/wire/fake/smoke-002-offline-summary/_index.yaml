@@ -1,0 +1,8 @@
+# Ticket 016. Added for the `smoke-002-offline-summary` case in `smoke.yaml`, same reason as
+# every other scope here: the case id is the scope, and a case with no directory is a
+# FixtureMissError the moment the runner reaches it. One `base` variant, for the same reason as
+# smoke-001 - this case is not one the flywheel is meant to move.
+scope: smoke-002-offline-summary
+variants:
+  - name: base
+    when: always

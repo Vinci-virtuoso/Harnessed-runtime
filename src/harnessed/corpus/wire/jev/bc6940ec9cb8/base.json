@@ -1,0 +1,33 @@
+{
+  "task": "research jev AI model and write a simple application of Jev as a judge using openrouter endpoint",
+  "id": "gen-dec-spike-routing-008-jev-judge-app",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "claude-code",
+      "probabilities": {
+        "claude-code": 0.96
+      },
+      "confidence": 0.96
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.2
+    },
+    "memory_kind": {
+      "type": "choice",
+      "choice": "semantic",
+      "probabilities": {
+        "semantic": 0.34,
+        "procedural": 0.33,
+        "episodic": 0.33
+      },
+      "confidence": 0.34
+    }
+  },
+  "usage": {
+    "cost": 0.000026
+  }
+}

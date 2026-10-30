@@ -1,0 +1,13 @@
+# Ticket 176 (FR-117, decisions 52 and 60). A declared scope that never answers `done`: the
+# wireframe hands to the email and the email back to the wireframe, so only the message's
+# iteration ceiling can end the chain.
+scope: chain-ceiling
+variants:
+  - name: to_wireframe
+    when:
+      state_contains_all: ["previous step:", "email: subject"]
+  - name: to_email
+    when:
+      state_contains_all: ["previous step:", "wireframe:"]
+  - name: base
+    when: always

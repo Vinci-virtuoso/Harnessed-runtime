@@ -1,0 +1,33 @@
+{
+  "task": "What port does the ingest service listen on?",
+  "id": "gen-dec-spike-routing-016-ingest-port",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "groq_memory",
+      "probabilities": {
+        "groq_memory": 0.99
+      },
+      "confidence": 0.99
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.85
+    },
+    "memory_kind": {
+      "type": "choice",
+      "choice": "semantic",
+      "probabilities": {
+        "semantic": 0.34,
+        "procedural": 0.33,
+        "episodic": 0.33
+      },
+      "confidence": 0.34
+    }
+  },
+  "usage": {
+    "cost": 0.000026
+  }
+}

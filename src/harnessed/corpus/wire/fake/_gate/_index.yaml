@@ -1,0 +1,11 @@
+# Ticket 006. The retrieval gate's scope (architecture "Retrieval gate offline"): the gate issues
+# an ordinary ChatRequest with metadata["scope"] = "_gate" and reads a one-token answer, so it
+# needs no special case in FakeProvider - only a directory.
+#
+# One `base` variant is deliberate. The gate's own system prompt is authored by FR-12's ticket;
+# declaring a predicate against wording that does not exist yet would be guessing, and a predicate
+# added later must be declared here, in order, above `base`.
+scope: _gate
+variants:
+  - name: base
+    when: always

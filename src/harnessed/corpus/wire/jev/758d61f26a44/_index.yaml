@@ -1,0 +1,15 @@
+# Ticket 155. The hash-fallback scope for the task "ping": sha256("ping")[:12] is
+# 758d61f26a44, the same directory name FakeProvider's own ad-hoc corpus uses for the
+# identical fallback (tests/fixtures/wire/fake/758d61f26a44/), because both THE CRUX and its
+# Decider twin hash the same task text the same way. One `base` variant is deliberate: this
+# scope exists to prove the hash-fallback key works at all, not to exercise variant selection.
+#
+# Ticket 160: this is also every routed door's "ping" fixture (the spike's uncertain groq_memory
+# at 0.43 is FR-103's example elsewhere; `ping` here stays the plain groq_chat v4 tests need, so
+# the whole existing suite keeps passing unchanged - see the ticket's own implementation note).
+# `base.json` gained a `memory_kind` answer beside `risk`: two unrelated question sets read the
+# same recorded response, each finding only the keys it asked for.
+scope: 758d61f26a44
+variants:
+  - name: base
+    when: always

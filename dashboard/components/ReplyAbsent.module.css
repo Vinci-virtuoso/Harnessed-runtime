@@ -1,0 +1,25 @@
+/* D-3: a reply-less exchange with a served reason is a plain state, in the muted absent treatment. */
+.absent {
+  display: grid;
+  row-gap: var(--space-1);
+  padding: var(--space-4);
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+}
+
+.headline {
+  margin: 0;
+  font: var(--type-body);
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.reason {
+  margin: 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}

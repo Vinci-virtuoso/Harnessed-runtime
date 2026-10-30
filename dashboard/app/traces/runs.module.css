@@ -1,0 +1,168 @@
+/*
+ * The Runs area: the listing and one run's detail. Both pages are the same column of panels, so
+ * they share one module rather than repeating a stack twice. Every colour, font and radius is a
+ * token from `app/tokens.css`; nothing here is a raw value.
+ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.title {
+  margin: 0;
+  font: var(--type-page-title);
+  color: var(--color-fg);
+}
+
+.subtitle {
+  /* The title and its line read as one block, so the gap between them is not the section gap. */
+  margin: -16px 0 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+/* ---- Inside a panel ------------------------------------------------------------------------ */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.footer {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.note {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+.link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- The limit control --------------------------------------------------------------------- */
+
+.limit {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.limitLegend {
+  padding: 0 4px;
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+.limitChoice {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+/* ---- One run's fields ------------------------------------------------------------------------ */
+
+.identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 8px;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 720px) {
+  .tiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 8px 16px;
+  margin: 0;
+}
+
+.term {
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+.detail {
+  margin: 0;
+  min-width: 0;
+}
+
+/* ---- The trace ------------------------------------------------------------------------------- */
+
+.turns {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.turn {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+}
+
+.turnHead,
+.turnRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 4px;
+}
+
+.calls {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.call {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+}

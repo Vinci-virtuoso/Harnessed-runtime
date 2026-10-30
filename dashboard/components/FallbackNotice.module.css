@@ -1,0 +1,8 @@
+/* design.md "The console in v5": quiet but stated, one line above a normal reply. */
+
+.notice {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-warn);
+  --value-tone: var(--color-warn);
+}

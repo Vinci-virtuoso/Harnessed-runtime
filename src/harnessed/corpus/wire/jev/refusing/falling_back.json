@@ -1,0 +1,42 @@
+{
+  "task": "diagnose the failing build",
+  "id": "gen-dec-fake-refusing-falling-back-1",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "needs_human",
+      "probabilities": {
+        "groq_chat": 0.1,
+        "claude-code": 0.08,
+        "needs_human": 0.82
+      },
+      "confidence": 0.82
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.55
+    },
+    "risk": {
+      "type": "score",
+      "score": 2,
+      "legend": {
+        "0": "low",
+        "1": "medium",
+        "2": "high"
+      },
+      "probabilities": {
+        "0": 0.05,
+        "1": 0.21,
+        "2": 0.74
+      },
+      "confidence": 0.74
+    }
+  },
+  "usage": {
+    "input_tokens": 780,
+    "output_tokens": 33,
+    "cost": 0.000027300
+  }
+}

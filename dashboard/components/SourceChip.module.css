@@ -1,0 +1,33 @@
+/*
+ * The 20px caption chip of design.md's v5 row: a plain surface, never the accent ground the v4
+ * chip wore (D-4, D-9 - a route is no longer what this chip is naming).
+ */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  max-width: 100%;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--surface-hairline);
+  border-radius: 4px;
+  background: var(--surface-raised);
+  font: var(--type-source);
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  transition: border-color var(--motion-micro) var(--ease-out);
+}
+
+.chip:hover {
+  border-color: var(--surface-hairline-strong);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.route {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

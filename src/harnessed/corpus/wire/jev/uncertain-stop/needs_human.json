@@ -1,0 +1,37 @@
+{
+  "task": "destroy production",
+  "id": "gen-dec-uncertain-stop-needs-human-1",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "needs_human",
+      "probabilities": {
+        "groq_chat": 0.04,
+        "groq_memory": 0.05,
+        "needs_human": 0.91
+      },
+      "confidence": 0.91
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.1
+    },
+    "memory_kind": {
+      "type": "choice",
+      "choice": "semantic",
+      "probabilities": {
+        "semantic": 0.5,
+        "procedural": 0.3,
+        "episodic": 0.2
+      },
+      "confidence": 0.5
+    }
+  },
+  "usage": {
+    "input_tokens": 430,
+    "output_tokens": 18,
+    "cost": 0.0000140
+  }
+}

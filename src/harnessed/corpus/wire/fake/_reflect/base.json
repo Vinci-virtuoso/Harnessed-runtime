@@ -1,0 +1,7 @@
+{
+  "response_id": "fake_reflect_base",
+  "model": "fake-1",
+  "content": "",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 198, "output_tokens": 0}
+}

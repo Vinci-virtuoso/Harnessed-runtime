@@ -1,0 +1,7 @@
+# Ticket 176. sha256("sketch a wireframe, then describe it in one line")[:12]: the Groq hop
+# of the chain-groq-hop Decider scope. The retrieved-context block (the wireframe agent's
+# result) is stripped before hashing, so this is the operator's own text.
+scope: 773734cc6f55
+variants:
+  - name: base
+    when: always

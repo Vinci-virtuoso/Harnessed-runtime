@@ -1,0 +1,8 @@
+# Ticket 182 (FR-128). The directory name is sha256("three message session")[:12]: a three-turn
+# follow-up conversation, so `loop/messages.py::for_session` has three completed messages under
+# one session id to read back in order. Every fixture 182 adds lives under its own new scope; no
+# committed scope_out fixture is touched.
+scope: e972a92b5c02
+variants:
+  - name: base
+    when: always

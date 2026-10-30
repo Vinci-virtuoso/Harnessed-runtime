@@ -1,0 +1,6 @@
+/* The glyph itself carries no ground or border; `TraceStep.module.css`'s `.icon` is the 24px
+   `color-surface-raised` container Direction rule 8 asks for, so a `StepIcon` used elsewhere gets
+   the same frame for free rather than a second copy of it. */
+.glyph {
+  display: block;
+}

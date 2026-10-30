@@ -1,0 +1,56 @@
+# Ticket 024, FR-19. The unseen suite. The reflector never reads it, and the promotion decision
+# will not proceed without its result.
+#
+# Why a second file rather than a section of `smoke.yaml`: blindness is enforced structurally, and
+# the structure is the file boundary. `improve/reflector.py` imports nothing that can resolve a
+# suite by name and never spells this suite's name or any id below, so there is no code path from
+# a reflection to these cases. A subset marked "held out" inside the primary suite would put both
+# halves behind one loader call and make the blindness a convention instead.
+#
+# Every id here is disjoint from `smoke.yaml`'s five, and the two files have one author each so
+# the zero-overlap assertion in `tests/test_holdout.py` is a claim about two independent lists
+# rather than about one list split in half.
+#
+# Each id is also a fixture scope directory under `tests/fixtures/wire/fake/`, because the runner
+# sets metadata["scope"] to the case id (architecture.md, THE CRUX). Every case declares exactly
+# one `base` variant and its fixture already passes: the holdout measures whether a candidate
+# *breaks* something the reflector never looked at, so the cases must start from a clean pass or a
+# regression would be indistinguishable from a case that was always failing.
+#
+# Cutting this suite under scope pressure is explicitly forbidden. It is the Vision's core bet.
+suite: holdout
+description: >-
+  The unseen suite. Three cases the reflector never reads, covering an exact factual answer, a
+  two-idea summary and a shape-checked answer, so a candidate is scored against grader kinds it
+  was not written for.
+cases:
+  # A plain factual answer with a different subject to any smoke case, so a procedure tuned to
+  # the smoke corpus has nothing here to have memorised.
+  - id: holdout-001-currency
+    prompt: Which currency does Nigeria use? Answer with the currency name and nothing else.
+    graders:
+      - name: exact_match
+        expect:
+          value: Naira
+
+  # Partial credit is the point: a candidate that erodes half of this answer scores 0.5 and shows
+  # up as a soft drop rather than vanishing into a pass/fail bit.
+  - id: holdout-002-replay-claim
+    prompt: >-
+      In one sentence, say how the harness answers a model request when there is no network.
+    graders:
+      - name: contains_all
+        expect:
+          values:
+            - fixture
+            - replay
+
+  # A shape the flywheel has every opportunity to break: a procedure that tells the agent to add
+  # prose around its answers fails this case while leaving the smoke suite's substring graders
+  # untouched. That asymmetry is exactly what a holdout is for.
+  - id: holdout-003-iso-date
+    prompt: Report the release date of this harness as a bare ISO-8601 calendar date.
+    graders:
+      - name: regex_match
+        expect:
+          pattern: '^\d{4}-\d{2}-\d{2}$'

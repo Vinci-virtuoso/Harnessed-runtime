@@ -1,0 +1,70 @@
+{
+  "rejected": [
+    {
+      "fact": {
+        "actor": "operator",
+        "kind": "preference",
+        "path": "report",
+        "relation": "new",
+        "replaces": null,
+        "text": "Operator prefers the British spelling 'colour' for the header in the report."
+      },
+      "index": "0",
+      "reason": "unsupported_path"
+    },
+    {
+      "fact": {
+        "actor": "operator",
+        "kind": "preference",
+        "path": "changelog draft",
+        "relation": "new",
+        "replaces": null,
+        "text": "Operator prefers the British spelling 'organise' over 'organize' in the changelog draft."
+      },
+      "index": "1",
+      "reason": "unsupported_path"
+    },
+    {
+      "fact": {
+        "actor": "operator",
+        "kind": "preference",
+        "path": "neighbourhood survey",
+        "relation": "new",
+        "replaces": null,
+        "text": "Operator prefers the British spelling 'neighbourhood' over 'neighborhood' in the neighbourhood survey."
+      },
+      "index": "2",
+      "reason": "unsupported_path"
+    },
+    {
+      "fact": {
+        "actor": "operator",
+        "kind": "preference",
+        "path": "meeting agenda",
+        "relation": "new",
+        "replaces": null,
+        "text": "Operator prefers the British spelling 'programme' over 'program' and 'centre' over 'center' in the meeting agenda."
+      },
+      "index": "3",
+      "reason": "unsupported_path"
+    },
+    {
+      "fact": {
+        "actor": "operator",
+        "kind": "preference",
+        "path": "welcome email",
+        "relation": "new",
+        "replaces": null,
+        "text": "Operator prefers the British spelling 'favourite' over 'favorite' in the welcome email."
+      },
+      "index": "4",
+      "reason": "unsupported_path"
+    }
+  ],
+  "request": {
+    "model": "openai/gpt-oss-120b",
+    "system": "You distill an agent's recent episodes into durable facts. Below are numbered episodes, oldest first, and the existing facts that look related, each with its mem_id. Write a fact only when the episodes establish it and the existing facts do not already say it: about the operator, the operator's projects and setup, or a decision taken. Each fact is read alone, later. Answer in the schema given. text is one self-contained sentence. actor is \"operator\", or the name of the agent an episode marks as having done the work. path is the file or repository the fact is about, as the episodes write it, or null. kind is preference, convention, setup or decision. relation is new, or contradicts when the fact overturns an existing one, whose mem_id from the list below is then replaces; otherwise replaces is null. If the episodes establish nothing, facts is empty.",
+    "user": "Episodes, oldest first:\n[1] Operator asked me to fix the colour of the header in the report; kept the word colour.\n[2] Operator corrected 'organize' to 'organise' in the changelog draft.\n[3] Operator said the neighbourhood survey should say neighbourhood, not neighborhood.\n[4] Operator changed 'program' to 'programme' in the meeting agenda and 'center' to 'centre'.\n[5] Operator rewrote 'favorite' as 'favourite' in the welcome email.\n\nExisting facts:\n(none)"
+  },
+  "response": "{\"facts\":[{\"actor\":\"operator\",\"kind\":\"preference\",\"path\":\"report\",\"relation\":\"new\",\"replaces\":null,\"text\":\"Operator prefers the British spelling 'colour' for the header in the report.\"},{\"actor\":\"operator\",\"kind\":\"preference\",\"path\":\"changelog draft\",\"relation\":\"new\",\"replaces\":null,\"text\":\"Operator prefers the British spelling 'organise' over 'organize' in the changelog draft.\"},{\"actor\":\"operator\",\"kind\":\"preference\",\"path\":\"neighbourhood survey\",\"relation\":\"new\",\"replaces\":null,\"text\":\"Operator prefers the British spelling 'neighbourhood' over 'neighborhood' in the neighbourhood survey.\"},{\"actor\":\"operator\",\"kind\":\"preference\",\"path\":\"meeting agenda\",\"relation\":\"new\",\"replaces\":null,\"text\":\"Operator prefers the British spelling 'programme' over 'program' and 'centre' over 'center' in the meeting agenda.\"},{\"actor\":\"operator\",\"kind\":\"preference\",\"path\":\"welcome email\",\"relation\":\"new\",\"replaces\":null,\"text\":\"Operator prefers the British spelling 'favourite' over 'favorite' in the welcome email.\"}]}"
+}

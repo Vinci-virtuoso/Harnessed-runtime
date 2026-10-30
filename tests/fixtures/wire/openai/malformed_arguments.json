@@ -1,0 +1,31 @@
+{
+  "id": "chatcmpl-000000000000000000000004",
+  "object": "chat.completion",
+  "created": 1767268803,
+  "model": "openai/gpt-4o-mini",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "call_Br0k3nJs0nArgs01",
+            "type": "function",
+            "function": {
+              "name": "fs_write",
+              "arguments": "{\"path\": \"a.txt\", \"content\": "
+            }
+          }
+        ]
+      },
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 140,
+    "completion_tokens": 22,
+    "total_tokens": 162
+  }
+}

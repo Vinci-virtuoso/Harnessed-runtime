@@ -1,0 +1,7 @@
+# Ticket 024. Added for the `holdout-003-iso-date` case in `holdout.yaml`. One `base` variant,
+# `when: always`: this case exists to catch a candidate that wraps prose around a shaped answer,
+# and a variant keyed on the procedure text would let exactly that candidate escape it.
+scope: holdout-003-iso-date
+variants:
+  - name: base
+    when: always

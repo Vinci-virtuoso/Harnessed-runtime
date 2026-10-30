@@ -1,0 +1,19 @@
+/* The page's own stack; the column's padding and width belong to `AppShell`'s `main`. */
+.page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.title {
+  margin: 0;
+  font: var(--type-page-title);
+  color: var(--color-fg);
+}
+
+.subtitle {
+  /* The title and its line read as one block, so the gap between them is not the section gap. */
+  margin: -16px 0 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}

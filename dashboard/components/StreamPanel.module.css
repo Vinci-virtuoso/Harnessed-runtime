@@ -1,0 +1,109 @@
+/* design.md's `TraceTimeline`: a `TraceStep` log under a header carrying only the status word */
+/* (FR-129, decision 68) - no cursor, no `seq` - in the same surface and border a `PanelFrame` uses. */
+.panel {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--surface-hairline);
+}
+
+/* Never colour alone (FR-61): the state is the word, and the word is the whole signal. */
+.status {
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.refresh {
+  margin-left: auto;
+  height: 24px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  transition: color var(--motion-micro) var(--ease-out), border-color var(--motion-micro) var(--ease-out), transform var(--motion-micro) var(--ease-out);
+}
+
+.refresh:hover,
+.refresh:focus-visible {
+  border-color: var(--surface-hairline-strong);
+  color: var(--color-fg);
+}
+
+.refresh:active {
+  transform: translateY(1px);
+}
+
+.refusal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--surface-hairline);
+  background: var(--color-fail-subtle);
+}
+
+.refusalLine {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+/* The refused body, verbatim (`JsonBlock` deleted, FR-127): sunken surface, code type, wrapped. */
+.refusalBody {
+  width: 100%;
+  max-height: 360px;
+  margin: 0;
+  padding: var(--space-3);
+  overflow: auto;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  font: var(--type-code);
+  color: var(--color-fg-secondary);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* The batched announcement is read aloud and never drawn: the rows beside it are what is seen, */
+/* so this region carries no pixels of its own and takes no vertical space (decision 30a). */
+.announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The log scrolls inside the panel and never the page (design.md Responsive). */
+.log {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* The rows themselves: a plain list one level inside the `role="log"` scroll container. */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

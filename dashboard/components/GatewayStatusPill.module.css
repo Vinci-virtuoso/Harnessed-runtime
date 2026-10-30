@@ -1,0 +1,65 @@
+/* 28px, 6px radius, 1px border on `color-surface`; 8px dot + text + URL in mono (design.md). */
+.pill {
+  display: inline-flex;
+  min-width: 0;
+  max-width: 100%;
+  align-items: center;
+  column-gap: 8px;
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  color: var(--color-fg);
+  font: var(--type-small);
+  cursor: pointer;
+  box-shadow: var(--surface-depth);
+  transition: border-color var(--motion-micro) var(--ease-out);
+}
+
+.pill:disabled {
+  cursor: default;
+}
+
+.pill:not(:disabled):hover {
+  border-color: var(--surface-hairline-strong);
+}
+
+.dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  /* `checking` is the faint dot; the three settled states colour it below. No pulse, ever. */
+  background: var(--color-fg-faint);
+}
+
+.dot[data-state="reachable"] {
+  background: var(--color-pass);
+}
+
+.dot[data-state="unreachable"],
+.dot[data-state="error"] {
+  background: var(--color-fail);
+}
+
+.label {
+  white-space: nowrap;
+}
+
+
+/* The live region carries the sentence and no layout: it is heard, never seen. */
+.live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.announcement {
+  font: var(--type-small);
+}

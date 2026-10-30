@@ -1,0 +1,4 @@
+scope: _consolidate-q4-no-repository-named
+variants:
+  - name: base
+    when: always

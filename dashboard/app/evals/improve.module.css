@@ -1,0 +1,176 @@
+/*
+ * The Improvement area: the promotion history and one improvement cycle. Both pages are the same
+ * column of panels, so they share one module rather than repeating a stack twice. Every colour,
+ * font and radius is a token from `app/tokens.css`; nothing here is a raw value.
+ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.title {
+  margin: 0;
+  font: var(--type-page-title);
+  color: var(--color-fg);
+}
+
+.subtitle {
+  /* The title and its line read as one block, so the gap between them is not the section gap. */
+  margin: -16px 0 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+/* ---- Inside a panel ------------------------------------------------------------------------ */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.footer {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.note {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+/* ---- The limit control --------------------------------------------------------------------- */
+
+.limit {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.limitLegend {
+  padding: 0 4px;
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+.limitChoice {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+/* ---- The lookup, and the commands beside it -------------------------------------------------- */
+
+.lookup {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+/*
+ * A command an operator copies and runs himself (`D-8`). It is not a figure and not a control that
+ * acts: the only thing the button does is put the characters on the clipboard.
+ */
+.command {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.code {
+  font: var(--type-code);
+  color: var(--color-fg);
+}
+
+.copy {
+  padding: 4px 10px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-sm);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  box-shadow: var(--surface-depth);
+}
+
+/* ---- One cycle's fields ---------------------------------------------------------------------- */
+
+.identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 8px;
+}
+
+.marks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 8px;
+}
+
+/* The rule and the two scores it was decided on, read as one line. */
+.decision {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 720px) {
+  .tiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* The steps the cycle reached, in the order it reached them. The numbers are the list's own. */
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 8px;
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+.step {
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+.nowrap {
+  white-space: nowrap;
+}

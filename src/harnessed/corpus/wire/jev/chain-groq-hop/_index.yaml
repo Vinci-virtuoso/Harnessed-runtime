@@ -1,0 +1,10 @@
+# Ticket 176 (FR-117, decision 60). A declared scope: hop 0 routes to the `wireframe` stub,
+# hop 1 quotes it and answers `groq_chat`, so Groq runs with the agent's result as the user
+# turn's retrieved context. The Groq answer is tests/fixtures/wire/fake/773734cc6f55/.
+scope: chain-groq-hop
+variants:
+  - name: describe
+    when:
+      state_contains_all: ["previous step:", "wireframe:"]
+  - name: base
+    when: always

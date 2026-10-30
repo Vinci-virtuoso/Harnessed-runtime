@@ -1,0 +1,31 @@
+{
+  "id": "resp-000000000000000000000101",
+  "object": "chat.completion",
+  "created": 1767268810,
+  "model": "newvendor/nv-small",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "tool_calls": [
+          {
+            "id": "call_Nv7Qk2Ls9Pd4Rt6y",
+            "type": "function",
+            "function": {
+              "name": "fs_read",
+              "arguments": "{\"path\": \"notes/todo.md\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 94,
+    "completion_tokens": 17,
+    "total_tokens": 111
+  }
+}

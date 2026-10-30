@@ -1,0 +1,7 @@
+{
+  "response_id": "resp_smoke_005_2",
+  "model": "fake-1",
+  "content": "The README says the harness is offline by default.",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 63, "output_tokens": 11}
+}

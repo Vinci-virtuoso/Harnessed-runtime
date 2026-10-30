@@ -1,0 +1,51 @@
+/* Header 32px on `color-surface-sunken`; body `type-code` with line numbers; no syntax colour. */
+.frame {
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.header {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  background: var(--surface-sunken);
+  font: var(--type-data);
+  color: var(--color-fg-secondary);
+  border-bottom: 1px solid var(--surface-hairline);
+}
+
+.body {
+  margin: 0;
+  max-height: var(--preview-height);
+  overflow: auto;
+  font: var(--type-code);
+}
+
+.line {
+  display: flex;
+  column-gap: 8px;
+  padding: 0 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.number {
+  color: var(--color-fg-muted);
+  text-align: right;
+  min-width: 2em;
+  user-select: none;
+}
+
+.added {
+  background: var(--color-pass-subtle);
+}
+
+.removed {
+  background: var(--color-fail-subtle);
+}
+
+.glyph {
+  width: 1ch;
+}

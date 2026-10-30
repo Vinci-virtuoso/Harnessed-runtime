@@ -1,0 +1,32 @@
+id: 1
+event: run.started
+data: {"provider":"fake","routing":"on"}
+
+id: 2
+event: loop.route.decided
+data: {"confidence":"0.9300","confidence_percent":"93%","decision":"0","handler":"groq","hop":"0","memory_kind":"semantic","outcome":"routed","route":"groq_chat"}
+
+id: 3
+event: retrieval.gate.decided
+data: {"answer":"0.1","failed_open":false,"reason":"","retrieve":false}
+
+id: 4
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 5
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 6
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 7
+event: memory.write.committed
+data: {"episode_id":"epi_0000000003X3SV10TNZA2N82C8","kind":"episode"}
+
+id: 8
+event: run.finished
+data: {"guardrail":"no_more_tool_calls","iterations":1,"retrieved_tokens":0,"stop_reason":"end_turn","tool_calls":0}
+

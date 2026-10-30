@@ -1,0 +1,33 @@
+/* 24px status pill, 4px radius, `-subtle` ground (design.md inventory). */
+.mark {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 6px;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  white-space: nowrap;
+}
+
+/* The word, always drawn, always mono: the colour below only repeats what it already says. */
+.word {
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+.glyph {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.pass {
+  border-color: var(--color-pass);
+  background: var(--color-pass-subtle);
+}
+
+.fail {
+  border-color: var(--color-fail);
+  background: var(--color-fail-subtle);
+}

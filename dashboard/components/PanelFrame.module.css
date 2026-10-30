@@ -1,0 +1,119 @@
+/* Panel anatomy per design.md Layout: bordered header, 16px body, a sunken footer strip. */
+.panel {
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--surface-hairline);
+}
+
+.title {
+  margin: 0;
+  font: var(--type-panel-title);
+  color: var(--color-fg);
+}
+
+.body {
+  padding: 16px;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 4px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--surface-hairline);
+  background: var(--surface-sunken);
+}
+
+.refetch {
+  height: 28px;
+  margin-left: auto;
+  padding: 0 12px;
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  font: var(--type-small);
+  color: var(--color-fg);
+  cursor: pointer;
+}
+
+.refetch:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.skeleton {
+  display: grid;
+  row-gap: 8px;
+}
+
+/* A placeholder, never information: the faint token is the one place it is allowed. */
+.skeletonRow {
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+/* The panel's live region. It is heard, never seen: the stale crossing is already visible in the */
+/* footer badge, so the announcement carries no pixels of its own and takes no vertical space. */
+.announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* The `StatGroup` card (design.md, FR-163): 1px hairline, `radius-md`, 16px padding, 8px row gap. */
+.card {
+  display: flex;
+  flex-direction: column;
+  /* A grid item stretches to its row (FR-174); this holds when the card sits in a wrapper. */
+  height: 100%;
+  row-gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.cardHeader {
+  display: block;
+}
+
+.cardTitle {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.cardBody {
+  min-width: 0;
+}
+
+.card .skeletonRow {
+  height: 28px;
+  background: var(--surface-hairline);
+}
+
+.card .footer {
+  padding: 0;
+  border-top: none;
+  background: transparent;
+}

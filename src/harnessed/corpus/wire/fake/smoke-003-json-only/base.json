@@ -1,0 +1,7 @@
+{
+  "response_id": "fake_smoke003_base",
+  "model": "fake-1",
+  "content": "Sure! Here is the object you asked for:\n\n{\"city\": \"Lagos\"}\n\nLet me know if you need anything else.",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 41, "output_tokens": 29}
+}

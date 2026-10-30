@@ -1,0 +1,26 @@
+/*
+ * design.md "SystemSection": a collapsed disclosure at the foot of the Models page. Every
+ * colour, font and radius is a token.
+ */
+
+.section {
+  border-top: 1px solid var(--surface-hairline);
+  padding-top: var(--space-4);
+}
+
+.trigger {
+  padding: 8px 12px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  font: var(--type-panel-title);
+  color: var(--color-fg);
+  cursor: pointer;
+  box-shadow: var(--surface-depth);
+}
+
+.body {
+  margin-top: var(--space-4);
+}

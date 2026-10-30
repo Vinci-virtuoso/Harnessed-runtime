@@ -1,0 +1,12 @@
+id: 1
+event: run.started
+data: {"provider":"fake"}
+
+id: 2
+event: acp.permission.request
+data: {"agent":"recorded-agent","ceiling_at":"2026-01-01T12:10:00Z","description":"git log --oneline -20","hop":0,"message_seq":1,"permission_id":"perm_0000000017R97MB0CYP8769W55","tool":"execute","tool_kind":"execute"}
+
+id: 3
+event: run.finished
+data: {"guardrail":null,"stop_reason":"end_turn"}
+

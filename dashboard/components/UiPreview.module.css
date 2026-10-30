@@ -1,0 +1,69 @@
+/* 1px border, `radius-md`, a `color-surface-sunken` 32px toolbar (design.md's `ui` presenter row). */
+.frame {
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.toolbar {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  padding: 0 8px;
+  background: var(--surface-sunken);
+  border-bottom: 1px solid var(--surface-hairline);
+}
+
+.name {
+  font: var(--type-data);
+  color: var(--color-fg-secondary);
+  margin-right: auto;
+}
+
+.iframe {
+  display: block;
+  width: 100%;
+  height: var(--preview-height);
+  border: none;
+}
+
+.loading {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.layer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--surface-scrim);
+}
+
+.modal {
+  position: relative;
+  width: min(1280px, 92vw);
+  height: min(90vh, 900px);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--surface-edge);
+  overflow: hidden;
+}
+
+.fullIframe {
+  flex: 1;
+  border: none;
+}

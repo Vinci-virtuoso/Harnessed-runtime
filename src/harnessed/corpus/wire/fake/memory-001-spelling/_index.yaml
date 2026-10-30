@@ -1,0 +1,14 @@
+# Ticket 249, FR-152. The scope of the memory suite's one case (`evals/suites/memory.yaml`).
+#
+# `after_consolidation` matches only when the retrieved context of the user turn carries the fact
+# the `_consolidate` fixture writes - memory the operator's sessions wrote, read through the
+# `context_contains_all` predicate (gate ruling 2026-10-03). Before a batch there is no such fact,
+# nothing matches and `base` answers the wrong way round, which is the "before" score.
+scope: memory-001-spelling
+variants:
+  - name: after_consolidation
+    when:
+      context_contains_all:
+        - "The operator prefers British spelling."
+  - name: base
+    when: always

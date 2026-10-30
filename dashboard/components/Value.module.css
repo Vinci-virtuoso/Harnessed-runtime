@@ -1,0 +1,79 @@
+/*
+ * Mono with tabular figures, so a column of scores lines up without anyone padding the text.
+ *
+ * A figure wraps where it does not fit. It used to be `white-space: nowrap`, and a long value - a
+ * database path in a `StatTile`, an id in a narrow cell - then carried its own `SourceChip` out of
+ * the tile and past the tile beside it, which put the chip's place in the tab order behind its
+ * place on the screen (FR-61). The text is still never reflowed by this tree: the browser wraps
+ * it, and `leaf.text` is rendered character for character either way.
+ */
+.figure {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font: var(--type-data);
+  font-variant-numeric: tabular-nums;
+  color: var(--value-tone, var(--color-fg));
+  overflow-wrap: anywhere;
+  /* A button centres its text; a wrapped message keeps the left edge of its first line. */
+  text-align: inherit;
+}
+
+/*
+ * A status word drawn through `Value` keeps the colour its wrapper gives it: the wrapper sets
+ * `--value-tone` beside its own `color`. With none set a figure reads in `--color-fg`.
+ */
+
+/* A figure that opens its drawer answers the pointer; one that does not is not a control. */
+button.figure {
+  transition: background-color var(--motion-micro) var(--ease-out), color var(--motion-micro) var(--ease-out);
+}
+
+button.figure:hover {
+  text-align: inherit;
+  background-color: var(--surface-raised);
+  color: var(--value-tone, var(--color-fg));
+}
+
+/*
+ * The `unknown` treatment (D-2): a dashed chip over a faint 45deg hatch, so an absence reads as a
+ * different kind of thing from a measurement at a glance. The hatch is functional, not decorative,
+ * and stays faint enough for the text to keep its 4.5:1.
+ */
+.unknown {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  margin: 0;
+  padding: 0 8px;
+  border: 1px dashed var(--surface-hairline-strong);
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-unknown-hatch) 0,
+    var(--color-unknown-hatch) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  font: var(--type-data);
+  font-style: italic;
+  color: var(--color-fg-secondary);
+  white-space: nowrap;
+}
+
+.group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  min-width: 0;
+  max-width: 100%;
+  align-items: baseline;
+  column-gap: 8px;
+}
+
+.reason {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}

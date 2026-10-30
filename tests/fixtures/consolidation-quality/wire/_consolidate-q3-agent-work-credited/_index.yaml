@@ -1,0 +1,4 @@
+scope: _consolidate-q3-agent-work-credited
+variants:
+  - name: base
+    when: always

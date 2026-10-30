@@ -1,0 +1,7 @@
+# Ticket 005. The replay scope: one mandatory `base` variant, two iterations, so a test can
+# prove that the same key returns the same bytes and that iteration 3 is an honest miss.
+# Ticket 006 adds the prompt-conditional variants; this corpus stays deliberately flat.
+scope: smoke-005-replay
+variants:
+  - name: base
+    when: always

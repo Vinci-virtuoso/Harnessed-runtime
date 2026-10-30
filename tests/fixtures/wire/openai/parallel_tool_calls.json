@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-000000000000000000000003",
+  "object": "chat.completion",
+  "created": 1767268802,
+  "model": "openai/gpt-4o-mini",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Reading both files.",
+        "tool_calls": [
+          {
+            "id": "call_A1b2C3d4E5f6G7h8",
+            "type": "function",
+            "function": {
+              "name": "fs_read",
+              "arguments": "{\"path\": \"a.txt\"}"
+            }
+          },
+          {
+            "id": "call_Z9y8X7w6V5u4T3s2",
+            "type": "function",
+            "function": {
+              "name": "fs_read",
+              "arguments": "{\"path\": \"b.txt\"}"
+            }
+          }
+        ]
+      },
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 131,
+    "completion_tokens": 41,
+    "total_tokens": 172
+  }
+}

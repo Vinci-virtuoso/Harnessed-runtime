@@ -1,0 +1,16 @@
+/* Side by side, baseline aligned, so the two figures and the join read as one line. */
+.pair {
+  display: inline-flex;
+  align-items: baseline;
+  column-gap: 8px;
+  flex-wrap: wrap;
+}
+
+/*
+ * The join is muted and carries no direction: it is the same characters whichever way the two
+ * figures moved, because which way they moved is the promoter's word and not this component's.
+ */
+.join {
+  font: var(--type-data);
+  color: var(--color-fg-muted);
+}

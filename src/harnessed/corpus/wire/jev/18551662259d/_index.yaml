@@ -1,0 +1,10 @@
+# Ticket 160 (FR-101). The hash-fallback scope for the *scrubbed* task 'remember
+# [redacted:anthropic_key] for me': `router/state.py::build_state` scrubs the task before it ever
+# reaches the Decider (FR-94), so the scope hash a test's routed door hits is sha256 of the
+# scrubbed ``Task:`` line, never of the raw secret the test's prompt carries. This is
+# `tests/test_control_app.py::test_a_seeded_key_in_a_prompt_is_stored_redacted`'s prompt. One
+# `base` variant: nothing here exercises variant selection.
+scope: 18551662259d
+variants:
+  - name: base
+    when: always

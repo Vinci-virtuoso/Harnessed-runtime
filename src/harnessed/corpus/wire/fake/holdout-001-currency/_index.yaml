@@ -1,0 +1,9 @@
+# Ticket 024. Added because `holdout.yaml` declares the case `holdout-001-currency` and the runner
+# sets metadata["scope"] to the case id, so the unseen suite cannot be scored offline without a
+# scope directory of this exact name. One `base` variant, `when: always`: a holdout case must
+# answer the same way whatever the system prompt says, or the suite would be responding to the
+# very candidate it exists to judge from the outside.
+scope: holdout-001-currency
+variants:
+  - name: base
+    when: always

@@ -1,0 +1,37 @@
+{
+  "task": "ping",
+  "id": "gen-dec-uncertain-stop-base-1",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "groq_memory",
+      "probabilities": {
+        "groq_chat": 0.39,
+        "groq_memory": 0.43,
+        "needs_human": 0.18
+      },
+      "confidence": 0.43
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.6
+    },
+    "memory_kind": {
+      "type": "choice",
+      "choice": "semantic",
+      "probabilities": {
+        "semantic": 0.55,
+        "procedural": 0.3,
+        "episodic": 0.15
+      },
+      "confidence": 0.55
+    }
+  },
+  "usage": {
+    "input_tokens": 410,
+    "output_tokens": 20,
+    "cost": 0.0000150
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "response_id": "fake_holdout002_base",
+  "model": "fake-1",
+  "content": "With no network it selects a recorded fixture for the request and replays those bytes verbatim.",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 44, "output_tokens": 18}
+}

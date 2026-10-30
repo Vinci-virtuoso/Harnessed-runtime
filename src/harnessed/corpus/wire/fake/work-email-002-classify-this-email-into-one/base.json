@@ -1,0 +1,10 @@
+{
+  "response_id": "recorded_1",
+  "model": "openai/gpt-oss-120b",
+  "content": "support",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 478,
+    "output_tokens": 63
+  }
+}

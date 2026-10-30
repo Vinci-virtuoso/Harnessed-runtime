@@ -1,0 +1,22 @@
+{
+  "id": "msg_01SingleToolUse000001",
+  "type": "message",
+  "role": "assistant",
+  "model": "claude-sonnet-4-5",
+  "content": [
+    {
+      "type": "tool_use",
+      "id": "toolu_01A09q90qw90lq917835lq9",
+      "name": "fs_read",
+      "input": {
+        "path": "notes/todo.md"
+      }
+    }
+  ],
+  "stop_reason": "tool_use",
+  "stop_sequence": null,
+  "usage": {
+    "input_tokens": 118,
+    "output_tokens": 19
+  }
+}

@@ -1,0 +1,26 @@
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--space-4);
+}
+
+.headline {
+  font: var(--type-figure);
+}
+
+.small {
+  display: flex;
+  gap: var(--space-4);
+  font: var(--type-source);
+}
+
+.warn [data-figure] {
+  color: var(--color-warn);
+}
+
+.gloss {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}

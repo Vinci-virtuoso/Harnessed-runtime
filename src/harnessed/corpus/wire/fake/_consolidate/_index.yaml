@@ -1,0 +1,9 @@
+# Ticket 247. The consolidation pass's scope (architecture decision 81): one ordinary ChatRequest
+# with metadata["scope"] = "_consolidate", keyed like the gate's, so FakeProvider serves it with no
+# special case. One `base` variant: the system prompt is static and the batch's episodes are the
+# operator's own text, so there is nothing for a predicate to select on yet; a predicate added
+# later (ticket 249's memory suite) must be declared here, in order, above `base`.
+scope: _consolidate
+variants:
+  - name: base
+    when: always

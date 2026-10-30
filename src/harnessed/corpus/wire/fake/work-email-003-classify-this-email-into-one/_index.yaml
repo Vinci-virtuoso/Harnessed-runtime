@@ -1,0 +1,5 @@
+# Recorded from a real session (ticket 235). Reviewed code (MUST rule 8).
+scope: work-email-003-classify-this-email-into-one
+variants:
+  - name: base
+    when: always

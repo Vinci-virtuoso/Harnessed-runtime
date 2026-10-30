@@ -1,0 +1,165 @@
+/*
+ * design.md "RouterCard": `PanelFrame` chrome, first in the "Router and agents" grid. Every
+ * colour, font and radius is a token; the badge classes mirror `RegistryCard`'s own.
+ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--space-3);
+}
+
+.name {
+  margin: 0;
+  font: var(--type-panel-title);
+  color: var(--color-fg);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font: var(--type-data);
+  color: var(--color-fg);
+  white-space: nowrap;
+}
+
+.probed {
+  border-color: var(--color-pass);
+  background: var(--color-pass-subtle);
+}
+
+.failed {
+  border-color: var(--color-fail);
+  background: var(--color-fail-subtle);
+}
+
+.neverProbed {
+  border-style: dashed;
+}
+
+.model {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  column-gap: 8px;
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+.label {
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+}
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin: 0;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+}
+
+.term {
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+}
+
+.value {
+  margin: 0;
+}
+
+.detail {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+  overflow-wrap: anywhere;
+}
+
+.floorsHeading {
+  margin: 0 0 4px;
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+}
+
+.floors {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.floor {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: 8px;
+  font: var(--type-small);
+}
+
+.floorRoute {
+  color: var(--color-fg-secondary);
+}
+
+.gloss {
+  margin: 4px 0 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.command {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 8px;
+  margin-top: auto;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.code {
+  font: var(--type-code);
+  color: var(--color-fg);
+  overflow-wrap: anywhere;
+}
+
+.copy {
+  padding: 4px 10px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-sm);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  box-shadow: var(--surface-depth);
+}

@@ -1,0 +1,58 @@
+suite: work-email
+description: A work suite, recorded from real sessions.
+kind: work
+cases:
+- id: work-email-001-classify-this-email-into-one
+  input: "classify this email into one of: spam, billing, newsletter, sales and pricing, bug report or\
+    \ support \n\nHi there,\n\nWe are evaluating tools for our support team of roughly 200 people. Do\
+    \ you offer volume pricing,\nand could we book a demo some time in the next couple of weeks?\n\nBest,\n\
+    Priya"
+  handler: groq_chat
+  reference: sales and pricing
+  verdict: accept
+  session: run_0000000001Z6P9PPRJY1B0JNKE
+  seq: 1
+- id: work-email-002-classify-this-email-into-one
+  input: 'classify this email into one of: spam, billing, newsletter, sales and pricing, bug report or
+    support:
+
+
+    Hi,
+
+
+    Since about 8am none of us can log in to the dashboard. We get "session expired" straight after
+
+    entering the password, on every browser. We have a client demo at 2pm today and need this working
+
+    before then.
+
+
+    Can someone look at this urgently?
+
+
+    Dana'
+  handler: groq_chat
+  reference: support
+  verdict: accept
+  session: run_0000000001Z6P9PPRJY1B0JNKE
+  seq: 8
+- id: work-email-003-classify-this-email-into-one
+  input: 'classify this email into one of: spam, billing, newsletter, sales and pricing, bug report or
+    support:
+
+
+
+    Dear Beneficiary,
+
+
+    Your email address was selected in our international draw. To release your prize of $2,500,000
+
+    send your full name, bank account number and a processing fee of $150 within 24 hours.
+
+
+    Act now or the funds will be forfeited.'
+  handler: groq_chat
+  reference: spam
+  verdict: accept
+  session: run_0000000001Z6P9PPRJY1B0JNKE
+  seq: 15

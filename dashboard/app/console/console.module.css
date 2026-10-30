@@ -1,0 +1,23 @@
+/*
+ * The console page: a title, its line, and the panel. Every colour, font and radius is a token
+ * from `app/tokens.css`; nothing here is a raw value.
+ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.title {
+  margin: 0;
+  font: var(--type-page-title);
+  color: var(--color-fg);
+}
+
+.subtitle {
+  /* The title and its line read as one block, so the gap between them is not the section gap. */
+  margin: -16px 0 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}

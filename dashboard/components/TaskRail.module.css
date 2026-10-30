@@ -1,0 +1,66 @@
+/* design.md "TaskRail": a field list, labels on their own line when the rail is narrow. */
+.rail {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-3);
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-2);
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: var(--space-3);
+}
+
+.label {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.figure {
+  margin: 0;
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+.of {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+/* The word is coloured; the figures beside it are not (V6-4). */
+.spent {
+  margin-left: var(--space-2);
+  font: var(--type-small);
+  color: var(--color-fail);
+}
+
+.copies {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-2);
+  align-items: flex-start;
+}
+
+.copyId {
+  height: 24px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  font: var(--type-small);
+  color: var(--color-fg);
+  cursor: pointer;
+}
+
+.copyId:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}

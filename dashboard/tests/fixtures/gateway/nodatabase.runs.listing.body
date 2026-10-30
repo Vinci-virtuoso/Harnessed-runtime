@@ -1,0 +1,1 @@
+{"error":"StorageError","message":"could not open the database at <database_path> read-only: unable to open database file. The gateway creates and migrates nothing; `harnessed doctor` does both."}

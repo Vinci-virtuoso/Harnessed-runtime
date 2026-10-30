@@ -1,0 +1,9 @@
+{
+  "_source": ".spec/operator-inputs/194/dlg_00000000013PYXPYRGHD8W2KN5.json (ticket 229's failure text, recorded 2026-10-03); code, message and data are replayed byte for byte",
+  "code": -32603,
+  "message": "Internal error",
+  "data": {
+    "message": "API error (status 402 Payment Required): Grok Build usage balance exhausted",
+    "http_status": 402
+  }
+}

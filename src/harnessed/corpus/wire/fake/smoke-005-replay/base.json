@@ -1,0 +1,14 @@
+{
+  "response_id": "resp_smoke_005_1",
+  "model": "fake-1",
+  "content": "Reading the file before answering.",
+  "tool_calls": [
+    {
+      "id": "call_smoke_005_1",
+      "name": "fs_read",
+      "arguments": {"path": "README.md"}
+    }
+  ],
+  "stop_reason": "tool_use",
+  "usage": {"input_tokens": 41, "output_tokens": 17}
+}

@@ -1,0 +1,20 @@
+# `core.autocrlf=true` would check these out with CRLF, and a CRLF shebang line makes
+# scripts/verify.sh unrunnable on a POSIX shell. The POSIX parity of the verify harness (FR-3)
+# depends on this staying LF everywhere.
+*.sh text eol=lf
+
+# The recorded gateway responses are compared byte for byte (decision 33, ticket 100), so no
+# newline conversion may touch them: `core.autocrlf=true` would check the `.sse` frames and the
+# `.meta.json` trailing newline out with CRLF and every comparison would fail on a fresh clone.
+# `-text` is "these are bytes", which is what a recording is.
+dashboard/tests/fixtures/gateway/** -text
+
+# The recorded OpenRouter streams are replayed and compared byte for byte (ticket 172), for the
+# same reason as the gateway recordings above.
+tests/fixtures/wire/openrouter/** -text
+
+# The shipped corpus is checksummed byte for byte on every OS.
+src/harnessed/corpus/** -text
+
+# The published Apache licence is byte-verified and must keep its canonical LF bytes.
+LICENSE -text

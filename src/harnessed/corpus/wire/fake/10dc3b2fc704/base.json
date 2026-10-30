@@ -1,0 +1,10 @@
+{
+  "response_id": "resp_synth_10dc3b2fc704",
+  "model": "fake-1",
+  "content": "The wireframe and the launch email are ready: sign up from the new form.",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 40,
+    "output_tokens": 12
+  }
+}

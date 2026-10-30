@@ -1,0 +1,10 @@
+{
+  "response_id": "resp_synth_942fab418a1b",
+  "model": "fake-1",
+  "content": "The build fails on a stale lockfile; regenerate it and re-run.",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 40,
+    "output_tokens": 12
+  }
+}

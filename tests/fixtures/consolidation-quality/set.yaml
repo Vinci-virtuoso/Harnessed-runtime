@@ -1,0 +1,93 @@
+# Ticket 297, decision 98. The consolidation quality set: episodes drawn from the operator's QA records
+# (scrubbed), what a correct batch writes (must_write) and what it must not (must_not_write, regexes).
+suite: consolidation-quality
+cases:
+- id: q1-one-off-outcome
+  source: '.spec/operator-inputs/qa-v6/E3.txt (the four facts of the real run: files created, a README line appended)'
+  forbidden_class: a one-off task outcome
+  approval: awaiting the operator (tests/ is published, Q3)
+  episodes:
+  - kind: loop
+    text: 'The operator asked: create qa.txt in the working tree containing the text qa-v6. The agent created it
+      and reported done.'
+  - kind: loop
+    text: 'The operator asked: append the line ''qa v6'' to the README and commit it. The agent appended the line
+      and committed.'
+  - kind: loop
+    text: 'The operator said: I want every commit message in lowercase, always.'
+  must_write:
+  - commit message
+  - lowercase
+  must_not_write:
+  - (?i)qa\.txt
+  - (?i)qa[- ]v6
+  - (?i)appended
+- id: q2-general-knowledge
+  source: '.spec/operator-inputs/qa-v6/E3.txt (E1 list: web-search and explainer answers stored as facts about the
+    world)'
+  forbidden_class: general knowledge
+  approval: awaiting the operator (tests/ is published, Q3)
+  episodes:
+  - kind: loop
+    text: 'The operator asked: what is DNS? The agent explained that DNS maps names to addresses and is hierarchical.'
+  - kind: loop
+    text: 'The operator asked: what is JSON? The agent explained that JSON is a text format of objects, arrays and
+      scalars.'
+  - kind: loop
+    text: 'The operator said: keep every answer under 100 words, I read these on my phone.'
+  must_write:
+  - 100 words
+  must_not_write:
+  - (?i)\bDNS\b
+  - (?i)\bJSON\b
+  - (?i)hierarchical
+- id: q3-agent-work-credited
+  source: .spec/operator-inputs/qa-v6/E3.txt (the agent's file work stored as if the operator did it)
+  forbidden_class: an agent's work credited to the operator
+  approval: awaiting the operator (tests/ is published, Q3)
+  episodes:
+  - kind: loop
+    text: The agent claude-code edited the README and added a usage section, then ran the tests, which passed.
+  - kind: loop
+    text: The agent claude-code renamed the helper module and updated its imports.
+  - kind: loop
+    text: 'The operator said: run tests with pytest, never unittest.'
+  must_write:
+  - pytest
+  must_not_write:
+  - (?i)\bthe operator (edited|renamed|added|updated|created|ran)\b
+- id: q4-no-repository-named
+  source: '.spec/operator-inputs/qa-v6/E3.txt ("the repository" never says which one: scratch repo, not named)'
+  forbidden_class: a fact naming no repository
+  approval: awaiting the operator (tests/ is published, Q3)
+  episodes:
+  - kind: loop
+    text: The agent created a1.txt in the repository root and committed it.
+  - kind: loop
+    text: 'The operator said: keep commits small, one change each.'
+  must_write:
+  - small
+  must_not_write:
+  - (?i)\bthe repository\b
+  - (?i)\ba1\.txt\b
+- id: q5-mixed-batch
+  source: '.spec/operator-inputs/qa-v6/E3.txt (a whole batch: transient events, world facts and one decision)'
+  forbidden_class: all four
+  approval: awaiting the operator (tests/ is published, Q3)
+  episodes:
+  - kind: loop
+    text: The agent claude-code created b2.txt, then appended a line to the README and committed.
+  - kind: loop
+    text: 'The operator asked: what does HTTP 404 mean? The agent said the resource was not found.'
+  - kind: loop
+    text: 'The operator decided: the cache will use SQLite, not Redis.'
+  - kind: loop
+    text: 'The operator said: use tabs for indentation in every shell script.'
+  must_write:
+  - SQLite
+  - tabs
+  must_not_write:
+  - (?i)\b404\b
+  - (?i)\bb2\.txt\b
+  - (?i)\bthe operator (created|appended|committed)\b
+  - (?i)\bthe repository\b

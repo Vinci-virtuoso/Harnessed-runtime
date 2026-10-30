@@ -1,0 +1,13 @@
+/* Mono text on the raised ground, in a hairline outline. No status colour: the word is the signal. */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font: var(--type-data);
+  color: var(--color-fg);
+  white-space: nowrap;
+}

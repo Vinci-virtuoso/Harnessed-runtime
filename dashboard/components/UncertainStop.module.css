@@ -1,0 +1,46 @@
+/* design.md "The console in v5": UncertainStop stands where the reply would, in words. */
+
+.stop {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px solid var(--color-warn);
+  border-radius: var(--radius-md);
+  background: var(--color-warn-subtle);
+}
+
+.headline {
+  margin: 0;
+  font: var(--type-body);
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.reason {
+  margin: 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+.routes {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.route {
+  display: flex;
+  column-gap: var(--space-2);
+  font: var(--type-data);
+  color: var(--color-fg-muted);
+}
+
+.footer {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}

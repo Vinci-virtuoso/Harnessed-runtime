@@ -1,0 +1,7 @@
+# Ticket 005. The directory name is sha256("ping")[:12]: the scope fallback for a request that
+# carries no metadata["scope"], which is what an ad-hoc `harnessed run` produces. Named by the hash
+# rather than by a word on purpose, so the fallback is exercised and not merely asserted.
+scope: 758d61f26a44
+variants:
+  - name: base
+    when: always

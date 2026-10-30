@@ -1,0 +1,24 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+/* Tiles in a row share a grid of equal tracks (design.md, `StatTile`). */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 720px) {
+  .tiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.gloss {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}

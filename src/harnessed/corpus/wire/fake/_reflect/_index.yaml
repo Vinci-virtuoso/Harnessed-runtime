@@ -1,0 +1,17 @@
+# Ticket 006. The reflector's scope. Its variants match on the failing case ids carried by the
+# reflection prompt, which is what keeps the authored candidate gated on a genuinely observed
+# failure: if the baseline run does not fail smoke-003-json-only, that case id is not in the
+# prompt, no useful-candidate variant matches, and `base` returns the null candidate that makes
+# `harnessed improve run --dry-run` report "no candidate".
+#
+# A case id is an input to the reflection prompt, not something the system computed about its own
+# performance, so this stays inside the permitted vocabulary. A predicate may never name a
+# candidate id, a procedure id, a score, a pass or fail verdict, a run id or an improvement run id.
+scope: _reflect
+variants:
+  - name: json_only_failed
+    when:
+      system_contains_all:
+        - "smoke-003-json-only"
+  - name: base
+    when: always

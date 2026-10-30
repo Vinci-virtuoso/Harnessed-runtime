@@ -1,0 +1,8 @@
+# Ticket 016. Added for the `smoke-004-version-shape` case in `smoke.yaml`. This case exists so
+# the suite exercises a shape-checking grader (`regex_match`) rather than five substring graders;
+# a grader set proven only against one kind of expectation is not a grader set. One `base`
+# variant: the flywheel has no business moving a format the harness itself defines.
+scope: smoke-004-version-shape
+variants:
+  - name: base
+    when: always

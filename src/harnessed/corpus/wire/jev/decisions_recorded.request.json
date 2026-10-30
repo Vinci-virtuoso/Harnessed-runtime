@@ -1,0 +1,32 @@
+{
+ "model": "typesafe/jev-1.13-20260917",
+ "state": {
+  "task": "Find the research paper BlackRock published on AI and digital assets and summarise its main findings."
+ },
+ "questions": {
+  "route": {
+   "type": "choice",
+   "instructions": "Which handler should carry out `task`?",
+   "criteria": {
+    "groq_chat": "general conversation and questions the v4 loop already answers on its own",
+    "groq_memory": "questions about the operator, past sessions, earlier decisions or project facts, answered with retrieval turned on",
+    "claude-code": "Research that needs live web search or reading documents and papers, and coding or running applications inside a repository.",
+    "grok": "Current events and live facts: today's news, who holds an office now, prices, sports results.",
+    "needs_human": "the message is unclear, out of scope, or needs a human decision before anything runs"
+   }
+  },
+  "needs_memory": {
+   "type": "noul",
+   "instructions": "Does answering `task` need the operator's stored memory?"
+  },
+  "memory_kind": {
+   "type": "choice",
+   "instructions": "Which kind of memory would `task` need?",
+   "criteria": {
+    "semantic": "facts about the operator or projects",
+    "procedural": "how-to procedures",
+    "episodic": "past sessions and decisions"
+   }
+  }
+ }
+}

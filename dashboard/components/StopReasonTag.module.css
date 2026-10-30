@@ -1,0 +1,28 @@
+/* Mono tag, like every other verbatim word on a screen (design.md inventory). */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  column-gap: 8px;
+  min-height: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font: var(--type-data);
+  color: var(--color-fg);
+  white-space: nowrap;
+}
+
+/*
+ * `max_tokens` only. The ground and the border carry the warning alongside the word "truncated";
+ * the hairline is what keeps the chip readable where the tinted ground is nearly the surface.
+ */
+.warn {
+  border-color: var(--color-warn);
+  background: var(--color-warn-subtle);
+}
+
+.note {
+  font: var(--type-small);
+  color: var(--color-warn);
+}

@@ -1,0 +1,38 @@
+{
+ "model": "typesafe/jev-1.13-20260917",
+ "answers": {
+  "route": {
+   "type": "choice",
+   "choice": "claude-code",
+   "probabilities": {
+    "grok": 0,
+    "groq_memory": 0,
+    "groq_chat": 0,
+    "claude-code": 1,
+    "needs_human": 0
+   },
+   "confidence": 0.99
+  },
+  "needs_memory": {
+   "type": "noul",
+   "noul": 0.16
+  },
+  "memory_kind": {
+   "type": "choice",
+   "choice": "semantic",
+   "probabilities": {
+    "procedural": 0.01,
+    "semantic": 0.97,
+    "episodic": 0.02
+   },
+   "confidence": 0.96
+  }
+ },
+ "usage": {
+  "input_tokens": 565,
+  "output_tokens": 121,
+  "cost": 2.373e-05
+ },
+ "id": "gen-dec-1790514637-t0kzLEHRIhgv6lFd6smO",
+ "provider": "TypeSafe"
+}

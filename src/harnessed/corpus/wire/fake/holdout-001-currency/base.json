@@ -1,0 +1,7 @@
+{
+  "response_id": "fake_holdout001_base",
+  "model": "fake-1",
+  "content": "Naira",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 37, "output_tokens": 3}
+}

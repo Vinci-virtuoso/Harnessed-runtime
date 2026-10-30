@@ -1,0 +1,113 @@
+[project]
+name = "harnessed-runtime"
+version = "0.7.0"
+description = "A legible, offline-deterministic agent harness with a measurable self-improvement flywheel."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+# PEP 639 (decision 90, operator ruling Q1). The licence files land in the wheel's dist-info/licenses/.
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"]
+authors = [{ name = "Vinci-Virtuoso" }]
+classifiers = [
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "agent-client-protocol>=0.12.1,<1.0",
+    "anthropic>=0.34,<1.0",
+    "openai>=1.40,<2.0",
+    "pyyaml>=6.0,<7.0",
+    "rich>=13.7,<15.0",
+    "typer>=0.12,<0.16",
+]
+
+[project.optional-dependencies]
+dev = [
+    # Starlette's TestClient needs httpx. A test dependency only: nothing under src/ imports it.
+    "httpx>=0.28,<0.29",
+    "mypy>=1.11,<2.0",
+    "pytest>=8.3,<9.0",
+    "pytest-cov>=5.0,<7.0",
+    "ruff>=0.6,<0.7",
+]
+# Declared so `uv sync --all-extras` is stable. Local ONNX embeddings are a v2
+# concern; v1 semantic memory is SQLite FTS5 only, so this extra is empty on
+# purpose rather than pinning a dependency the architecture has not sanctioned.
+embed = []
+eval = [
+    "deepeval>=3.0,<4.0",
+]
+# The read-only HTTP surface (FR-31). fastapi is imported only inside gateway/, uvicorn only
+# inside cli/serve_cmd.py; pydantic and starlette arrive transitively and are imported by nothing.
+gateway = [
+    "fastapi>=0.141,<0.142",
+    "uvicorn>=0.52,<0.53",
+]
+
+[project.urls]
+Repository = "https://github.com/Vinci-virtuoso/Harnessed-runtime"
+
+[project.scripts]
+harnessed = "harnessed.cli.app:main"
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+# The dashboard export, staged by `npm --prefix dashboard run export` and gitignored, ships
+# inside the wheel (FR-63, decision 44). `artifacts` is hatchling's key for exactly that: a
+# VCS-ignored build output under `packages` that the wheel must carry. Not `force-include`,
+# which raises FileNotFoundError from every editable build (so every `uv sync` and `uv run`)
+# while the export is not staged, and would make the Python harness need node. Absence stays
+# loud through tests/test_dashboard_export.py and `doctor`, never through a failed install.
+# No build hook: the backend never shells out to node.
+[tool.hatch.build.targets.wheel]
+packages = ["src/harnessed"]
+artifacts = ["src/harnessed/dashboard_static/**"]
+
+# The sdist carries the package and its legal files and nothing else of the checkout, with the
+# same staged-export artifact line as the wheel.
+[tool.hatch.build.targets.sdist]
+only-include = ["src/harnessed", "LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md", "README.md", "pyproject.toml"]
+artifacts = ["src/harnessed/dashboard_static/**"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+# ruff 0.6's pyproject schema predates PEP 639 and reads `license-files` as a table, so its one
+# check on this file (RUF200) rejects the list form PEP 639 and hatchling >=1.27 require (ticket
+# 335). This file is excluded from ruff; every Python file is still checked.
+extend-exclude = ["pyproject.toml"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/harnessed"]
+
+[tool.pytest.ini_options]
+# --strict-markers turns an undeclared marker into a collection error: a typo'd marker must
+# fail loudly, never silently select nothing. The markers below are the whole vocabulary.
+pythonpath = ["."]
+addopts = '-m "not live" --strict-markers -p envsnapshot'
+# Both test trees, because the repository ships two (ticket 046). `tests/` is the package's own
+# suite; `evals/deterministic` is the waku-model suite, which sits outside the package so it can
+# reach the composition root. Naming only `tests` here is what left the eval suite outside the
+# gate AND outside a bare `pytest`, and two of its cases then stayed red through six green gate
+# runs after ticket 040 widened the environment file.
+#
+# `evals/judge` is deliberately absent. It scores 0-1 against a threshold and needs both the
+# optional extra and a live key, and a gate whose result is a percentage is not a gate. The
+# `live_eval` marker keeps it from executing; this keeps it from being collected into the thing
+# that decides whether the build is good.
+testpaths = ["tests", "evals/deterministic"]
+markers = [
+    "live: needs the network or a real external CLI; excluded from the default selection",
+    "slow: slower than a unit test but still offline; included by default, reported separately",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["src/harnessed"]

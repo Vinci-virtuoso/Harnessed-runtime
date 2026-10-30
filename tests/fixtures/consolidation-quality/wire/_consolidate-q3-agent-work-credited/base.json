@@ -1,0 +1,10 @@
+{
+  "response_id": "fake_q3-agent-work-credited",
+  "model": "fake-1",
+  "content": "{\"facts\": [{\"text\": \"The operator runs tests with pytest and never with unittest.\", \"actor\": \"operator\", \"path\": null, \"kind\": \"convention\", \"relation\": \"new\", \"replaces\": null}]}",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 300,
+    "output_tokens": 40
+  }
+}

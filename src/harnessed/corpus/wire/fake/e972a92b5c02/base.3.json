@@ -1,0 +1,7 @@
+{
+  "response_id": "resp_182_3",
+  "model": "fake-1",
+  "content": "third reply",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 6, "output_tokens": 2}
+}

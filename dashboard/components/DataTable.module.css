@@ -1,0 +1,61 @@
+/* At 400px the table scrolls inside its panel and never the page (design.md Responsive). */
+.scroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: hidden;
+}
+
+/* The caption names the table for assistive tech; it is not a second panel title. */
+.caption {
+  padding: 0 0 8px;
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* 32px header band on the sunken ground, in `type-label` (design.md inventory). */
+.head {
+  height: 32px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--surface-hairline);
+  background: var(--surface-sunken);
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.row {
+  height: 40px;
+}
+
+.row + .row .cell {
+  border-top: 1px solid var(--surface-hairline);
+}
+
+.cell {
+  padding: 0 12px;
+  font: var(--type-data);
+  color: var(--color-fg);
+  vertical-align: middle;
+}
+
+/* The row's one link. Underlined on focus and hover, so it is never colour alone. */
+.link {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus-visible {
+  text-decoration: underline;
+}

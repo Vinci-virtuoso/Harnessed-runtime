@@ -1,0 +1,160 @@
+# Harnessed ACP agent registry. Copy to agents.toml and adjust, or let
+# `harnessed agents add <name>` write an entry for you.
+#
+# This file is generated from the template table in src/harnessed/acp/config.py.
+# Edit the table, not this file: tests/test_agents_onboarding.py asserts the two
+# are byte-identical, so they cannot drift.
+#
+# agents.toml is gitignored: it names local executables and may carry paths you
+# do not want in the repository. Only this example file is committed.
+#
+# default       which agent an unnamed delegation gets. Uncomment one line, or
+#               name an agent per delegation.
+#
+# [agents.<name>]
+#   command      the executable that speaks the Agent Client Protocol over stdio
+#   args         arguments appended to the command
+#   cwd          working directory for the delegated task; defaults to the run cwd
+#   mode         allow | deny | allowlist | ask. Defaults to allowlist.
+#                  allow      every tool the agent asks for, except those in deny
+#                  deny       nothing
+#                  allowlist  only the tools named in allow
+#                  ask        prompt a human; outside an interactive session this
+#                             degrades to allowlist and logs a warning, so an
+#                             unattended run neither stalls nor auto-approves
+#   allow        tool kinds the agent may run without asking
+#   deny         tool kinds the agent may never run; deny always wins over allow
+#   timeout_s    hard wall-clock ceiling before the process tree is killed
+#   ask_timeout_s  how long an interactive prompt waits before denying
+#   install      the exact command that installs this agent, quoted back to the
+#                caller when the executable is not on PATH
+#   kind         acp | cli. Defaults to acp - the command speaks the Agent
+#                Client Protocol. cli runs a synchronous, non-interactive
+#                process once per delegation; see input and allow_write.
+#   use_for      free text describing what to delegate to this agent
+#   not_for      free text describing what never to delegate to this agent
+#   billing      oauth | openrouter. Absent means not metered: no cost is ever
+#                computed for this agent's turns.
+#   produces     the output kind (text, ui, image, diagram, code, record) an
+#                agent result should be shown as; absent lets the served media
+#                type decide
+#   outputs      a glob under the working directory naming which files a
+#                completed delegation may copy out as output files
+#   floor        the confidence an agent route needs before it is acted on,
+#                from 0.50 to 0.99; absent uses the built-in default
+#   base_url_var / key_var   for billing = "openrouter", the names of the
+#                environment variables the harness reads for a base URL and a
+#                key - never the values. The key is never a field of this file.
+#   input        argv | stdin, for kind = "cli": whether the task replaces a
+#                {task} token in args, or arrives on stdin
+#   allow_write  for kind = "cli": whether the process may write inside its
+#                working directory. false only detects a write after the
+#                fact and fails the delegation; it does not stop one.
+#   session_meta  for kind = "acp": a table sent as the session's _meta, so the
+#                agent launches under these settings and never its working
+#                folder's own. A non-empty table is what `confined` means.
+#   tool_names   the agent's own tool names for each ACP tool kind. Every kind in
+#                deny (and, in allowlist mode, every mapped kind not in allow)
+#                is added to the agent's own disallowed list at launch.
+#
+# The allow and deny lists name ACP tool kinds - read, edit, delete, move,
+# search, execute, think, fetch, switch_mode, other - falling back to the tool's
+# title when an agent reports no kind.
+
+# default = "claude-code"
+# default = "codex"
+# default = "pi"
+# default = "grok"
+# default = "hermes"
+# default = "deepseek"
+# default = "generic-cli"
+
+# Anthropic's coding agent, through its published ACP adapter
+[agents.claude-code]
+command = "npx"
+args = ["-y", "@agentclientprotocol/claude-agent-acp"]
+mode = "allowlist"
+allow = ["read", "search", "think", "edit"]
+deny = ["delete", "execute"]
+install = "install Node.js 18 or newer from https://nodejs.org - it ships the npx this template runs"
+use_for = "general coding tasks in this repository"
+billing = "oauth"
+session_meta = {"claudeCode" = {"options" = {"settingSources" = [], "allowDangerouslySkipPermissions" = false}}}
+tool_names = {"execute" = ["Bash"], "edit" = ["Edit", "Write", "NotebookEdit"], "delete" = ["Bash"], "read" = ["Read"], "search" = ["Glob", "Grep"], "fetch" = ["WebFetch", "WebSearch"]}
+
+# OpenAI's coding CLI, through its published ACP adapter
+[agents.codex]
+command = "npx"
+args = ["-y", "@agentclientprotocol/codex-acp"]
+mode = "allowlist"
+allow = ["read", "search", "think", "edit"]
+deny = ["delete", "execute"]
+install = "npm install -g @openai/codex, then run codex once to sign in - the adapter uses that sign-in"
+use_for = "coding tasks better suited to OpenAI's own agent"
+billing = "oauth"
+
+# the pi coding agent, through its published ACP adapter
+[agents.pi]
+command = "npx"
+args = ["-y", "pi-acp"]
+mode = "allowlist"
+allow = ["read", "search", "think", "edit"]
+deny = ["delete", "execute"]
+install = "install Node.js 18 or newer from https://nodejs.org - it ships the npx this template runs"
+use_for = "coding tasks routed through OpenRouter. base_url_var and key_var are [ASSUMPTION: unverified until installed] - the FR-113 ticket confirms them against a real run."
+billing = "openrouter"
+base_url_var = "PI_BASE_URL"
+key_var = "PI_API_KEY"
+
+# xAI's Grok Build, which speaks ACP natively over stdio
+[agents.grok]
+command = "grok"
+args = ["agent", "stdio"]
+mode = "allowlist"
+allow = ["read", "search", "think", "edit"]
+deny = ["delete", "execute"]
+install = "curl -fsSL https://x.ai/cli/install.sh | bash, add ~/.grok/bin to PATH, then run grok once to sign in - it reads its own sign-in or XAI_API_KEY, and Harnessed passes it no key"
+use_for = "coding tasks better suited to xAI's own agent"
+billing = "oauth"
+
+# the Hermes coding harness, run once per delegation over stdin
+[agents.hermes]
+command = "hermes"
+args = []
+mode = "allowlist"
+allow = ["read", "search", "think", "edit"]
+deny = ["delete", "execute"]
+install = "install the Hermes coding harness from its own release, then run it once to sign in - Harnessed passes it no key of its own"
+kind = "cli"
+use_for = "a non-interactive coding task for the Hermes harness. base_url_var and key_var are [ASSUMPTION: unverified until installed] - the FR-113 ticket confirms them against a real run."
+billing = "openrouter"
+base_url_var = "HERMES_BASE_URL"
+key_var = "HERMES_API_KEY"
+input = "stdin"
+
+# the DeepSeek coding harness, run once per delegation over stdin
+[agents.deepseek]
+command = "deepseek-coder"
+args = []
+mode = "allowlist"
+allow = ["read", "search", "think", "edit"]
+deny = ["delete", "execute"]
+install = "install the DeepSeek coding harness from its own release, then run it once to sign in - Harnessed passes it no key of its own"
+kind = "cli"
+use_for = "a non-interactive coding task for the DeepSeek harness. base_url_var and key_var are [ASSUMPTION: unverified until installed] - the FR-113 ticket confirms them against a real run."
+billing = "openrouter"
+base_url_var = "DEEPSEEK_BASE_URL"
+key_var = "DEEPSEEK_API_KEY"
+input = "stdin"
+
+# a starting point for any coding CLI with no ACP adapter of its own
+[agents.generic-cli]
+command = "your-cli-agent"
+args = []
+mode = "allowlist"
+allow = ["read", "search", "think", "edit"]
+deny = ["delete", "execute"]
+install = "point 'command' (and 'args', if it needs any) in this table at any non-interactive CLI that reads a task and prints a reply - there is nothing to install for this template itself"
+kind = "cli"
+use_for = "a generic non-interactive coding task, once 'command' names a real CLI"
+input = "stdin"

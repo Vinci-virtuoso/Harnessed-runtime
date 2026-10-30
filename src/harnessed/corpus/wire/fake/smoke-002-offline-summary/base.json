@@ -1,0 +1,7 @@
+{
+  "response_id": "fake_smoke002_base",
+  "model": "fake-1",
+  "content": "Every model call is served from a committed fixture corpus, so a run is fully offline and deterministic: the same request replays the same bytes.",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 44, "output_tokens": 27}
+}

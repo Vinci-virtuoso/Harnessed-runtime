@@ -1,0 +1,190 @@
+/*
+ * The Memory page: the figures row, then facts, procedures and episodes stacked in one column of
+ * panels. Every colour, font and radius is a token from `app/tokens.css`; nothing here is a raw
+ * value.
+ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.title {
+  margin: 0;
+  font: var(--type-page-title);
+  color: var(--color-fg);
+}
+
+.subtitle {
+  /* The title and its line read as one block, so the gap between them is not the section gap. */
+  margin: -16px 0 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+/* ---- Inside a panel ------------------------------------------------------------------------ */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.note {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+/* One fact's fields, read as a line rather than as a grid of one-value tiles. */
+.identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 8px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+}
+
+.fieldName {
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+/* A fact's tags and its links: two small lists, in the response's own order. */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: 2px 8px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+/*
+ * An episode's text is the turn as it was written, newline and all. `pre-wrap` is what keeps those
+ * newlines on screen without a character being added or removed (decision 31).
+ */
+.episodeText {
+  white-space: pre-wrap;
+}
+
+/* ---- The search box, and the lookup beside it ------------------------------------------------ */
+
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.searchLabel {
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+.searchField {
+  flex: 1 1 240px;
+  padding: 6px 8px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-sm);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  font: var(--type-code);
+  color: var(--color-fg);
+  box-shadow: var(--surface-depth);
+}
+
+.searchButton {
+  padding: 6px 12px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-sm);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  box-shadow: var(--surface-depth);
+}
+
+.searchButton:disabled {
+  color: var(--color-fg-muted);
+  cursor: not-allowed;
+}
+
+.lookup {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.prompt {
+  margin: 0;
+  padding: 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+/* ---- The figures row and the stacked sections ----------------------------------------------- */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font: var(--type-section);
+  color: var(--color-fg);
+}
+
+/* The gate's three counts, left to right in declared order, whatever the panel's width. */
+.gloss {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 6px;
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.figures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* The architecture diagram sits above the figures row, full width. */
+.diagram {
+  min-width: 0;
+}

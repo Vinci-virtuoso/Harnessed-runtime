@@ -1,0 +1,260 @@
+/*
+ * Shell: 232px left sidebar on the app ground (border-separated), 56px top bar, main column with
+ * 32px padding and a 1208px max width (design.md, Layout & spacing). The sidebar is a glass sheet
+ * over the fixed colour field; the shell itself paints nothing, so the field shows through.
+ */
+.shell {
+  display: grid;
+  /*
+   * `minmax(0, 1fr)` and not `1fr`: a bare `1fr` track is floored at its own min-content, so one
+   * wide table inside a panel widens the whole column and the document scrolls sideways at 400px
+   * instead of the table scrolling inside its panel (experience.md, Accessibility requirements).
+   */
+  grid-template-columns: 232px minmax(0, 1fr);
+  grid-template-rows: 56px 1fr;
+  min-height: 100vh;
+}
+
+/* First in tab order and out of the way until it is focused: never removed, only parked. */
+.skip {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  color: var(--color-fg);
+  font: var(--type-small);
+  transform: translateY(-200%);
+}
+
+.skip:focus-visible {
+  transform: translateY(0);
+}
+
+.nav {
+  grid-row: 1 / 3;
+  grid-column: 1;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 16px 12px;
+  border-right: 1px solid var(--surface-edge);
+  background: var(--surface-sidebar);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  margin-bottom: 0;
+  padding: 0 8px;
+}
+
+/* 24px square mark holding the 12px "H"; the nav's row gap supplies the 16px below it. */
+.mark {
+  display: inline-flex;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  color: var(--color-fg);
+}
+
+.wordmark {
+  font: var(--type-body);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--color-fg);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Pushes the theme toggle to the sidebar's bottom; the nav is a flex column. */
+.spacer {
+  flex: 1 1 auto;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--color-fg-secondary);
+  font: var(--type-small);
+  font-weight: 400;
+  text-decoration: none;
+  transition: color var(--motion-micro) var(--ease-out), background-color var(--motion-micro) var(--ease-out), border-color var(--motion-micro) var(--ease-out);
+}
+
+/* The glyph strokes in `currentColor`, so its colour transitions as a colour. */
+.icon {
+  flex: none;
+  color: var(--color-fg-muted);
+  stroke: currentColor;
+  transition: color var(--motion-micro) var(--ease-out);
+}
+
+.link:hover {
+  color: var(--color-fg);
+}
+
+.link:hover .icon {
+  color: var(--color-fg-secondary);
+}
+
+.link:active {
+  background-color: var(--surface-raised);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.link[aria-current="page"] {
+  background: var(--surface-raised);
+  border-color: var(--surface-edge);
+  color: var(--color-fg);
+  font-weight: 500;
+}
+
+.link[aria-current="page"] .icon {
+  color: var(--color-accent);
+}
+
+.header {
+  grid-row: 1;
+  grid-column: 2;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 12px;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--surface-hairline);
+}
+
+/* The sidebar's replacement, and only at 400px: above it the sidebar itself is the nav. */
+.menu {
+  display: none;
+  flex: none;
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  color: var(--color-fg);
+  font: var(--type-small);
+  cursor: pointer;
+  box-shadow: var(--surface-depth);
+  transition: color var(--motion-micro) var(--ease-out), border-color var(--motion-micro) var(--ease-out), transform var(--motion-micro) var(--ease-out);
+}
+
+.menu:hover {
+  border-color: var(--color-border-strong);
+}
+
+.menu:active {
+  transform: translateY(1px);
+}
+
+/* The dashboard's one Refresh: it re-reads every read on the open page (ticket 211). */
+.refresh {
+  flex: none;
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  color: var(--color-fg);
+  font: var(--type-small);
+  cursor: pointer;
+  transition: color var(--motion-micro) var(--ease-out), border-color var(--motion-micro) var(--ease-out), transform var(--motion-micro) var(--ease-out);
+}
+
+.refresh:hover {
+  border-color: var(--color-border-strong);
+  color: var(--color-fg);
+}
+
+.refresh:active {
+  transform: translateY(1px);
+}
+
+.refresh:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.main {
+  grid-row: 2;
+  grid-column: 2;
+  /* The same floor as the track: main is a grid item, and its automatic minimum is its content. */
+  min-width: 0;
+  max-width: 1208px;
+  padding: 32px;
+}
+
+@media (max-width: 480px) {
+  .header,
+  .main {
+    padding: 16px;
+  }
+}
+
+/*
+ * At 400px the sidebar becomes a menu button (experience.md, Accessibility requirements): the
+ * button appears, the shell is one column, and the nav is shown only while the operator holds it
+ * open, over the page rather than beside it.
+ */
+@media (max-width: 400px) {
+  .shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .header {
+    grid-column: 1;
+    justify-content: space-between;
+  }
+
+  .main {
+    grid-column: 1;
+  }
+
+  .menu {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .nav {
+    grid-row: 2;
+    grid-column: 1;
+    border-right: none;
+    border-bottom: 1px solid var(--surface-hairline);
+  }
+
+  .nav[data-open="false"] {
+    display: none;
+  }
+}

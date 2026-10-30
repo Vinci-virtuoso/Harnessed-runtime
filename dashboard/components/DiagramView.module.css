@@ -1,0 +1,14 @@
+/* As `ImageView`, plus the source fallback for a format G-34 has no renderer for. */
+.image {
+  display: block;
+  max-width: 100%;
+  max-height: var(--preview-height);
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+}
+
+.note {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+  margin: 0 0 4px;
+}

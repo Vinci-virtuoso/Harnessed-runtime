@@ -1,0 +1,10 @@
+{
+  "response_id": "resp_synth_12659270cc4c",
+  "model": "fake-1",
+  "content": "Here is the seeded preview, rendered from the agent's output.",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 40,
+    "output_tokens": 12
+  }
+}

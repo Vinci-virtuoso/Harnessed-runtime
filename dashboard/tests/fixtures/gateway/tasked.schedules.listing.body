@@ -1,0 +1,1 @@
+{"schedules":[{"installed":"true","last_run_at":"2026-01-01T12:00:01Z","last_run_at_reason":null,"next_due_at":"2026-01-01T18:00:01Z","next_due_at_reason":null,"rule_kind":"every","rule_value":"6h","rule_words":"Every 6 h","schedule_id":"sch_0000000018J5WVFAG95B54W8Z1","where":"task_scheduler","where_reason":null}]}

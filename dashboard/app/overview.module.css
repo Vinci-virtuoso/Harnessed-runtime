@@ -1,0 +1,79 @@
+/* The watch line: what makes the panels read again, and where the stream is. */
+.watch {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  row-gap: 4px;
+  margin: -16px 0 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.watchState {
+  font: var(--type-source);
+  color: var(--color-fg-secondary);
+}
+
+/* Equal tracks: four above 1200px, three between 900px and 1200px, two under (design.md, "The
+ * Overview in v6"). `TasksTile` spans two, then the six v5 tiles fill the rest. */
+.panels {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+@media (max-width: 1200px) {
+  .panels {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .panels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.tasksTile {
+  grid-column: span 2;
+}
+
+/* A panel is a third of the column, so its tiles wrap rather than squeeze. */
+/* The gate's three counts, left to right in declared order, whatever the panel's width. */
+.gloss {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 6px;
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+/* The diagram: the column's full width beneath the tiles, in no panel of its own (design.md). */
+.diagram {
+  min-width: 0;
+}
+
+/* The Latest run link: its own section, headed like a page section rather than a panel title. */
+.latestRun {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font: var(--type-section);
+  color: var(--color-fg);
+}
+
+/* The Latest run link: the newest session's id, set in mono, opening that session's page. */
+.latestRunLink {
+  align-self: flex-start;
+  font: var(--type-data);
+  color: var(--color-accent);
+  overflow-wrap: anywhere;
+}

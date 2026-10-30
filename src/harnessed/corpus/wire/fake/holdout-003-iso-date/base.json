@@ -1,0 +1,7 @@
+{
+  "response_id": "fake_holdout003_base",
+  "model": "fake-1",
+  "content": "2026-08-22",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 35, "output_tokens": 6}
+}

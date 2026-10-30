@@ -1,0 +1,18 @@
+{
+ "request_body": {
+  "model": "openai/gpt-oss-20b",
+  "stream": true,
+  "max_tokens": 40,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Reply with the single word pong."
+   }
+  ],
+  "session_id": "run_operator_recording_172",
+  "user": "operator-recording"
+ },
+ "response_content_type": "text/event-stream",
+ "recorded": "2026-09-27",
+ "note": "Authorization header omitted; the key is never recorded."
+}

@@ -1,0 +1,10 @@
+{
+  "response_id": "fake_q5-mixed-batch",
+  "model": "fake-1",
+  "content": "{\"facts\": [{\"text\": \"The operator decided the cache will use SQLite, not Redis.\", \"actor\": \"operator\", \"path\": null, \"kind\": \"decision\", \"relation\": \"new\", \"replaces\": null}, {\"text\": \"The operator wants tabs for indentation in every shell script.\", \"actor\": \"operator\", \"path\": null, \"kind\": \"convention\", \"relation\": \"new\", \"replaces\": null}]}",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 300,
+    "output_tokens": 40
+  }
+}

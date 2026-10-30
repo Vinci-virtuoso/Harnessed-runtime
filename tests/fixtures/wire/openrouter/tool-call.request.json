@@ -1,0 +1,39 @@
+{
+ "request_body": {
+  "model": "openai/gpt-oss-20b",
+  "stream": true,
+  "max_tokens": 300,
+  "messages": [
+   {
+    "role": "user",
+    "content": "Call the get_weather tool for Paris. Do not answer in text."
+   }
+  ],
+  "tools": [
+   {
+    "type": "function",
+    "function": {
+     "name": "get_weather",
+     "description": "Current weather for a city",
+     "parameters": {
+      "type": "object",
+      "properties": {
+       "city": {
+        "type": "string"
+       }
+      },
+      "required": [
+       "city"
+      ]
+     }
+    }
+   }
+  ],
+  "tool_choice": "required",
+  "session_id": "run_recording_172_tools",
+  "user": "recording-172"
+ },
+ "response_content_type": "text/event-stream",
+ "recorded": "2026-09-27",
+ "note": "Authorization header omitted; the key is never recorded."
+}

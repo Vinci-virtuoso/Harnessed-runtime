@@ -1,0 +1,68 @@
+# Ticket 016, FR-14. The primary suite: five cases, run in the order declared.
+#
+# Every `id` here is authored, and nothing may derive one from list position. An id is read in
+# two directions at once (architecture.md, THE CRUX):
+#
+#   1. `eval_results` keys on it, so a reordering must never reassign scored history.
+#   2. The runner sets `metadata["scope"]` to it, so it is also the name of the fixture scope
+#      directory under `tests/fixtures/wire/fake/` that FakeProvider replays.
+#
+# Renaming a case therefore means renaming its corpus directory in the same commit. The loader
+# validates the shape of an id so it stays a directory name and never a path.
+#
+# Graders are named here and implemented in ticket 017's `evals/graders.py`. A name absent from
+# `suite.py::GRADER_NAMES` fails the load.
+suite: smoke
+description: >-
+  The primary offline suite. Five cases covering a short factual answer, a keyword summary, the
+  format-discipline case the flywheel moves, a regex-shaped answer and a two-iteration tool run.
+cases:
+  - id: smoke-001-capital
+    prompt: Which city is the capital of Nigeria? Answer with the city name and nothing else.
+    graders:
+      - name: exact_match
+        expect:
+          value: Abuja
+
+  - id: smoke-002-offline-summary
+    prompt: >-
+      In one sentence, say what makes this harness reproducible without a network.
+    graders:
+      - name: contains_all
+        expect:
+          values:
+            - offline
+            - deterministic
+
+  # The case the whole flywheel rides on. Its corpus has two variants: `base` answers with prose
+  # wrapped around the object, `with_procedure` answers with the bare object, and the predicate
+  # that separates them reads the system prompt. A candidate procedure that genuinely carries the
+  # format instruction moves this case from fail to pass; one that does not, does not.
+  - id: smoke-003-json-only
+    prompt: >-
+      Give the capital of Nigeria as a JSON object with a single key "city".
+    graders:
+      - name: json_object
+        expect:
+          required_keys:
+            - city
+
+  - id: smoke-004-version-shape
+    prompt: Report the harness version as a bare semantic version number.
+    graders:
+      - name: regex_match
+        expect:
+          pattern: '^\d+\.\d+\.\d+$'
+
+  # Two iterations: the model calls a tool, reads the result, then answers. Both graders must
+  # hold, which is what keeps a lucky final sentence from passing a case about tool use.
+  - id: smoke-005-replay
+    prompt: Read README.md and say what it claims about running offline.
+    graders:
+      - name: tool_called
+        expect:
+          name: fs_read
+      - name: contains_all
+        expect:
+          values:
+            - offline

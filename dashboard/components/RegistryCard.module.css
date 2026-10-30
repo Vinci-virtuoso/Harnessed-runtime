@@ -1,0 +1,151 @@
+/*
+ * design.md "RegistryCard": one card per declared agent, read-only. Every colour, font and
+ * radius is a token. Replaces `AgentCard.module.css`; the badge styling is unchanged.
+ */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-lg);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--space-3);
+}
+
+.name {
+  margin: 0;
+  font: var(--type-panel-title);
+  color: var(--color-fg);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--surface-hairline-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font: var(--type-data);
+  color: var(--color-fg);
+  white-space: nowrap;
+}
+
+.live {
+  border-color: var(--color-pass);
+  background: var(--color-pass-subtle);
+}
+
+.stale {
+  border-color: var(--color-warn);
+  background: var(--color-warn-subtle);
+}
+
+.failed {
+  border-color: var(--color-fail);
+  background: var(--color-fail-subtle);
+}
+
+.unproven {
+  border-style: dashed;
+}
+
+/* The plain-word tags: kind, billing, and an optional "Unconfined". */
+.tags {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  row-gap: 4px;
+  font: var(--type-small);
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 8px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--color-fg-secondary);
+}
+
+.warn {
+  border-color: var(--color-warn);
+  color: var(--color-warn);
+}
+
+.gloss {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-warn);
+}
+
+.useFor {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+  overflow-wrap: anywhere;
+}
+
+.warnLine {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  font: var(--type-small);
+  color: var(--color-warn);
+  --value-tone: var(--color-warn);
+}
+
+.notFor {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+  overflow-wrap: anywhere;
+}
+
+.command {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 8px;
+  margin-top: auto;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.code {
+  font: var(--type-code);
+  color: var(--color-fg);
+  overflow-wrap: anywhere;
+}
+
+.copy {
+  padding: 4px 10px;
+  border: 1px solid var(--surface-edge);
+  border-radius: var(--radius-sm);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  box-shadow: var(--surface-depth);
+}

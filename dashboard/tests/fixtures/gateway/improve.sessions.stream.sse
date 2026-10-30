@@ -1,0 +1,352 @@
+id: 1
+event: improve.run.started
+data: {"case_count":5,"dry_run":false,"improvement_run_id":"imp_000000000E6Q9ACKRYS2BJ6ZB7","resumed":false,"suite":"smoke"}
+
+id: 2
+event: eval.run.started
+data: {"attempt":1,"case_count":5,"eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ","fresh":false,"label":"imp_000000000E6Q9ACKRYS2BJ6ZB7/baseline","resumed":false,"suite":"smoke"}
+
+id: 3
+event: eval.case.started
+data: {"attempt":1,"case_id":"smoke-001-capital","eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ"}
+
+id: 4
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 5
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 6
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 7
+event: eval.case.scored
+data: {"attempt":1,"case_id":"smoke-001-capital","eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ","passed":true,"replayed":false,"score":1.0}
+
+id: 8
+event: eval.case.started
+data: {"attempt":1,"case_id":"smoke-002-offline-summary","eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ"}
+
+id: 9
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 10
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 11
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 12
+event: eval.case.scored
+data: {"attempt":1,"case_id":"smoke-002-offline-summary","eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ","passed":true,"replayed":false,"score":1.0}
+
+id: 13
+event: eval.case.started
+data: {"attempt":1,"case_id":"smoke-003-json-only","eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ"}
+
+id: 14
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 15
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 16
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 17
+event: eval.case.scored
+data: {"attempt":1,"case_id":"smoke-003-json-only","eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ","passed":false,"replayed":false,"score":0.0}
+
+id: 18
+event: eval.case.started
+data: {"attempt":1,"case_id":"smoke-004-version-shape","eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ"}
+
+id: 19
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 20
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 21
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 22
+event: eval.case.scored
+data: {"attempt":1,"case_id":"smoke-004-version-shape","eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ","passed":true,"replayed":false,"score":1.0}
+
+id: 23
+event: eval.case.started
+data: {"attempt":1,"case_id":"smoke-005-replay","eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ"}
+
+id: 24
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 25
+event: tool.call.started
+data: {"call_id":"call_smoke_005_1","name":"fs_read"}
+
+id: 26
+event: tool.call.failed
+data: {"call_id":"call_smoke_005_1","error":"there is no file at 'README.md' to read","name":"fs_read"}
+
+id: 27
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":1}
+
+id: 28
+event: loop.iteration.started
+data: {"iteration":2}
+
+id: 29
+event: loop.iteration.finished
+data: {"iteration":2,"tool_calls":0}
+
+id: 30
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":2,"scope":"message","stop_reason":"end_turn"}
+
+id: 31
+event: eval.case.scored
+data: {"attempt":1,"case_id":"smoke-005-replay","eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ","passed":true,"replayed":false,"score":1.0}
+
+id: 32
+event: eval.run.finished
+data: {"case_count":5,"eval_run_id":"eval_000000000FGDS3MB45TMNZ7JRZ","label":"imp_000000000E6Q9ACKRYS2BJ6ZB7/baseline","pass_count":4,"score":0.8,"scored":5,"suite":"smoke"}
+
+id: 33
+event: improve.step.recorded
+data: {"improvement_run_id":"imp_000000000E6Q9ACKRYS2BJ6ZB7","key":"smoke","step":"baseline"}
+
+id: 34
+event: improve.reflection.written
+data: {"produced_candidate":true,"scope":"_reflect","source_case_ids":["smoke-003-json-only"]}
+
+id: 35
+event: improve.step.recorded
+data: {"improvement_run_id":"imp_000000000E6Q9ACKRYS2BJ6ZB7","key":"smoke","step":"reflect"}
+
+id: 36
+event: eval.run.started
+data: {"attempt":1,"case_count":5,"eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B","fresh":false,"label":"imp_000000000E6Q9ACKRYS2BJ6ZB7/candidate","resumed":false,"suite":"smoke"}
+
+id: 37
+event: eval.case.started
+data: {"attempt":1,"case_id":"smoke-001-capital","eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B"}
+
+id: 38
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 39
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 40
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 41
+event: eval.case.scored
+data: {"attempt":1,"case_id":"smoke-001-capital","eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B","passed":true,"replayed":false,"score":1.0}
+
+id: 42
+event: eval.case.started
+data: {"attempt":1,"case_id":"smoke-002-offline-summary","eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B"}
+
+id: 43
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 44
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 45
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 46
+event: eval.case.scored
+data: {"attempt":1,"case_id":"smoke-002-offline-summary","eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B","passed":true,"replayed":false,"score":1.0}
+
+id: 47
+event: eval.case.started
+data: {"attempt":1,"case_id":"smoke-003-json-only","eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B"}
+
+id: 48
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 49
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 50
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 51
+event: eval.case.scored
+data: {"attempt":1,"case_id":"smoke-003-json-only","eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B","passed":true,"replayed":false,"score":1.0}
+
+id: 52
+event: eval.case.started
+data: {"attempt":1,"case_id":"smoke-004-version-shape","eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B"}
+
+id: 53
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 54
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 55
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 56
+event: eval.case.scored
+data: {"attempt":1,"case_id":"smoke-004-version-shape","eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B","passed":true,"replayed":false,"score":1.0}
+
+id: 57
+event: eval.case.started
+data: {"attempt":1,"case_id":"smoke-005-replay","eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B"}
+
+id: 58
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 59
+event: tool.call.started
+data: {"call_id":"call_smoke_005_1","name":"fs_read"}
+
+id: 60
+event: tool.call.failed
+data: {"call_id":"call_smoke_005_1","error":"there is no file at 'README.md' to read","name":"fs_read"}
+
+id: 61
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":1}
+
+id: 62
+event: loop.iteration.started
+data: {"iteration":2}
+
+id: 63
+event: loop.iteration.finished
+data: {"iteration":2,"tool_calls":0}
+
+id: 64
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":2,"scope":"message","stop_reason":"end_turn"}
+
+id: 65
+event: eval.case.scored
+data: {"attempt":1,"case_id":"smoke-005-replay","eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B","passed":true,"replayed":false,"score":1.0}
+
+id: 66
+event: eval.run.finished
+data: {"case_count":5,"eval_run_id":"eval_000000000GW2BAW2MQMJTYF07B","label":"imp_000000000E6Q9ACKRYS2BJ6ZB7/candidate","pass_count":5,"score":1.0,"scored":5,"suite":"smoke"}
+
+id: 67
+event: improve.step.recorded
+data: {"improvement_run_id":"imp_000000000E6Q9ACKRYS2BJ6ZB7","key":"cand_4820460a275e0bc8","step":"candidate"}
+
+id: 68
+event: eval.run.started
+data: {"attempt":1,"case_count":3,"eval_run_id":"eval_000000000HB774KP7M6WX8HT48","fresh":false,"label":"imp_000000000E6Q9ACKRYS2BJ6ZB7/holdout","resumed":false,"suite":"holdout"}
+
+id: 69
+event: eval.case.started
+data: {"attempt":1,"case_id":"holdout-001-currency","eval_run_id":"eval_000000000HB774KP7M6WX8HT48"}
+
+id: 70
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 71
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 72
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 73
+event: eval.case.scored
+data: {"attempt":1,"case_id":"holdout-001-currency","eval_run_id":"eval_000000000HB774KP7M6WX8HT48","passed":true,"replayed":false,"score":1.0}
+
+id: 74
+event: eval.case.started
+data: {"attempt":1,"case_id":"holdout-002-replay-claim","eval_run_id":"eval_000000000HB774KP7M6WX8HT48"}
+
+id: 75
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 76
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 77
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 78
+event: eval.case.scored
+data: {"attempt":1,"case_id":"holdout-002-replay-claim","eval_run_id":"eval_000000000HB774KP7M6WX8HT48","passed":true,"replayed":false,"score":1.0}
+
+id: 79
+event: eval.case.started
+data: {"attempt":1,"case_id":"holdout-003-iso-date","eval_run_id":"eval_000000000HB774KP7M6WX8HT48"}
+
+id: 80
+event: loop.iteration.started
+data: {"iteration":1}
+
+id: 81
+event: loop.iteration.finished
+data: {"iteration":1,"tool_calls":0}
+
+id: 82
+event: loop.guardrail.tripped
+data: {"guardrail":"no_more_tool_calls","iterations":1,"scope":"message","stop_reason":"end_turn"}
+
+id: 83
+event: eval.case.scored
+data: {"attempt":1,"case_id":"holdout-003-iso-date","eval_run_id":"eval_000000000HB774KP7M6WX8HT48","passed":true,"replayed":false,"score":1.0}
+
+id: 84
+event: eval.run.finished
+data: {"case_count":3,"eval_run_id":"eval_000000000HB774KP7M6WX8HT48","label":"imp_000000000E6Q9ACKRYS2BJ6ZB7/holdout","pass_count":3,"score":1.0,"scored":3,"suite":"holdout"}
+
+id: 85
+event: improve.step.recorded
+data: {"improvement_run_id":"imp_000000000E6Q9ACKRYS2BJ6ZB7","key":"cand_4820460a275e0bc8","step":"holdout"}
+
+id: 86
+event: improve.promotion.decided
+data: {"cand_id":"cand_4820460a275e0bc8","decided_at":"2026-01-01T12:00:00Z","missing_cases":[],"pass_count_after":5,"pass_count_before":4,"promoted":true,"regressions":[],"rule":"score","score_after":1.0,"score_before":0.8,"soft_drops":[]}
+
+id: 87
+event: improve.step.recorded
+data: {"improvement_run_id":"imp_000000000E6Q9ACKRYS2BJ6ZB7","key":"cand_4820460a275e0bc8","step":"promote"}
+
+id: 88
+event: improve.run.finished
+data: {"cand_id":"cand_4820460a275e0bc8","dry_run":false,"improvement_run_id":"imp_000000000E6Q9ACKRYS2BJ6ZB7","promoted":true}
+

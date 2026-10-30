@@ -1,0 +1,15 @@
+# Ticket 006, THE CRUX. The scope the prompt-conditional proof rides on: one case, two variants,
+# selected on what the system prompt actually says rather than on who is asking.
+#
+# `with_procedure` matches only when the system prompt genuinely carries the procedure's traits.
+# A candidate whose text lacks them does not match, `base` is served, the score does not move and
+# the promoter rejects. That failure path is the reason this proof is worth anything.
+scope: smoke-003-json-only
+variants:
+  - name: with_procedure
+    when:
+      system_contains_all:
+        - "respond with a single JSON object"
+        - "no prose before or after"
+  - name: base
+    when: always

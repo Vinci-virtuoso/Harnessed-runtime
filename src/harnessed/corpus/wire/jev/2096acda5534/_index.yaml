@@ -1,0 +1,10 @@
+# Ticket 178 (FR-118): routing suite task routing-023-logo-intro, the hash-fallback scope
+# sha256(task)[:12]. Transcribed from .spec/research.md Appendix A row 23: the route and
+# confidence are the spike's measured answer, from Appendix A's task-only column.
+# `needs_memory` is research section 2's "about 0.85" for a memory question and "about
+# 0.2" otherwise; the spike asked no `memory_kind`, so that answer is a flat placeholder.
+# Per-option odds and token counts were not recorded; `cost` is section 3's per-decision figure.
+scope: 2096acda5534
+variants:
+  - name: base
+    when: always

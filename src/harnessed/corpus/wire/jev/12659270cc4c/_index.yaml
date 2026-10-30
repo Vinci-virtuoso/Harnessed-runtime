@@ -1,0 +1,12 @@
+# Ticket 189 (FR-127, e2e `outputs.spec.ts`). A declared scope, reached only through a real
+# `harnessed run` (never a `ScopedFakeDecider` injection): a single agent hop that produces one
+# `ui`-kind output, then stops. `base` routes the operator's message to the seeded `stub-ui`
+# entry; `done` is asked again once the agent has returned (decision 58's "a hop asks again")
+# and ends the chain there, so the agent's own output is the reply.
+scope: 12659270cc4c
+variants:
+  - name: done
+    when:
+      state_contains_all: ["previous step:"]
+  - name: base
+    when: always

@@ -1,0 +1,13 @@
+# Keep all built-in rules. This reviewed event field holds a candidate ID, not a credential.
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+
+[[rules.allowlists]]
+description = "Recorded improvement candidate ID in the immutable SSE fixture"
+condition = "AND"
+paths = ['''(^|/)dashboard/tests/fixtures/gateway/improve\.sessions\.stream\.sse$''']
+regexTarget = "secret"
+regexes = ['''^cand_4820460a275e0bc8$''']

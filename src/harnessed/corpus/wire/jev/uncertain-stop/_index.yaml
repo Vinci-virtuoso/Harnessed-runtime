@@ -1,0 +1,13 @@
+# Ticket 164 (FR-103, decision 59). A declared scope, never sha256("ping")[:12]: that hash is
+# ticket 160's own fixture (758d61f26a44), scope_out here, committed as groq_chat because v4's
+# smoke prompt sends "ping" and every existing test relies on it staying that route. This scope
+# exists only for a caller that names it explicitly (tests/support/scoped_decider.py) rather than
+# falling back to the hash, so `base`'s own `task` can still read "ping" without colliding with
+# that other fixture.
+scope: uncertain-stop
+variants:
+  - name: needs_human
+    when:
+      state_contains_all: ["destroy production"]
+  - name: base
+    when: always

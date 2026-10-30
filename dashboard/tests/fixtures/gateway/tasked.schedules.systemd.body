@@ -1,0 +1,1 @@
+{"schedules":[{"installed":"true","last_run_at":"2026-01-01T12:00:00Z","last_run_at_reason":null,"next_due_at":"2026-01-01T18:00:00Z","next_due_at_reason":null,"rule_kind":"every","rule_value":"6h","rule_words":"Every 6 h","schedule_id":"sch_000000001CCRP55XAS68A08KKB","where":"systemd","where_reason":null}]}

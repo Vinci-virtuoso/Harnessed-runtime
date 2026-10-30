@@ -1,0 +1,36 @@
+/* ErrorState's geometry: 1px fail border on the fail-subtle ground. */
+.refusal {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-2);
+  padding: var(--space-4);
+  border: 1px solid var(--color-fail);
+  border-radius: var(--radius-md);
+  background: var(--color-fail-subtle);
+}
+
+.title {
+  margin: 0;
+  font: var(--type-panel-title);
+  color: var(--color-fg);
+}
+
+.body {
+  margin: 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+.paths {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 160px;
+  overflow: auto;
+}
+
+.path {
+  font: var(--type-data);
+  color: var(--color-fg);
+  white-space: nowrap;
+}

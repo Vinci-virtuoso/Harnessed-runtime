@@ -1,0 +1,10 @@
+{
+  "response_id": "fake_q1-one-off-outcome",
+  "model": "fake-1",
+  "content": "{\"facts\": [{\"text\": \"The operator wants every commit message in lowercase.\", \"actor\": \"operator\", \"path\": null, \"kind\": \"preference\", \"relation\": \"new\", \"replaces\": null}]}",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 300,
+    "output_tokens": 40
+  }
+}

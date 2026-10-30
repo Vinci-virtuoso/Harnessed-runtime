@@ -1,0 +1,46 @@
+/* design.md "TaskHeader": a card above the conversation; the state is a word, never a dot alone. */
+.header {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-2);
+}
+
+.text {
+  margin: 0;
+  font: var(--type-body);
+  color: var(--color-fg);
+}
+
+.line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--space-2);
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+.state {
+  font-weight: 600;
+  color: var(--color-fg);
+}
+
+.state[data-state="failed"] {
+  color: var(--color-fail);
+  --value-tone: var(--color-fail);
+}
+
+.state[data-state="needs_human"] {
+  color: var(--color-warn);
+  --value-tone: var(--color-warn);
+}
+
+.state[data-state="done"] {
+  color: var(--color-pass);
+  --value-tone: var(--color-pass);
+}
+
+.note {
+  color: var(--color-fg-muted);
+}

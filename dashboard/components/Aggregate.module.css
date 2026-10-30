@@ -1,0 +1,24 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.window {
+  margin: 0;
+  font: var(--type-source);
+  color: var(--color-fg-muted);
+}
+
+.body {
+  row-gap: 8px;
+}
+
+.headlines,
+.secondary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  column-gap: 24px;
+  row-gap: 8px;
+}

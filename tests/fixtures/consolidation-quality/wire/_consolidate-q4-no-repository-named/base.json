@@ -1,0 +1,10 @@
+{
+  "response_id": "fake_q4-no-repository-named",
+  "model": "fake-1",
+  "content": "{\"facts\": [{\"text\": \"The operator wants commits kept small, one change each.\", \"actor\": \"operator\", \"path\": null, \"kind\": \"preference\", \"relation\": \"new\", \"replaces\": null}]}",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 300,
+    "output_tokens": 40
+  }
+}

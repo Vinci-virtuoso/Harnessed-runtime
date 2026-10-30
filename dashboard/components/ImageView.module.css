@@ -1,0 +1,13 @@
+/* `<img>` fit to the column, max `preview-height`, 1px border, `radius-md` (design.md). */
+.image {
+  display: block;
+  max-width: 100%;
+  max-height: var(--preview-height);
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+}
+
+.unreadable {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}

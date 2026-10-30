@@ -1,0 +1,7 @@
+{
+  "response_id": "fake_reflect_json_only_failed",
+  "model": "fake-1",
+  "content": "When the task asks for structured data, respond with a single JSON object and no prose before or after it.",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 204, "output_tokens": 22}
+}

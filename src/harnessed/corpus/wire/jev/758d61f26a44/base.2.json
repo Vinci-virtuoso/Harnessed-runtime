@@ -1,0 +1,42 @@
+{
+  "task": "ping",
+  "id": "gen-dec-fake-758d61f26a44-base-2",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "TypeSafe",
+  "answers": {
+    "route": {
+      "type": "choice",
+      "choice": "claude-code",
+      "probabilities": {
+        "groq_chat": 0.02,
+        "claude-code": 0.97,
+        "needs_human": 0.01
+      },
+      "confidence": 0.97
+    },
+    "needs_memory": {
+      "type": "noul",
+      "noul": 0.05
+    },
+    "risk": {
+      "type": "score",
+      "score": 0,
+      "legend": {
+        "0": "low",
+        "1": "medium",
+        "2": "high"
+      },
+      "probabilities": {
+        "0": 0.9,
+        "1": 0.08,
+        "2": 0.02
+      },
+      "confidence": 0.9
+    }
+  },
+  "usage": {
+    "input_tokens": 480,
+    "output_tokens": 18,
+    "cost": 0.000014200
+  }
+}

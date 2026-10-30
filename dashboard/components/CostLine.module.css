@@ -1,0 +1,54 @@
+/* design.md's `CostLine`: inline (the reply caption calls `CostLine` with no wrapper of its own -
+ * see the `span` in `CostLine.tsx`), or the side rail's list - one row per handler, the session
+ * total, then "API-equivalent, not in the total" on its own row (`type-small`). */
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: var(--space-2);
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+.label {
+  color: var(--color-fg-muted);
+}
+
+.figure {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+/* The `not metered` chip: `Value`'s own `unknown` treatment (`D-2`), repeated here because the
+ * word and the announced sentence are this component's own, never the generic "unknown" `Value`
+ * always renders. */
+.unknown {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px dashed var(--surface-hairline-strong);
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-unknown-hatch) 0,
+    var(--color-unknown-hatch) 1px,
+    transparent 1px,
+    transparent 5px
+  );
+  font: var(--type-data);
+  font-style: italic;
+  color: var(--color-fg-secondary);
+  white-space: nowrap;
+}

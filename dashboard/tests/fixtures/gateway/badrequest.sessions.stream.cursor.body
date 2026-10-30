@@ -1,0 +1,1 @@
+{"error":"CursorError","message":"Last-Event-ID 'not-a-cursor' is not a non-negative integer. Send the seq of the last frame received, or no header at all to stream from the start."}

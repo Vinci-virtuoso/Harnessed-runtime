@@ -1,0 +1,102 @@
+/* design.md's NeedsYouList row: 56px rows, 12px 16px padding, 1px dividers. */
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  column-gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--surface-hairline);
+  transition: background-color var(--motion-micro) var(--ease-out);
+}
+
+.row:hover {
+  background-color: var(--surface-raised);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.what {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--space-1);
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: var(--type-body);
+  color: var(--color-fg);
+}
+
+.pause {
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+.since {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+  white-space: nowrap;
+  transition: color var(--motion-micro) var(--ease-out);
+}
+
+/* The raised ground a hovered row takes would drop muted text under 4.5:1, so the time steps up. */
+.row:hover .since {
+  color: var(--color-fg-secondary);
+}
+
+.open {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font: var(--type-small);
+  color: var(--color-fg);
+  text-decoration: none;
+  transition: color var(--motion-micro) var(--ease-out), border-color var(--motion-micro) var(--ease-out), transform var(--motion-micro) var(--ease-out);
+}
+
+.open:hover {
+  border-color: var(--color-border-strong);
+}
+
+.open:active {
+  transform: translateY(1px);
+}
+
+.open:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.nothing {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}

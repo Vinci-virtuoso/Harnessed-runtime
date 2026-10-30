@@ -1,0 +1,203 @@
+/*
+ * The Evals area: the listing and one eval run's detail. Both pages are the same column of panels,
+ * so they share one module rather than repeating a stack twice. Every colour, font and radius is a
+ * token from `app/tokens.css`; nothing here is a raw value.
+ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.title {
+  margin: 0;
+  font: var(--type-page-title);
+  color: var(--color-fg);
+}
+
+.subtitle {
+  /* The title and its line read as one block, so the gap between them is not the section gap. */
+  margin: -16px 0 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+/* ---- Inside a panel ------------------------------------------------------------------------ */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.footer {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.note {
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+.link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ---- The limit control and the pair being compared ------------------------------------------ */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 8px;
+}
+
+.limit {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+}
+
+.limitLegend {
+  padding: 0 4px;
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+}
+
+.limitChoice {
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  font: var(--type-data);
+  color: var(--color-fg);
+}
+
+.compare {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  font: var(--type-small);
+  color: var(--color-fg-secondary);
+}
+
+/* ---- One eval run's fields ------------------------------------------------------------------ */
+
+/*
+ * Which provider and model produced the run (FR-72). The two values are `Value` figures, so they
+ * are mono and carry their own source chip; the labels and the gloss are sans copy around them.
+ */
+.provider {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 16px;
+  row-gap: 4px;
+  margin: 0;
+}
+
+.providerField {
+  display: inline-flex;
+  align-items: baseline;
+  column-gap: 6px;
+}
+
+.providerLabel {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+/* The Vision's caveat under `fake`: a gloss on the figure beside it, quieter than the figure. */
+.gloss {
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 8px;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 720px) {
+  .tiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.marks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 8px;
+}
+
+/* The "replayed from ledger" tag: a word beside the field, never a colour standing in for one. */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface-sunken);
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+}
+
+.caseCell {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 4px;
+}
+
+/* ---- The Compare and Improvement sections --------------------------------------------------- */
+
+.section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.sectionTitle {
+  margin: 0;
+  font: var(--type-section);
+  color: var(--color-fg);
+}
+
+/* The work suite rows: a plain list, one bordered row each. */
+.suites {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.nowrap {
+  white-space: nowrap;
+}

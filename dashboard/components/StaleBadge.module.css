@@ -1,0 +1,11 @@
+/* design.md Component inventory: the footer's own `type-source` size, so the strip stays one line
+   of metadata and does not grow a second. `color-warn` only past the five minute mark (`.warn`). */
+.badge {
+  font: var(--type-source);
+  color: var(--color-fg-muted);
+  white-space: nowrap;
+}
+
+.warn {
+  color: var(--color-warn);
+}

@@ -1,0 +1,167 @@
+/*
+ * The 480px right sheet of design.md. Motion is transform and opacity only, 200ms on the drawer
+ * easing cubic-bezier(0.25, 1, 0.5, 1); `data-motion="instant"` is what the component sets when
+ * the operator asked for reduced motion, and it has no transition at all rather than a fast one.
+ */
+.layer {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--surface-scrim);
+}
+
+.drawer {
+  position: absolute;
+  inset: 0 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: min(480px, 100%);
+  padding: var(--space-4);
+  overflow-y: auto;
+  border-left: 1px solid var(--surface-edge);
+  background: var(--surface-panel);
+  -webkit-backdrop-filter: var(--surface-frost);
+  backdrop-filter: var(--surface-frost);
+  box-shadow: var(--surface-depth);
+}
+
+.drawer[data-motion="slide"] {
+  animation: slide-in 200ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--surface-hairline);
+}
+
+.heading {
+  margin: 0;
+  font: var(--type-data);
+  color: var(--color-fg);
+  overflow-wrap: anywhere;
+}
+
+.close {
+  flex: none;
+  height: 24px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  transition: color var(--motion-micro) var(--ease-out), border-color var(--motion-micro) var(--ease-out), transform var(--motion-micro) var(--ease-out);
+}
+
+.close:hover {
+  border-color: var(--surface-hairline-strong);
+  color: var(--color-fg);
+}
+
+.close:active {
+  transform: translateY(1px);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  margin: 0;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.term {
+  font: var(--type-label);
+  color: var(--color-fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.value {
+  margin: 0;
+  font: var(--type-data);
+  color: var(--color-fg);
+  overflow-wrap: anywhere;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.command {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.code {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-2);
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  font: var(--type-code);
+  color: var(--color-fg-secondary);
+  overflow-wrap: anywhere;
+}
+
+.copy {
+  flex: none;
+  height: 24px;
+  padding: 0 var(--space-2);
+  border: 1px solid var(--surface-hairline);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font: var(--type-label);
+  color: var(--color-fg-secondary);
+  cursor: pointer;
+  transition: color var(--motion-micro) var(--ease-out), border-color var(--motion-micro) var(--ease-out), transform var(--motion-micro) var(--ease-out);
+}
+
+.copy:hover {
+  border-color: var(--surface-hairline-strong);
+  color: var(--color-fg);
+}
+
+.copy:active {
+  transform: translateY(1px);
+}
+
+/* The setting is honoured in CSS too, so a drawer never animates even if the probe is wrong. */
+@media (prefers-reduced-motion: reduce) {
+  .drawer[data-motion="slide"] {
+    animation: none;
+  }
+}

@@ -1,0 +1,1 @@
+{"duration_reason":null,"duration_seconds":"0.0","finished_at":"2026-01-01T12:00:00Z","iterations":1,"key_kind":"session","model":"fake-1","provider":"fake","reply":"pong","run_key":"run_0000000002NEHPN093CBQMNNV3","started_at":"2026-01-01T12:00:00Z","stop_reason":"end_turn","tool_calls":0,"usage":{"cached_input_tokens":0,"input_tokens":3,"output_tokens":1}}

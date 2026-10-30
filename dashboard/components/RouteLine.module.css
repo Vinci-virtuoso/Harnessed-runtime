@@ -1,0 +1,16 @@
+/* design.md "The console in v5": a route line reads as one sentence, with the confidence chip
+ * trailing it. Every colour, font and radius is a token. */
+
+.line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--space-2);
+  margin: 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+.sentence {
+  color: var(--color-fg);
+}

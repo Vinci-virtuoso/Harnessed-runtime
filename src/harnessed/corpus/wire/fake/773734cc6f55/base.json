@@ -1,0 +1,10 @@
+{
+  "response_id": "resp_chain_groq_hop_1",
+  "model": "fake-1",
+  "content": "A signup page: a header, a hero and one signup form.",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 40,
+    "output_tokens": 12
+  }
+}

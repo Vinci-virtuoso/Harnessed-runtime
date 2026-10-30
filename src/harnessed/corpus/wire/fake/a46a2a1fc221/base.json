@@ -1,0 +1,10 @@
+{
+  "response_id": "resp_synth_a46a2a1fc221",
+  "model": "fake-1",
+  "content": "The incident: a stale lockfile broke the build; it was regenerated.",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 40,
+    "output_tokens": 12
+  }
+}

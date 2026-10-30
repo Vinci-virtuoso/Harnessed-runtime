@@ -1,0 +1,7 @@
+{
+  "response_id": "resp_ad_hoc_1",
+  "model": "fake-1",
+  "content": "pong",
+  "stop_reason": "end_turn",
+  "usage": {"input_tokens": 3, "output_tokens": 1}
+}

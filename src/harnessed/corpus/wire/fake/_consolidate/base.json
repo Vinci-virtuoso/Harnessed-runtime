@@ -1,0 +1,10 @@
+{
+  "response_id": "fake_consolidate_base",
+  "model": "fake-1",
+  "content": "{\"facts\": [{\"text\": \"The operator prefers British spelling.\", \"actor\": \"operator\", \"path\": null, \"kind\": \"preference\", \"relation\": \"new\", \"replaces\": null}]}",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 412,
+    "output_tokens": 24
+  }
+}

@@ -1,0 +1,23 @@
+/* design.md "The console in v5": "Groq - 3 steps - 4.2 s - $0.0031 - Details", each segment a
+ * served figure, dashes drawn by CSS rather than joined characters. */
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: var(--space-2);
+  margin: 0;
+  font: var(--type-small);
+  color: var(--color-fg-muted);
+}
+
+.segment {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.segment:not(:first-child)::before {
+  content: "-";
+  margin-right: var(--space-2);
+  color: var(--color-fg-faint);
+}

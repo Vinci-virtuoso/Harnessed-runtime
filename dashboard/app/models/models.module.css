@@ -1,0 +1,93 @@
+/*
+ * The Models page: a title, then two stacked panels (design.md "The models page"). Every colour,
+ * font and radius is a token from `app/tokens.css`; nothing here is a raw value.
+ */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+}
+
+.title {
+  margin: 0;
+  font: var(--type-page-title);
+  color: var(--color-fg);
+}
+
+.subtitle {
+  /* The title and its line read as one block, so the gap between them is not the section gap. */
+  margin: -16px 0 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+/*
+ * The provider cards: a list, one item per row of the response, as many 280px columns as fit and
+ * one column at 400px. Each card is a list item, so Tab reads a row of cards left to right.
+ */
+.grid {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+}
+
+.item > * {
+  flex: 1;
+}
+
+/* The prices search: a labelled box, a hint or the matches beneath it. */
+.search {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+
+.searchLabel {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  font: var(--type-body);
+  color: var(--color-fg);
+}
+
+.searchInput {
+  font: var(--type-body);
+  color: var(--color-fg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-fg-secondary);
+  border-radius: var(--radius-sm, 4px);
+  padding: 8px 12px;
+  max-width: 480px;
+}
+
+.searchNote {
+  margin: 0;
+  font: var(--type-body);
+  color: var(--color-fg-secondary);
+}
+
+.priceCard {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+  list-style: none;
+}
+
+.priceField {
+  display: flex;
+  column-gap: 8px;
+}
+
+.priceName {
+  min-width: 96px;
+  color: var(--color-fg-secondary);
+}

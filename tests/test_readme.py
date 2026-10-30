@@ -24,7 +24,7 @@ REPO = "Vinci-virtuoso/Harnessed-runtime"
 
 #: Decision 91's block 2 with the candidate id left to be proved against the in-process run.
 RUN_LINES = [
-    'uv tool install "harnessed-runtime[gateway]"',
+    'uv tool install --python 3.12 "harnessed-runtime[gateway]"',
     "harnessed --version",
     "mkdir harnessed-demo",
     "cd harnessed-demo",

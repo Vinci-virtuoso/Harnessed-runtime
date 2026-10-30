@@ -8,10 +8,15 @@ hence the ``doc.get("on", doc.get(True))`` lookup.
 from __future__ import annotations
 
 import importlib.util
+import os
 import re
-from types import ModuleType
+import subprocess
+import zipfile
+from pathlib import Path
+from types import ModuleType, SimpleNamespace
 from typing import Any
 
+import pytest
 import yaml
 
 from support.readme_blocks import README, install_blocks, run_block
@@ -76,6 +81,63 @@ def test_verify_runs_the_dashboard_harness_then_the_python_harness() -> None:
     assert any("verify-dashboard.sh" in s["run"] for s in _run_steps("verify"))
     ps1 = [s for s in _run_steps("verify") if re.search(r"scripts/verify\.ps1", s["run"])]
     assert ps1 and all(s.get("shell") == "pwsh" for s in ps1)
+
+
+def test_browser_install_uses_the_dashboard_lockfile_before_e2e() -> None:
+    steps = _steps("verify")
+    install = _index("verify", "npm --prefix dashboard ci")
+    browsers = [s for s in steps if s.get("name") == "Install Playwright Chromium"]
+    assert len(browsers) == 2
+    for step in browsers:
+        assert install < steps.index(step) < _index("verify", "verify-dashboard")
+        assert step["working-directory"] == "dashboard"
+        assert step["run"].startswith("npx --no-install playwright install ")
+
+
+def test_clean_install_selects_the_supported_python_on_every_os() -> None:
+    import shlex
+    import tomllib
+
+    command = shlex.split(run_block(TEXT).splitlines()[0])
+    assert command[:3] == ["uv", "tool", "install"]
+    assert command[command.index("--python") + 1] == "3.12"
+    project = tomllib.loads((ROOT / "pyproject.toml").read_text())["project"]
+    assert project["requires-python"] == ">=3.12,<3.13"
+
+
+@pytest.mark.skipif(os.name == "nt", reason="ci: linux and macos jobs exercise POSIX lib64 aliases")
+def test_installed_stamp_accepts_an_alias_but_rejects_a_second_file(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    proof = next(s["run"] for s in _run_steps("clean-install") if ".stamp" in s["run"])
+    monkeypatch.chdir(tmp_path)
+    dist = tmp_path / "dist"
+    dist.mkdir()
+    with zipfile.ZipFile(dist / "harnessed_runtime-0.7.0-py3-none-any.whl", "w") as wheel:
+        wheel.writestr("harnessed/dashboard_static/.stamp", b"built stamp")
+    tools = tmp_path / "tools"
+    environment = tools / "harnessed-runtime"
+    relative = Path("python3.12/site-packages/harnessed/dashboard_static/.stamp")
+    stamp = environment / "lib" / relative
+    stamp.parent.mkdir(parents=True)
+    stamp.write_bytes(b"built stamp")
+    (environment / "lib64").symlink_to("lib", target_is_directory=True)
+
+    def run(command: list[str], **kwargs: Any) -> SimpleNamespace:
+        assert command in (["uv", "tool", "dir"], ["harnessed", "--version"])
+        return SimpleNamespace(stdout=str(tools) if command[0] == "uv" else "0.7.0\n")
+
+    monkeypatch.setattr(subprocess, "run", run)
+    exec(compile(proof, "ci-installed-stamp", "exec"), {})
+    stamp.write_bytes(b"different stamp")
+    with pytest.raises(AssertionError, match="not the built wheel"):
+        exec(compile(proof, "ci-installed-stamp", "exec"), {})
+    stamp.write_bytes(b"built stamp")
+    extra = environment / "another-lib" / relative
+    extra.parent.mkdir(parents=True)
+    extra.write_bytes(b"built stamp")
+    with pytest.raises(AssertionError):
+        exec(compile(proof, "ci-installed-stamp", "exec"), {})
 
 
 def test_clean_install_hides_node_then_runs_the_readme_blocks_verbatim() -> None:

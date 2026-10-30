@@ -67,11 +67,15 @@ jobs:
           path: ~/.cache/ms-playwright
           key: playwright-${{ matrix.os }}-${{ hashFiles('dashboard/package-lock.json') }}
         if: matrix.os == 'linux'
+      - name: Install the locked dashboard dependencies
+        run: npm --prefix dashboard ci
       - name: Install Playwright Chromium
-        run: npx --prefix dashboard playwright install --with-deps chromium
+        working-directory: dashboard
+        run: npx --no-install playwright install --with-deps chromium
         if: matrix.os == 'linux'
       - name: Install Playwright Chromium
-        run: npx --prefix dashboard playwright install chromium
+        working-directory: dashboard
+        run: npx --no-install playwright install chromium
         if: matrix.os != 'linux'
       - name: Install Python dependencies for the dashboard harness
         run: uv sync --locked --all-extras
@@ -182,7 +186,7 @@ jobs:
         env:
           UV_FIND_LINKS: ${{ github.workspace }}/dist
         run: |
-          uv tool install "harnessed-runtime[gateway]"
+          uv tool install --python 3.12 "harnessed-runtime[gateway]"
           harnessed --version
           mkdir harnessed-demo
           cd harnessed-demo
@@ -203,6 +207,7 @@ jobs:
         shell: python
         run: |
           import glob, os, re, subprocess, zipfile
+          from pathlib import Path
 
           wheel = glob.glob("dist/harnessed_runtime-*.whl")
           assert len(wheel) == 1, wheel
@@ -213,8 +218,9 @@ jobs:
               built = z.read(next(n for n in z.namelist() if n.endswith("dashboard_static/.stamp")))
           tool = subprocess.run(["uv", "tool", "dir"], capture_output=True, text=True, check=True).stdout.strip()
           found = glob.glob(os.path.join(tool, "harnessed-runtime", "**", "dashboard_static", ".stamp"), recursive=True)
-          assert len(found) == 1, found
-          assert open(found[0], "rb").read() == built, "the installed stamp is not the built wheel's"
+          resolved = {Path(path).resolve() for path in found}
+          assert len(resolved) == 1, found
+          assert resolved.pop().read_bytes() == built, "the installed stamp is not the built wheel's"
           print("installed wheel", version, "carries the built .stamp")
       - name: Enable linger for user systemd
         if: matrix.os == 'linux'

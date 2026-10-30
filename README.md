@@ -247,7 +247,7 @@ Open a new terminal so `uv` is on your path. Harnessed keeps its ledger in the f
 
 <!-- run -->
 ```sh
-uv tool install "harnessed-runtime[gateway]"
+uv tool install --python 3.12 "harnessed-runtime[gateway]"
 harnessed --version
 mkdir harnessed-demo
 cd harnessed-demo

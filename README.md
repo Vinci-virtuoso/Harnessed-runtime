@@ -251,6 +251,7 @@ uv tool install "harnessed-runtime[gateway]"
 harnessed --version
 mkdir harnessed-demo
 cd harnessed-demo
+harnessed init --provider fake --no-validate
 harnessed doctor --offline
 harnessed eval run smoke --fresh --provider fake
 harnessed improve run --dry-run --provider fake

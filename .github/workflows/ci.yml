@@ -73,6 +73,8 @@ jobs:
       - name: Install Playwright Chromium
         run: npx --prefix dashboard playwright install chromium
         if: matrix.os != 'linux'
+      - name: Install Python dependencies for the dashboard harness
+        run: uv sync --locked --all-extras
       - name: Dashboard harness
         run: ./scripts/verify-dashboard.ps1
         shell: pwsh
@@ -184,6 +186,7 @@ jobs:
           harnessed --version
           mkdir harnessed-demo
           cd harnessed-demo
+          harnessed init --provider fake --no-validate
           harnessed doctor --offline
           harnessed eval run smoke --fresh --provider fake
           harnessed improve run --dry-run --provider fake
